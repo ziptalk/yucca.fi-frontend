@@ -1,13 +1,11 @@
-## PROTON
-
-A hybrid DeFi platform combining arbitrage trading bots and liquidity staking protocols in Neutron
+## MYTETHER
 
 ### Installation Steps
 
 ```bash
 # Clone the repository
-git clone https://github.com/ziptalk/proton-frontend-typescript.git
-cd proton-frontend-typescript
+git clone https://github.com/ziptalk/mytether-frontend-typescript.git
+cd mytether-frontend-typescript
 
 # Install dependencies
 yarn install
