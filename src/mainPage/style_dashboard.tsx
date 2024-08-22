@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { STCOMGlassWrapper } from '../common/styles/commonStyleComs';
 import { transformStyles } from '../common/styles/transformStyles';
 export const MainContainer = styled.div`
   width: 100vw;
@@ -22,13 +21,21 @@ export const MainContainer = styled.div`
 `;
 
 export const Announcement = {
-  GlassWrapper: styled(STCOMGlassWrapper)`
+  GlassWrapper: styled.div`
     position: relative;
     margin-top: 6.4rem;
     width: 100%;
     height: 21.8rem;
     overflow: hidden;
     z-index: -1;
+    background: linear-gradient(
+      266deg,
+      #eeb8c2 14.03%,
+      #f4c8da 33.02%,
+      #f45dd3 99.76%,
+      #f45dd3 100.39%
+    );
+    border-radius: 20px;
 
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       height: 16rem;
@@ -41,12 +48,12 @@ export const Announcement = {
     }
   `,
   Background: styled.img`
-    /* width: 48rem; */
     height: 100%;
     position: absolute;
     right: 0;
     bottom: 0;
     z-index: -1;
+    opacity: 0.6;
 
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       right: -10rem;
@@ -58,12 +65,14 @@ export const Announcement = {
     height: auto;
     padding: 0.9rem;
     border-radius: 93.75px;
-    background-color: ${({ theme }) => theme.colors.qve_blue};
+    background-color: transparent;
+    border: 0.1rem solid #fff;
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.caption};
     margin-bottom: 1.2rem;
   `,
   Text: styled.p`
+    color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.title_1};
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       ${({ theme }) => theme.fonts.body_1};

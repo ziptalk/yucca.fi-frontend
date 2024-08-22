@@ -3,7 +3,7 @@ import { IcModalX, IcNotice } from '../assets/0_index';
 import AreaChart from './AreaChart';
 import {
   STCOMBackground,
-  STCOMBlueBtn,
+  STCOMPinkBtn,
 } from '../../common/styles/commonStyleComs';
 import DropDown from './DropDown';
 import axios from 'axios';
@@ -177,7 +177,7 @@ const StScroll = styled.div`
   max-height: 74.4rem;
   height: 100%;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.invest_background};
+  background-color: ${({ theme }) => theme.colors.pink_background};
   z-index: 4;
   padding: 2.4rem;
   scrollbar-width: none;
@@ -213,12 +213,12 @@ const StSpaceBetween = styled.div`
 
 const StModalTitle = styled.p`
   ${({ theme }) => theme.fonts.body_2};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.darkgray};
 `;
 
 const StModalExplain = styled.p`
   ${({ theme }) => theme.fonts.small_phrase};
-  color: ${({ theme }) => theme.colors.sub_white};
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 const StColumn = styled.div`
@@ -229,12 +229,12 @@ const StColumn = styled.div`
 
 const StModalLabel = styled.label`
   ${({ theme }) => theme.fonts.body_2};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.darkgray};
 `;
 
 const StAvailable = styled.p`
   ${({ theme }) => theme.fonts.body_3};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
 
   & > span {
     color: ${({ theme }) => theme.colors.not_important};
@@ -246,8 +246,7 @@ const StinputContainer = styled.div`
   height: 5rem;
   padding: 1.4rem 1.5rem;
   border-radius: 6px;
-  border: 0.1rem solid ${({ theme }) => theme.colors.not_important};
-  background-color: #4f4f4f;
+  background-color: ${({ theme }) => theme.colors.white};
   position: relative;
 
   & > input {
@@ -256,7 +255,7 @@ const StinputContainer = styled.div`
     border: none;
     ${({ theme }) => theme.fonts.body_3};
     outline: none;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.black};
   }
 
   & > button {
@@ -273,7 +272,7 @@ const StinputContainer = styled.div`
       rgba(255, 255, 255, 0.25) 115.25%
     );
     ${({ theme }) => theme.fonts.caption};
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.black};
   }
 `;
 
@@ -281,7 +280,7 @@ const StGraphContaienr = styled.div`
   position: relative;
   width: 100%;
   height: 27.5rem;
-  border: 0.1rem solid ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.white};
   border-radius: 6px;
   padding: 1.6rem;
 
@@ -290,7 +289,7 @@ const StGraphContaienr = styled.div`
   }
 `;
 
-const StDepositBtn = styled(STCOMBlueBtn)<{ disabled: boolean }>`
+const StDepositBtn = styled(STCOMPinkBtn)<{ disabled: boolean }>`
   width: 100%;
   min-height: 4.6rem;
   ${(props) => props.disabled && ' background-color: #ccc'};

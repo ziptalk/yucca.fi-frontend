@@ -52,7 +52,7 @@ const StFooter = {
     flex-direction: column;
     justify-content: center;
     gap: 0.8rem;
-    color: ${({ theme }) => theme.colors.label};
+    color: ${({ theme }) => theme.colors.pink_sub};
 
     & p {
       ${({ theme }) => theme.fonts.body};

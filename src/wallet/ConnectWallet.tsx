@@ -72,7 +72,7 @@ const StWalletBtn = styled.button`
   gap: 0.5rem;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(125deg, #2f44b0ab 1%, #581a38e4 99%);
+  background: linear-gradient(125deg, #f45dd3 1%, #fc954b 99%);
   min-width: 16.7rem;
   width: fit-content;
   height: 4.6rem;
@@ -86,7 +86,7 @@ const StWalletBtn = styled.button`
   }
 
   &:hover {
-    background: linear-gradient(125deg, #581a38e4 1%, #2f44b0ab 99%);
+    background: linear-gradient(125deg, #fc954b 1%, #f45dd3 99%);
   }
 `;
 
@@ -107,7 +107,7 @@ const StIcon = styled.div`
 const StI = styled.div`
   width: 2.8rem;
   height: 2.8rem;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.black};
   border-radius: 100px;
   display: flex;
   align-items: center;

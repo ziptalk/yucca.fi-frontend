@@ -65,14 +65,14 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
             .padStart(2, '0')}`;
         },
         style: {
-          colors: '#ffffff',
+          colors: '#696969',
         },
 
         offsetX: 0,
       },
       axisBorder: {
         show: true,
-        color: '#FFFFFF', // x축 경계선 색상 하얀색으로 설정
+        color: '#696969', // x축 경계선 색상 하얀색으로 설정
       },
       axisTicks: {
         show: false,
@@ -84,12 +84,12 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
           return value + '%'; // y축의 값을 %로 포맷팅합니다.
         },
         style: {
-          colors: ['#ffffff'],
+          colors: ['#696969'],
         },
       },
     },
     grid: {
-      borderColor: '#FFFFFF', // 그리드 선 색상 하얀색으로 설정
+      borderColor: '#696969', // 그리드 선 색상 하얀색으로 설정
       strokeDashArray: 3, // 점선 스타일
     },
     tooltip: {

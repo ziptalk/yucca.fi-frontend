@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { IcMenu, ProtonLogo } from '../assets/0_index';
+import { IcMenu, Logo } from '../assets/0_index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import TradeNowBtn from '../../onboarding/Components/TradeNowBtn';
 import ConnectWallet from '../../wallet/ConnectWallet';
@@ -33,10 +33,7 @@ const Header = ({
   return (
     <StContainer>
       <StWrapper>
-        <StProtonLogo
-          onClick={() => navigate('/')}
-          style={{ cursor: 'pointer' }}
-        />
+        <StLogo onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
         {isMobile ? (
           <>
             <IcMenu onClick={() => setIsMenuOpen(true)} />
@@ -128,11 +125,8 @@ const StContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(
-    to bottom,
-    rgba(1, 3, 5, 1) 80%,
-    rgba(1, 3, 5, 0) 100%
-  );
+  /* background: linear-gradient(to bottom, #f8f2fc 80%, #f8f2fc 100%); */
+  backdrop-filter: blur(15px);
   z-index: 1;
   padding: 0;
   margin: 0;
@@ -143,7 +137,7 @@ const StWrapper = styled.div`
   height: 4.6rem;
   width: 100%;
   max-width: 120rem;
-  margin: 3.2rem 0rem 1.6rem;
+  margin: 3.2rem 0rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -155,7 +149,7 @@ const StWrapper = styled.div`
   }
 `;
 
-const StProtonLogo = styled(ProtonLogo)`
+const StLogo = styled(Logo)`
   width: 15.9rem;
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
@@ -178,11 +172,11 @@ const StNav = styled.nav`
 
 const StNavItem = styled.button`
   background-color: transparent;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.body_2m};
 
   &:hover {
-    color: #4a3ee9;
+    color: ${({ theme }) => theme.colors.pink_main};
   }
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     &:nth-of-type(4) {

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import {
-  STCOMBlueBtn,
-  STCOMGlassWrapper,
+  STCOMPinkBtn,
+  STCOMBoxWrapper,
 } from '../../common/styles/commonStyleComs';
 import {
   IcPersons,
@@ -115,7 +115,7 @@ const BotBoard = ({
 
 export default BotBoard;
 
-const StGlassWrapper = styled(STCOMGlassWrapper)`
+const StGlassWrapper = styled(STCOMBoxWrapper)`
   min-width: 30rem;
   width: calc(50% - 1rem);
   max-width: 59rem;
@@ -160,7 +160,7 @@ const StBotInfo = styled.section`
   gap: 1.6rem;
   padding-bottom: 2rem;
   margin-bottom: 0.5rem;
-  border-bottom: 1.5px solid ${({ theme }) => theme.colors.not_important};
+  border-bottom: 1.5px solid ${({ theme }) => theme.colors.pink_sub};
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     padding-bottom: 1.2rem;
@@ -169,6 +169,7 @@ const StBotInfo = styled.section`
 `;
 
 const StSubscriber = styled.p`
+  color: ${({ theme }) => theme.colors.darkgray};
   ${({ theme }) => theme.fonts.body_2_auto};
 `;
 
@@ -187,7 +188,7 @@ const StBotInfoLayout = styled.div`
 
 const StBotName = styled.p`
   ${({ theme }) => theme.fonts.title_2a};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     ${({ theme }) => theme.fonts.body_2_semibold};
@@ -205,12 +206,12 @@ const StTotalPRofits = styled.div`
   flex-direction: column;
   gap: 0.9rem;
   & > label {
-    color: ${({ theme }) => theme.colors.not_important};
+    color: ${({ theme }) => theme.colors.black};
     ${({ theme }) => theme.fonts.body_1};
     line-height: 100%;
   }
   & > p {
-    color: #19f6c1;
+    color: ${({ theme }) => theme.colors.positive};
     ${({ theme }) => theme.fonts.title_1};
   }
 
@@ -232,16 +233,16 @@ const StBotSummaryValue = styled.div`
   & div {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.8rem;
     & > label {
-      color: ${({ theme }) => theme.colors.not_important};
+      color: ${({ theme }) => theme.colors.black};
       ${({ theme }) => theme.fonts.body_2_semibold};
       @media (${({ theme }) => theme.breakpoints.mobile}) {
         ${({ theme }) => theme.fonts.caption};
       }
     }
     & > p {
-      color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.darkgray};
       ${({ theme }) => theme.fonts.body_2_bold};
       @media (${({ theme }) => theme.breakpoints.mobile}) {
         ${({ theme }) => theme.fonts.caption};
@@ -266,7 +267,7 @@ const StOperated = styled.span`
   gap: 0.8rem;
   margin-top: 0.5rem;
   & label {
-    color: ${({ theme }) => theme.colors.not_important};
+    color: ${({ theme }) => theme.colors.black};
     ${({ theme }) => theme.fonts.body_2_auto};
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       ${({ theme }) => theme.fonts.caption};
@@ -281,7 +282,7 @@ const StOperated = styled.span`
   }
 `;
 
-const StDeposit = styled(STCOMBlueBtn)`
+const StDeposit = styled(STCOMPinkBtn)`
   padding: 1.25rem 3.7rem;
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0.8rem 2.7rem;

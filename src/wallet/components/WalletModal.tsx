@@ -120,7 +120,7 @@ const StDisconnectBtn = styled.button`
   border-radius: 20px;
   background-color: #3f3f46;
   ${({ theme }) => theme.fonts.body_2m};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
   display: flex;
   gap: 0.5rem;
   justify-content: center;

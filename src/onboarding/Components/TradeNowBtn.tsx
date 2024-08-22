@@ -24,7 +24,7 @@ const StTradeNowBtn = styled.button`
   gap: 0.5rem;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(125deg, #3f56c7 1%, #581a38 99%);
+  background: linear-gradient(125deg, #f45dd3 1%, #fc954b 99%);
   width: 16.7rem;
   height: 4.6rem;
   border-radius: 20px;
@@ -35,6 +35,6 @@ const StTradeNowBtn = styled.button`
   }
 
   &:hover {
-    background: linear-gradient(125deg, #581a38e4 1%, #2f44b0ab 99%);
+    background: linear-gradient(125deg, #fc954b 1%, #f45dd3 99%);
   }
 `;

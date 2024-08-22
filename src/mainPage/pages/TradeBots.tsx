@@ -148,9 +148,10 @@ const StTopContainer = styled.div`
 `;
 const StSearchInput = styled.div`
   width: 100%;
+  max-width: 45rem;
   height: 5rem;
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.invest_background};
+  background-color: transparent;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.not_important};
   padding: 0.75rem 1.4rem;
   display: flex;
   align-items: center;
@@ -182,11 +183,11 @@ const StSortContainer = styled.div`
 const StSortBtn = styled.button`
   width: fit-content;
   height: 5rem;
-  border-radius: 10px;
+  border-radius: 100px;
   padding: 0 1.6rem 0;
   ${({ theme }) => theme.fonts.body_3m};
-  background-color: ${({ theme }) => theme.colors.invest_background};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.pink_sub};
+  color: ${({ theme }) => theme.colors.pink_main};
   gap: 0.7rem;
   cursor: pointer;
   display: flex;

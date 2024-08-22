@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { DASHBORADTABLEHEADER } from '../constants/DASHBOARD';
 // import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 import {
-  STCOMBlueBtn,
+  STCOMPinkBtn,
   STCOMGreyBtn,
 } from '../../common/styles/commonStyleComs';
 import { IDashboard } from '../types/dashboardType';
@@ -184,10 +184,14 @@ const Dashboard = () => {
     <StContainer>
       <SelectView view={VIEW.DASHBOARD} />
       {isWalletConnect ? (
-        data?.bots?.length ? (
-          <ShowDashboardData data={data} />
+        data ? (
+          data?.bots?.length ? (
+            <ShowDashboardData data={data} />
+          ) : (
+            <ISnotSelectBot />
+          )
         ) : (
-          <ISnotSelectBot />
+          <>loading..</>
         )
       ) : (
         <ISnotConnectWallet />
@@ -208,7 +212,7 @@ const StContainer = styled.div`
 const StTotalContainer = styled.div`
   width: 100%;
   display: flex;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
 
   & > div {
     width: 50%;
@@ -250,19 +254,19 @@ const StTableRow = styled.tr`
 const StTableHeader = styled.th`
   padding: 1.2rem 0 1.2rem 2rem;
   text-align: left;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.body_3m};
 `;
 
 const StTableCell = styled.td`
   padding: 3.7rem 0 3.7rem 2rem;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.body_2_auto};
   vertical-align: middle;
   text-align: left;
 `;
 
-const StAddBtn = styled(STCOMBlueBtn)`
+const StAddBtn = styled(STCOMPinkBtn)`
   padding: 1.2rem 2.5rem;
   ${({ theme }) => theme.fonts.body_3m};
   margin-right: 1rem;
@@ -325,7 +329,7 @@ const StText2 = styled.p`
   color: ${({ theme }) => theme.colors.sub_white};
 `;
 
-const StConnectWallet = styled(STCOMBlueBtn)`
+const StConnectWallet = styled(STCOMPinkBtn)`
   padding: 1.8rem 3.2rem;
 `;
 

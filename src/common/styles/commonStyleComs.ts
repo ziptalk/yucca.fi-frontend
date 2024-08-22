@@ -3,14 +3,7 @@ import { transformStyles } from './transformStyles';
 
 export const STCOMBoxWrapper = styled.div`
   border-radius: 40px;
-  border: 0.1rem solid #fff;
-  background: linear-gradient(
-    144deg,
-    rgba(255, 255, 255, 0.1) -9.46%,
-    rgba(255, 255, 255, 0.25) 115.25%
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const STCOMGlassWrapper = styled.div`
@@ -32,10 +25,10 @@ export const STCOMGlassWrapper = styled.div`
   -webkit-backdrop-filter: blur(5px);
 `;
 
-export const STCOMBlueBtn = styled.button`
+export const STCOMPinkBtn = styled.button`
   width: fit-content;
   height: fit-content;
-  background-color: ${({ theme }) => theme.colors.qve_blue};
+  background-color: ${({ theme }) => theme.colors.pink_main};
   border-radius: 100px;
   ${({ theme }) => theme.fonts.body_2_bold};
   color: ${({ theme }) => theme.colors.white};
@@ -47,7 +40,7 @@ export const STCOMGreyBtn = styled.button`
   background-color: #545b67;
   border-radius: 100px;
   ${({ theme }) => theme.fonts.body_2_bold};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const STCOMBackground = styled.div`

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { STCOMGlassWrapper } from '../common/styles/commonStyleComs';
+import { STCOMBoxWrapper } from '../common/styles/commonStyleComs';
 import { transformStyles } from '../common/styles/transformStyles';
 import { onBoardingBackImg1 } from '../common/assets/0_index';
 export const MainContainer = styled.div`
@@ -24,7 +24,7 @@ export const MainContainer = styled.div`
 
 export const PreTitle = styled.div`
   ${({ theme }) => theme.fonts.mont_18_medium};
-  color: ${({ theme }) => theme.colors.sub_white};
+  color: ${({ theme }) => theme.colors.darkgray};
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     ${({ theme }) => theme.fonts.body_2m};
     margin-top: 1rem;
@@ -33,7 +33,7 @@ export const PreTitle = styled.div`
 `;
 export const Title = styled.div`
   ${({ theme }) => theme.fonts.title_0};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
   text-align: center;
   word-wrap: break-word;
 
@@ -66,7 +66,7 @@ export const Section1 = {
     gap: 2rem;
     & > h1 {
       ${({ theme }) => theme.fonts.body_0};
-      color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.black};
     }
 
     & > p {
@@ -83,11 +83,10 @@ export const Section1 = {
     gap: 1rem;
     & > p:nth-of-type(1) {
       ${({ theme }) => theme.fonts.body_2m};
-      color: ${({ theme }) => theme.colors.not_important};
     }
     & > p:nth-of-type(2) {
       ${({ theme }) => theme.fonts.title_TVL};
-      color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.black};
     }
   `,
   Bottom: styled.div`
@@ -105,9 +104,12 @@ export const Section1 = {
     }
 
     & p {
-      margin: 3.4rem 0 1.4rem;
+      margin: 3.4rem 0 0.5rem;
       ${({ theme }) => theme.fonts.body_3m};
     }
+  `,
+  Eco: styled.span`
+    ${({ theme }) => theme.fonts.body_2m};
   `,
   BackgroundImg1: styled.div`
     width: 127rem;
@@ -147,7 +149,7 @@ export const Section2 = {
 
     & > p {
       ${({ theme }) => theme.fonts.mont_18_medium};
-      color: ${({ theme }) => theme.colors.sub_white};
+      color: ${({ theme }) => theme.colors.darkgray};
       margin-bottom: 1rem;
 
       @media (${({ theme }) => theme.breakpoints.tablet}) {
@@ -186,6 +188,7 @@ export const Section2 = {
     align-items: center;
     margin-bottom: 3.8rem;
     & > span {
+      color: ${({ theme }) => theme.colors.pink_main};
       ${({ theme }) => theme.fonts.body_1m};
     }
   `,
@@ -202,7 +205,7 @@ export const Section2 = {
   Explain: styled.p`
     ${({ theme }) => theme.fonts.body_1_1};
     word-wrap: break-word;
-    color: ${({ theme }) => theme.colors.sub_white};
+    color: ${({ theme }) => theme.colors.darkgray};
     height: 8.4rem;
   `,
 };
@@ -277,7 +280,7 @@ export const Section4 = {
       flex-wrap: wrap;
     }
   `,
-  ItemWrapper: styled(STCOMGlassWrapper)`
+  ItemWrapper: styled(STCOMBoxWrapper)`
     max-width: 27rem;
     min-width: 27rem;
     height: 27rem;

@@ -6,11 +6,16 @@ const colors = {
   invest_background: '#232323',
   white: '#ffffff',
   not_important: '#AEAEAE',
-  qve_background: '#010305',
+  pink_background: '#F8F2FC',
   sub_white: '#E2E3E2',
-  positive: '#19F6C1',
-  negative: '#F53966',
+  positive: '#00C37C',
+  negative: '##E5809E',
   label: '#B7B8CD',
+  black: '#000000',
+  darkgray: '#696969',
+  pink_main: '#FF6E99',
+  pink_sub: '#F2D1E4',
+  gray: '#B3B3B3',
 };
 
 const FONT = (

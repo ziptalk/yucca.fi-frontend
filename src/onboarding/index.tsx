@@ -1,16 +1,15 @@
 import Header from '../common/components/Header';
 import * as St from './style_onboarding.tsx';
 import {
-  ProtonLogo,
-  onBoardingBackImg2,
-  onBoardingBackImg3,
+  Logo,
+  // onBoardingBackImg2,
+  // onBoardingBackImg3,
 } from '../common/assets/0_index';
 import {
   IcGitbub,
   // IcMedium,
   IcTelegram,
   IcTwitter,
-  Neutron,
   onboarding3,
   onboarding3_mobile,
 } from './assets/0_index';
@@ -20,7 +19,7 @@ import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
-import { STCOMGlassWrapper } from '../common/styles/commonStyleComs.ts';
+import { STCOMBoxWrapper } from '../common/styles/commonStyleComs.ts';
 import { ONBOARDING4 } from './constants/constants.ts';
 import { LINKS } from '../common/constants/LINKS.ts';
 import useMobile from '../common/hooks/useMobile.tsx';
@@ -93,7 +92,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
   };
   return (
     <St.Section1.Container>
-      <St.Section1.BackgroundImg1 />
+      {/* <St.Section1.BackgroundImg1 /> */}
       {isMobile ? (
         <St.Mobile.ContentLayout>
           <h1>Quant Vault Escrow Protocol</h1>
@@ -115,7 +114,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
         <St.Section1.ContentLayout>
           <St.Section1.QVEIntroduce>
             <h1>Quant Vault Escrow Protocol</h1>
-            <ProtonLogo />
+            <Logo />
             <p>
               A hybrid DeFi platform combining arbitrage trading bots and
               liquidity staking protocols in Neutron
@@ -147,7 +146,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
           </nav>
         )}
         <p>Ecosystem</p>
-        <Neutron />
+        <St.Section1.Eco>AbcdefgA</St.Section1.Eco>
       </St.Section1.Bottom>
     </St.Section1.Container>
   );
@@ -156,8 +155,8 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
 const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
   return (
     <St.Section2.Container>
-      <p>About Proton</p>
-      <St.Title>Optimizing Yields in the Neutron Ecosystem</St.Title>
+      <p>About Mytether</p>
+      <St.Title>Optimizing Yields in the Abcdef Ecosystem</St.Title>
       <St.Section2.Contents>
         {isMobile ? (
           <>
@@ -175,7 +174,7 @@ const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
           <>
             {ABOUTQVE.map((item) => {
               return (
-                <STCOMGlassWrapper key={item.keyWord}>
+                <STCOMBoxWrapper key={item.keyWord}>
                   <St.Section2.AboutItem>
                     <St.Section2.IconContainer>
                       <item.icon />
@@ -188,7 +187,7 @@ const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
                       <St.Section2.Explain>{item.explain}</St.Section2.Explain>
                     </St.Section2.AbouItemLayout>
                   </St.Section2.AboutItem>
-                </STCOMGlassWrapper>
+                </STCOMBoxWrapper>
               );
             })}
           </>
@@ -201,16 +200,16 @@ const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
 const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
   return (
     <St.Section3.Container>
-      <St.Section3.BackgroundImg
+      {/* <St.Section3.BackgroundImg
         src={onBoardingBackImg2}
         alt='background-img'
-      />
+      /> */}
       <St.Section3.InTro>
         {isMobile ? (
           <St.PreTitle>Vaults Trading bots</St.PreTitle>
         ) : (
           <St.PreTitle>
-            Proton offers various ‘vaults’, which are operated by the trading
+            Mytether offers various ‘vaults’, which are operated by the trading
             bots
           </St.PreTitle>
         )}
@@ -237,10 +236,10 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
 const OnBoarding4 = ({ isMobile }: IOnboardingProps) => {
   return (
     <St.Section4.Container>
-      <St.Section4.BackgroundImg
+      {/* <St.Section4.BackgroundImg
         src={onBoardingBackImg3}
         alt='background-img'
-      />
+      /> */}
       <St.PreTitle>Asset Management Process</St.PreTitle>
       <St.Title>Automated Trading Strategy</St.Title>
       <St.Section4.ImgContainer>

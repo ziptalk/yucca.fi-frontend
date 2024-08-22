@@ -43,8 +43,8 @@ const globalStyles = css`
 
   body {
     width: 100vw;
-    color: #fff;
-    background-color: ${theme.colors.qve_background};
+    color: #000;
+    background-color: ${theme.colors.pink_background};
     overflow-x: hidden;
     display: flex;
     justify-content: center;
