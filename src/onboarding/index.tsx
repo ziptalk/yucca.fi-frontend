@@ -6,7 +6,7 @@ import {
   // onBoardingBackImg3,
 } from '../common/assets/0_index';
 import {
-  IcGitbub,
+  IcGithub,
   // IcMedium,
   IcTelegram,
   IcTwitter,
@@ -141,7 +141,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
               <IcMedium />
             </a> */}
             <a href={LINKS.github} target='_blank'>
-              <IcGitbub />
+              <IcGithub />
             </a>
           </nav>
         )}

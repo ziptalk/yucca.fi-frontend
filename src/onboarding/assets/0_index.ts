@@ -1,4 +1,4 @@
-import IcGitbub from './githubIcon.svg?react';
+import IcGithub from './githubIcon.svg?react';
 import IcMedium from './mediumIcon.svg?react';
 import IcTelegram from './telegramIcon.svg?react';
 import IcTwitter from './twitterIcon.svg?react';
@@ -18,7 +18,7 @@ import imgLiquifyPosition from './liquifyPositionIMG.webp';
 import imgWithdrawAssets from './withdrawAssetsIMG.webp';
 
 export {
-  IcGitbub,
+  IcGithub,
   IcMedium,
   IcTelegram,
   IcTwitter,

@@ -221,7 +221,7 @@ const StTotalPRofits = styled.div`
       ${({ theme }) => theme.fonts.body_2_semibold};
     }
     & > p {
-      color: #19f6c1;
+      color: ${({ theme }) => theme.colors.positive};
       ${({ theme }) => theme.fonts.title_2a};
     }
   }

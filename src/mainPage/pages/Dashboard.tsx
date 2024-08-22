@@ -288,15 +288,10 @@ const StNotConnectContainer = styled.div`
   border-radius: 40px;
   border: 0.1rem solid transparent;
   background-image: linear-gradient(
-      144deg,
-      rgba(0, 0, 0, 0.7) -9.46%,
-      rgba(0, 0, 0, 0.1) 115.25%
-    ),
-    linear-gradient(
-      330deg,
-      rgba(255, 255, 255, 0.1) -9.46%,
-      rgba(255, 255, 255, 0.3) 115.25%
-    );
+    144deg,
+    rgba(255, 255, 255, 0.7) -9.46%,
+    rgba(255, 255, 255, 0.1) 115.25%
+  );
   background-origin: border-box;
   background-clip: content-box, border-box;
 

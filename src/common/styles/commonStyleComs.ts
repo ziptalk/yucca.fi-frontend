@@ -37,10 +37,10 @@ export const STCOMPinkBtn = styled.button`
 export const STCOMGreyBtn = styled.button`
   width: fit-content;
   height: fit-content;
-  background-color: #545b67;
+  background-color: ${({ theme }) => theme.colors.gray};
   border-radius: 100px;
   ${({ theme }) => theme.fonts.body_2_bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const STCOMBackground = styled.div`

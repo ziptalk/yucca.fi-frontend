@@ -49,11 +49,11 @@ const StContainer = styled.div`
   position: relative;
   width: 100%;
   ${({ theme }) => theme.fonts.caption};
+  background-color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 `;
 
 const StDropUp = styled(StContainer)`
-  border: 1px solid #ffffff;
   border-radius: 6px;
   padding: 1.6rem 1.6rem;
   display: flex;
@@ -65,13 +65,12 @@ const StDropdown = {
   Container: styled.div`
     position: relative;
     width: 100%;
-    border: 1px solid #ffffff;
     border-radius: 6px;
     padding: 1.6rem;
     display: flex;
     flex-direction: column;
     ${({ theme }) => theme.fonts.caption};
-    background-color: ${({ theme }) => theme.colors.invest_background};
+    background-color: ${({ theme }) => theme.colors.white};
   `,
   Select: styled.div`
     width: 100%;

@@ -70,7 +70,7 @@ const StWrapper = styled.div`
   height: 25.2rem;
   border-radius: 16px;
   padding: 2.4rem;
-  background-color: ${({ theme }) => theme.colors.invest_background};
+  background-color: ${({ theme }) => theme.colors.white};
   z-index: 3;
   display: flex;
   flex-direction: column;

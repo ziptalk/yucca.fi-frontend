@@ -256,6 +256,10 @@ const StinputContainer = styled.div`
     ${({ theme }) => theme.fonts.body_3};
     outline: none;
     color: ${({ theme }) => theme.colors.black};
+
+    &::placeholder {
+      color: ${({ theme }) => theme.colors.gray};
+    }
   }
 
   & > button {
@@ -300,9 +304,10 @@ const StModalNotice = styled.div`
   justify-content: center;
   width: 100%;
   height: 5.8rem;
-  background-color: #4f4f4f;
+  background-color: ${({ theme }) => theme.colors.gray};
   padding: 1.2rem 2.4rem;
   ${({ theme }) => theme.fonts.caption};
   gap: 0.9rem;
   line-height: 120%;
+  color: ${({ theme }) => theme.colors.white};
 `;

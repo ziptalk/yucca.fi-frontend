@@ -32,7 +32,7 @@ const StMobileSideNav = styled.div<{ isOpen: boolean }>`
   width: 30rem;
   height: 100vh;
   border-radius: 20px 0 0 20px;
-  background: #21272a;
+  background: ${({ theme }) => theme.colors.pink_sub};
   color: white;
   padding: 2.5rem;
   transform: translateX(${(props) => (props.isOpen ? '0' : '100%')});

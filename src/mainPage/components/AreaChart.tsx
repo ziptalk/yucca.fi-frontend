@@ -34,7 +34,7 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
     },
     stroke: {
       curve: 'smooth',
-      colors: ['#19F6C1'],
+      colors: ['#02D689'],
       width: 2,
     },
     fill: {
@@ -42,12 +42,12 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
       gradient: {
         shade: 'light', // 그라데이션의 밝기
         type: 'vertical', // 수직 그라데이션
-        shadeIntensity: 0.5,
-        gradientToColors: ['#19F6C1'], // 그라데이션의 끝 색상
+        shadeIntensity: 0.3,
+        gradientToColors: ['#02D689'], // 그라데이션의 끝 색상
         inverseColors: false,
         opacityFrom: 0.3, // 시작 색상의 투명도
         opacityTo: 0, // 끝 색상의 투명도
-        stops: [0, 100], // 그라데이션의 위치
+        stops: [30, 100], // 그라데이션의 위치
       },
     },
     xaxis: {
