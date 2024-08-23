@@ -12,10 +12,10 @@ import { IPnlChart } from '../types/pnlChartType';
 import { DEPOSIT_PLACEHOLDER } from '../constants/DEPOSIT_PLACEHOLDER';
 import { formatNumberWithCommas } from '../../common/utils/formatNumberWithCommas';
 import { formatPercentValue } from '../../common/utils/formatPercentValue';
-import { getBalance } from '../../common/utils/getBalance';
 import useOutsideClick from '../../common/hooks/useOutsideClick';
 import { depositTransfer } from '../../contract/deposit';
 import { slideUp } from '../../common/utils/animation';
+import { useAccountBalance } from '../../wallet/hooks/useAccountBalance';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 10;
@@ -35,10 +35,11 @@ const BotModal = ({
   const [depositValue, setDepositValue] = useState<string>('');
   const [placeholder, setPlaceholder] = useState(DEPOSIT_PLACEHOLDER.default);
   const [data, setData] = useState<IPnlChart>();
-  const [balance, setBalance] = useState('-');
+  // const [balance, setBalance] = useState('-');
   const [user_id, setUserId] = useState(localStorage.getItem('NEUTRONADDRESS'));
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState('Deposit');
+  const { balance, symbol } = useAccountBalance();
   useOutsideClick(wrapperRef, onClose);
 
   useEffect(() => {
@@ -48,15 +49,15 @@ const BotModal = ({
     if (!localStorage.getItem('NEUTRONADDRESS')) {
       setPlaceholder(DEPOSIT_PLACEHOLDER.notConnectWallet);
     }
-    fetchBalance();
+    // fetchBalance();
   }, []);
   if (!isOpen) return null;
 
-  const fetchBalance = async () => {
-    if (!user_id) return;
-    const b = await getBalance(user_id);
-    setBalance(b);
-  };
+  // const fetchBalance = async () => {
+  //   if (!user_id) return;
+  //   const b = await getBalance(user_id);
+  //   setBalance(b);
+  // };
 
   const getData = async () => {
     try {
@@ -120,7 +121,7 @@ const BotModal = ({
               <StModalLabel>Investment</StModalLabel>
               <StAvailable>
                 <span>Available:</span> {balance}
-                NTRN
+                {symbol}
               </StAvailable>
             </StSpaceBetween>
             <StinputContainer>
