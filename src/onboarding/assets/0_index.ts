@@ -12,7 +12,7 @@ import onboarding3 from './onboarding_mock3.webp';
 import onboarding3_mobile from './onboarding_monk3_mobile.webp';
 import onboardingBackPng from './test.png';
 
-import imgDepositFunds from './depositfundsIMG.webp';
+import imgDepositFunds from './depositFundsIMG.webp';
 import imgGenerateProfits from './generateProfitsIMG.webp';
 import imgLiquifyPosition from './liquifyPositionIMG.webp';
 import imgWithdrawAssets from './withdrawAssetsIMG.webp';
