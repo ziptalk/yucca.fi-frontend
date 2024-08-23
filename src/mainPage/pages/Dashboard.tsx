@@ -16,6 +16,9 @@ import axios from 'axios';
 import { formatPriceValue } from '../../common/utils/formatPriceValue';
 import BotLogo from '../../common/components/BotLogo';
 import { dashboardBackIMG } from '../assets/0_index';
+import useTablet from '../../common/hooks/useTablet';
+import TableTablet from '../components/TableTablet';
+import { formatUnits } from '../../common/utils/formatUnits';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
@@ -25,7 +28,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
     openBotModal: (id: string) => void;
     openRemoveModal: (id: string) => void;
   }>();
-
+  const isTablet = useTablet();
   return (
     <>
       <StTotalContainer>
@@ -42,7 +45,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
           <label>Total Profit</label>
           <StTotalTokenValue>
             <StColor isPositive={data.total_profit >= 0}>
-              {formatPriceValue(data.total_profit)} NTRN
+              {formatUnits(data.total_profit)} NTRN
             </StColor>
           </StTotalTokenValue>
           <StTotalDollarValue>
@@ -52,64 +55,72 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
           </StTotalDollarValue>
         </div>
       </StTotalContainer>
-      <StTable>
-        <thead>
-          <StTableRow>
-            {DASHBORADTABLEHEADER.map((item) => (
-              <StTableHeader key={item}>{item}</StTableHeader>
-            ))}
-          </StTableRow>
-        </thead>
-        <tbody>
-          {data.bots.map((item) => (
-            <StTableRow key={item.bot_id}>
-              <StTableCell>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.6rem',
-                  }}
-                >
-                  <BotLogo width='24' height='24' />
-                  {item.bot_name}
-                </div>
-              </StTableCell>
-              <StTableCell>
-                {formatPriceValue(item.total_investment)} {TOKEN}
-              </StTableCell>
-              <StTableCell>
-                {formatPriceValue(item.current_value)} {TOKEN}
-              </StTableCell>
-              <StTableCell>
-                <StColor isPositive={item.daily_pnl >= 0}>
-                  {formatPriceValue(item.daily_pnl)} {TOKEN}
-                </StColor>
-              </StTableCell>
-              <StTableCell>
-                <StColor isPositive={item.total_profit >= 0}>
-                  {formatPriceValue(item.total_profit)} {TOKEN}
-                </StColor>
-              </StTableCell>
-              <StTableCell>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                >
-                  <StAddBtn onClick={() => openBotModal(item.bot_id)}>
-                    Add
-                  </StAddBtn>
-                  <StRemoveBtn onClick={() => openRemoveModal(item.bot_id)}>
-                    Remove
-                  </StRemoveBtn>
-                </div>
-              </StTableCell>
+      {isTablet ? (
+        <TableTablet
+          data={data.bots}
+          openBotModal={openBotModal}
+          openRemoveModal={openRemoveModal}
+        />
+      ) : (
+        <StTable>
+          <thead>
+            <StTableRow>
+              {DASHBORADTABLEHEADER.map((item) => (
+                <StTableHeader key={item}>{item}</StTableHeader>
+              ))}
             </StTableRow>
-          ))}
-        </tbody>
-      </StTable>
+          </thead>
+          <tbody>
+            {data.bots.map((item) => (
+              <StTableRow key={item.bot_id}>
+                <StTableCell>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.6rem',
+                    }}
+                  >
+                    <BotLogo width='24' height='24' />
+                    {item.bot_name}
+                  </div>
+                </StTableCell>
+                <StTableCell>
+                  {formatPriceValue(item.total_investment)} {TOKEN}
+                </StTableCell>
+                <StTableCell>
+                  {formatPriceValue(item.current_value)} {TOKEN}
+                </StTableCell>
+                <StTableCell>
+                  <StColor isPositive={item.daily_pnl >= 0}>
+                    {formatPriceValue(item.daily_pnl)} {TOKEN}
+                  </StColor>
+                </StTableCell>
+                <StTableCell>
+                  <StColor isPositive={item.total_profit >= 0}>
+                    {formatPriceValue(item.total_profit)} {TOKEN}
+                  </StColor>
+                </StTableCell>
+                <StTableCell>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <StAddBtn onClick={() => openBotModal(item.bot_id)}>
+                      Add
+                    </StAddBtn>
+                    <StRemoveBtn onClick={() => openRemoveModal(item.bot_id)}>
+                      Remove
+                    </StRemoveBtn>
+                  </div>
+                </StTableCell>
+              </StTableRow>
+            ))}
+          </tbody>
+        </StTable>
+      )}
     </>
   );
 };

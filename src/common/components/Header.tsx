@@ -10,7 +10,6 @@ import { useState } from 'react';
 
 interface HeaderProps {
   pathname?: string;
-  openWalletModal?: () => void;
   scrollToSection?: (ref: React.RefObject<HTMLDivElement>) => void;
   section2Ref?: React.RefObject<HTMLDivElement>;
   section3Ref?: React.RefObject<HTMLDivElement>;
@@ -19,7 +18,6 @@ interface HeaderProps {
 }
 
 const Header = ({
-  openWalletModal,
   scrollToSection,
   section2Ref,
   section3Ref,
@@ -64,7 +62,7 @@ const Header = ({
             section4Ref={section4Ref}
           />
         ) : (
-          <ConnectWallet openWalletModal={openWalletModal} />
+          <ConnectWallet />
         )}
       </StWrapper>
     </StContainer>
