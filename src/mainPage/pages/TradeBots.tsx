@@ -22,6 +22,7 @@ const TradeBots = () => {
     }>();
   const base_url = import.meta.env.VITE_BASE_URL;
   const [data, setData] = useState<ITRADEBOTS[]>();
+  // const data = MOCK_TRADEBOTS;
   const [searchValue, setSearchValue] = useState('');
   useEffect(() => {
     getData('Profit');

@@ -3,7 +3,7 @@ import { STCOMBackground } from '../../common/styles/commonStyleComs';
 import { IcModalX, IcNotice } from '../assets/0_index';
 import ConnectWallet from '../../wallet/ConnectWallet';
 import { useRef } from 'react';
-import useOutsideClick from '../../common/hooks/useOutsideClick';
+import { useOutsideClick } from '../../common/hooks/useOutsideClick';
 
 const UnConnectModal = ({
   isOpen,
@@ -13,7 +13,9 @@ const UnConnectModal = ({
   onClose: () => void;
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const connectWalletRef = useRef<HTMLDivElement>(null);
   useOutsideClick(wrapperRef, onClose);
+
   if (!isOpen) return;
 
   return (
@@ -28,7 +30,7 @@ const UnConnectModal = ({
           <span>Wallet not connected.</span>
           <span>Please connect your wallet.</span>
         </StMiddle>
-        <StBottom>
+        <StBottom ref={connectWalletRef}>
           <ConnectWallet />
         </StBottom>
       </StWrapper>

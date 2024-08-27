@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { STCOMBoxWrapper } from '../common/styles/commonStyleComs';
 import { transformStyles } from '../common/styles/transformStyles';
-import { onBoardingBackImg1 } from '../common/assets/0_index';
+import { onboardingBackImg1 } from './assets/0_index';
 export const MainContainer = styled.div`
   width: 100vw;
   max-width: 120rem;
@@ -50,6 +50,7 @@ export const Section1 = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10rem;
   `,
   ContentLayout: styled.div`
     min-width: 76.9rem;
@@ -112,12 +113,12 @@ export const Section1 = {
     ${({ theme }) => theme.fonts.body_2m};
   `,
   BackgroundImg1: styled.div`
-    width: 127rem;
-    height: 114rem;
+    width: 97rem;
+    height: 98rem;
     position: absolute;
-    right: -40rem;
+    right: -25rem;
     z-index: -1;
-    background-image: url(${onBoardingBackImg1});
+    background-image: url(${onboardingBackImg1});
     background-size: cover;
     background-repeat: no-repeat;
 

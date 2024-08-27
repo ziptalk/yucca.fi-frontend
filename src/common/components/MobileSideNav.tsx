@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { IcModalX } from '../../mainPage/assets/0_index';
 import { ReactNode, useRef } from 'react';
-import useOutsideClick from '../hooks/useOutsideClick';
+import { useOutsideClick } from '../hooks/useOutsideClick';
 
 const MobileSideNav = ({
   isOpen,

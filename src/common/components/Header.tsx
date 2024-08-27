@@ -143,7 +143,7 @@ const StWrapper = styled.div`
   ${transformStyles}
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
-    margin: 2.5rem 2rem;
+    margin: 2rem 2rem;
   }
 `;
 

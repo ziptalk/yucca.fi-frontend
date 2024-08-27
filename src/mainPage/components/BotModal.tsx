@@ -12,10 +12,11 @@ import { IPnlChart } from '../types/pnlChartType';
 import { DEPOSIT_PLACEHOLDER } from '../constants/DEPOSIT_PLACEHOLDER';
 import { formatNumberWithCommas } from '../../common/utils/formatNumberWithCommas';
 import { formatPercentValue } from '../../common/utils/formatPercentValue';
-import useOutsideClick from '../../common/hooks/useOutsideClick';
-import { depositTransfer } from '../../contract/deposit';
+import { useOutsideClick } from '../../common/hooks/useOutsideClick';
+// import { depositTransfer } from '../../contract/deposit';
 import { slideUp } from '../../common/utils/animation';
 import { useAccountBalance } from '../../wallet/hooks/useAccountBalance';
+import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 10;
@@ -23,9 +24,9 @@ const BotModal = ({
   isOpen,
   onClose,
   botId,
-  showToast,
-  onDataRefreshRequest,
-}: {
+}: // showToast,
+// onDataRefreshRequest,
+{
   isOpen: boolean;
   onClose: () => void;
   botId: string | null;
@@ -35,18 +36,16 @@ const BotModal = ({
   const [depositValue, setDepositValue] = useState<string>('');
   const [placeholder, setPlaceholder] = useState(DEPOSIT_PLACEHOLDER.default);
   const [data, setData] = useState<IPnlChart>();
-  // const [balance, setBalance] = useState('-');
-  const [user_id, setUserId] = useState(localStorage.getItem('NEUTRONADDRESS'));
+  const user_id = useUserAccount();
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState('Deposit');
+  const [isLoading] = useState('Deposit');
   const { balance, symbol } = useAccountBalance();
   useOutsideClick(wrapperRef, onClose);
 
   useEffect(() => {
     // if (!user_id) return;
-    setUserId(localStorage.getItem('NEUTRONADDRESS'));
     getData();
-    if (!localStorage.getItem('NEUTRONADDRESS')) {
+    if (!user_id) {
       setPlaceholder(DEPOSIT_PLACEHOLDER.notConnectWallet);
     }
     // fetchBalance();
@@ -79,30 +78,30 @@ const BotModal = ({
     setDepositValue(formatValue);
   };
 
-  const deposit = async (id: string | null) => {
-    if (!id) return;
-    const base_url = import.meta.env.VITE_BASE_URL;
-    if (!localStorage.getItem('NEUTRONADDRESS') || !depositValue) return;
-    const _amount = Number(depositValue.replace(/,/g, ''));
-    try {
-      setIsLoading('Open Wallet...');
-      await depositTransfer(_amount);
-      setIsLoading('Depositing...');
-      const postData = {
-        user_id: localStorage.getItem('NEUTRONADDRESS'), // 지갑 주소
-        bot_id: id,
-        amount: _amount, // 입금할 금액
-      };
-      await axios.post(`${base_url}/api/deposit`, postData);
-      onClose();
-      setIsLoading('Deposit');
-      showToast('Your deposit has been successfully completed!');
-      onDataRefreshRequest();
-    } catch (err) {
-      setIsLoading('Deposit');
-      console.log(err);
-    }
-  };
+  // const deposit = async (id: string | null) => {
+  //   if (!id) return;
+  //   const base_url = import.meta.env.VITE_BASE_URL;
+  //   if (!depositValue) return;
+  //   const _amount = Number(depositValue.replace(/,/g, ''));
+  //   try {
+  //     setIsLoading('Open Wallet...');
+  //     await depositTransfer(_amount);
+  //     setIsLoading('Depositing...');
+  //     const postData = {
+  //       user_id: user_id, // 지갑 주소
+  //       bot_id: id,
+  //       amount: _amount, // 입금할 금액
+  //     };
+  //     await axios.post(`${base_url}/api/deposit`, postData);
+  //     onClose();
+  //     setIsLoading('Deposit');
+  //     showToast('Your deposit has been successfully completed!');
+  //     onDataRefreshRequest();
+  //   } catch (err) {
+  //     setIsLoading('Deposit');
+  //     console.log(err);
+  //   }
+  // };
 
   return data ? (
     <StBotModalBackGround>
@@ -145,7 +144,10 @@ const BotModal = ({
               !depositValue ||
               Number(depositValue.replace(/,/g, '')) < MINVAL
             }
-            onClick={() => deposit(botId)}
+            onClick={
+              () => {}
+              // deposit(botId)
+            }
           >
             {isLoading}
           </StDepositBtn>

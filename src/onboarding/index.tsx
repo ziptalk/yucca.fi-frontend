@@ -92,7 +92,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
   };
   return (
     <St.Section1.Container>
-      {/* <St.Section1.BackgroundImg1 /> */}
+      <St.Section1.BackgroundImg1 />
       {isMobile ? (
         <St.Mobile.ContentLayout>
           <h1>Quant Vault Escrow Protocol</h1>
@@ -145,8 +145,6 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
             </a>
           </nav>
         )}
-        <p>Ecosystem</p>
-        <St.Section1.Eco>AbcdefgA</St.Section1.Eco>
       </St.Section1.Bottom>
     </St.Section1.Container>
   );

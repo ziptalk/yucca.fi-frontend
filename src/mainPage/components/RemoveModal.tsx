@@ -6,7 +6,8 @@ import styled from '@emotion/styled';
 import { IcModalX } from '../assets/0_index';
 import axios from 'axios';
 import { useRef, useState } from 'react';
-import useOutsideClick from '../../common/hooks/useOutsideClick';
+import { useOutsideClick } from '../../common/hooks/useOutsideClick';
+import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 
 const RemoveModal = ({
   isOpen,
@@ -20,14 +21,15 @@ const RemoveModal = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   useOutsideClick(wrapperRef, onClose);
   const [isLoading, setIsLoading] = useState(false);
+  const user_id = useUserAccount();
   if (!isOpen) return;
 
   const remove = async () => {
-    if (!localStorage.getItem('NEUTRONADDRESS')) return;
+    if (!user_id) return;
     const base_url = import.meta.env.VITE_BASE_URL;
 
     const postBody = {
-      user_id: localStorage.getItem('NEUTRONADDRESS'),
+      user_id: user_id,
       bot_id: botId,
     };
     try {

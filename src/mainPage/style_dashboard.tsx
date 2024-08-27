@@ -70,6 +70,10 @@ export const Announcement = {
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.caption};
     margin-bottom: 1.2rem;
+
+    @media (${({ theme }) => theme.breakpoints.mobile}) {
+      padding: 0.7rem 1.1rem;
+    }
   `,
   Text: styled.p`
     color: ${({ theme }) => theme.colors.white};

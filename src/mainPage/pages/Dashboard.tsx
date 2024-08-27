@@ -19,6 +19,8 @@ import { dashboardBackIMG } from '../assets/0_index';
 import useTablet from '../../common/hooks/useTablet';
 import TableTablet from '../components/TableTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
+import { useUserAccount } from '../../wallet/hooks/useUserAccount';
+// import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
@@ -131,7 +133,7 @@ const ISnotConnectWallet = () => {
       <StBackbround src={dashboardBackIMG} />
       <IcStrokeLogo />
       <span>
-        <StText1>PROTON is not connected</StText1>
+        <StText1>MYTETHER is not connected</StText1>
         <StText1>to your wallet</StText1>
         <div />
         <StText2>To see more information about this vault</StText2>
@@ -152,7 +154,7 @@ const ISnotSelectBot = () => {
         <StText1>You are not investing in the</StText1>
         <StText1>trading bot. Go invest now!</StText1>
         <div />
-        <StText2>You have not deposited to PROTON.</StText2>
+        <StText2>You have not deposited to MYTETHER.</StText2>
         <StText2>
           If you want to earn profits, go ahead and make a deposit!
         </StText2>
@@ -169,8 +171,9 @@ const ISnotSelectBot = () => {
 };
 
 const Dashboard = () => {
-  const [isWalletConnect] = useState(localStorage.getItem('NEUTRONADDRESS'));
+  const address = useUserAccount();
   const [data, setData] = useState<IDashboard>();
+  // const data = MOCK_DASHBOARD;
   const { refreshTrigger } = useOutletContext<{
     refreshTrigger: boolean;
   }>();
@@ -182,7 +185,7 @@ const Dashboard = () => {
   const getData = async () => {
     try {
       const { data } = await axios.get(
-        `${base_url}/api/dashboard?user_id=${isWalletConnect}`
+        `${base_url}/api/dashboard?user_id=${address}`
       );
       // console.log(`🫥dashboard :`, data);
       setData(data);
@@ -194,7 +197,7 @@ const Dashboard = () => {
   return (
     <StContainer>
       <SelectView view={VIEW.DASHBOARD} />
-      {isWalletConnect ? (
+      {address ? (
         data ? (
           data?.bots?.length ? (
             <ShowDashboardData data={data} />

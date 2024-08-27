@@ -46,6 +46,13 @@ const StFooter = {
     display: flex;
     justify-content: space-between;
     bottom: 0;
+    @media (${({ theme }) => theme.breakpoints.mobile}) {
+      width: 70%;
+      flex-wrap: wrap-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: 3.2rem;
+    }
   `,
   BlockWave: styled.div`
     display: flex;
@@ -56,6 +63,10 @@ const StFooter = {
 
     & p {
       ${({ theme }) => theme.fonts.body};
+    }
+
+    @media (${({ theme }) => theme.breakpoints.mobile}) {
+      align-items: center;
     }
   `,
   Bold: styled.span`

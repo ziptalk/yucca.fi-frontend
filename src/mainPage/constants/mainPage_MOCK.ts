@@ -18,16 +18,16 @@ export const MOCK_DASHBOARD: IDashboard = {
 };
 
 export const MOCK_TRADEBOTS: ITRADEBOTS[] = [
-  // {
-  //   bot_id: 'bot_001',
-  //   name: 'Arb Bot',
-  //   subscriber: 100,
-  //   total_profits: 20000,
-  //   apy: 15.5,
-  //   runtime: 10,
-  //   tvl: 1500000,
-  //   operated_in: 'Neutron',
-  // },
+  {
+    bot_id: 'bot_001',
+    name: 'Arb Bot',
+    subscriber: 100,
+    total_profits: 20000,
+    apy: 15.5,
+    runtime: 10,
+    tvl: 1500000,
+    operated_in: 'Neutron',
+  },
   {
     bot_id: '',
     name: 'NTRN/USDT Arb bot',

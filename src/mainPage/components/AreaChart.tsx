@@ -87,6 +87,7 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
           colors: ['#696969'],
         },
       },
+      tickAmount: 5,
     },
     grid: {
       borderColor: '#696969', // 그리드 선 색상 하얀색으로 설정

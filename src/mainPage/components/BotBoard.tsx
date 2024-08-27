@@ -7,7 +7,6 @@ import {
   IcPersons,
   LogoCyclicArbBot,
   LogoGradationBot,
-  operatedLogo,
 } from '../assets/0_index';
 import { ITRADEBOTS } from '../types/dashboardType';
 import { formatPriceValue } from '../../common/utils/formatPriceValue';
@@ -17,6 +16,7 @@ import PreviewChart from './PreviewChart';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { IChartData } from '../types/pnlChartType';
+import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 
 interface IBotBoardProps {
   data: ITRADEBOTS;
@@ -36,11 +36,10 @@ const BotBoard = ({
   openUnConnectModal,
 }: IBotBoardProps) => {
   const [chartData, setChartData] = useState<IChartData[]>();
-  const [user_id, setUserId] = useState(localStorage.getItem('NEUTRONADDRESS'));
+  const user_id = useUserAccount();
   useEffect(() => {
     if (!active) return;
     getData();
-    setUserId(localStorage.getItem('NEUTRONADDRESS'));
   }, []);
 
   const getData = async () => {
@@ -92,10 +91,6 @@ const BotBoard = ({
               </div>
             </StBotSummaryValue>
             <StBottomContainer>
-              <StOperated>
-                <label>operated in</label>
-                <img src={operatedLogo} alt='' />
-              </StOperated>
               <StDeposit
                 onClick={() =>
                   user_id ? openModal(propsData.bot_id) : openUnConnectModal()
@@ -119,7 +114,7 @@ const StGlassWrapper = styled(STCOMBoxWrapper)`
   min-width: 30rem;
   width: calc(50% - 1rem);
   max-width: 59rem;
-  min-height: 45.4rem;
+  /* min-height: 45.4rem; */
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
     min-height: 33rem;
@@ -256,33 +251,16 @@ const StBotSummaryValue = styled.div`
 `;
 
 const StBottomContainer = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: end;
-`;
-
-const StOperated = styled.span`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  margin-top: 0.5rem;
-  & label {
-    color: ${({ theme }) => theme.colors.black};
-    ${({ theme }) => theme.fonts.body_2_auto};
-    @media (${({ theme }) => theme.breakpoints.mobile}) {
-      ${({ theme }) => theme.fonts.caption};
-    }
-  }
-
-  & > img {
-    width: 4.5rem;
-    @media (${({ theme }) => theme.breakpoints.mobile}) {
-      width: 2.8rem;
-    }
-  }
+  padding-top: 3.5rem;
+  padding-bottom: 1rem;
 `;
 
 const StDeposit = styled(STCOMPinkBtn)`
+  width: 100%;
   padding: 1.25rem 3.7rem;
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0.8rem 2.7rem;
