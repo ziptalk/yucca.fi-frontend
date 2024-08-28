@@ -2,8 +2,9 @@ import styled from '@emotion/styled';
 import { STCOMBackground } from '../../common/styles/commonStyleComs';
 import { IcModalX, IcNotice } from '../assets/0_index';
 import ConnectWallet from '../../wallet/ConnectWallet';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from '../../common/hooks/useOutsideClick';
+import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 
 const UnConnectModal = ({
   isOpen,
@@ -13,9 +14,20 @@ const UnConnectModal = ({
   onClose: () => void;
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const connectWalletRef = useRef<HTMLDivElement>(null);
-  useOutsideClick(wrapperRef, onClose);
+  const [isWalletModal, setISWalletModal] = useState(false);
+  const address = useUserAccount();
 
+  const handleWalletModal = () => {
+    setISWalletModal(true);
+  };
+
+  useOutsideClick(wrapperRef, () => {
+    if (!isWalletModal) onClose();
+  });
+
+  useEffect(() => {
+    if (address) onClose();
+  }, [address]);
   if (!isOpen) return;
 
   return (
@@ -30,8 +42,8 @@ const UnConnectModal = ({
           <span>Wallet not connected.</span>
           <span>Please connect your wallet.</span>
         </StMiddle>
-        <StBottom ref={connectWalletRef}>
-          <ConnectWallet />
+        <StBottom>
+          <ConnectWallet onClick={handleWalletModal} />
         </StBottom>
       </StWrapper>
     </STCOMBackground>

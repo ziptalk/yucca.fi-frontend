@@ -1,24 +1,34 @@
 import styled from '@emotion/styled';
 import { IcModalX } from '../../mainPage/assets/0_index';
-import { ReactNode, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useOutsideClick } from '../hooks/useOutsideClick';
+import { HeaderNav } from './Header';
 
 const MobileSideNav = ({
   isOpen,
   onClose,
-  children,
 }: {
   isOpen: boolean;
   onClose: () => void;
-  children: ReactNode;
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  useOutsideClick(wrapperRef, onClose);
+  const [isWalletModal, setISWalletModal] = useState(false);
+  const handleWalletModal = () => {
+    setISWalletModal(true);
+  };
+
+  useOutsideClick(wrapperRef, () => {
+    if (!isWalletModal) onClose();
+  });
 
   return (
     <StMobileSideNav isOpen={isOpen} ref={wrapperRef}>
       <IcModalX onClick={onClose} />
-      {children}
+      <HeaderNav
+        pathname={location.pathname}
+        onClose={onClose}
+        handleWalletModal={handleWalletModal}
+      />
     </StMobileSideNav>
   );
 };

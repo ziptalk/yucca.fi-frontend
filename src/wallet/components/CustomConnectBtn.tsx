@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-export const CustomConnectBtn = () => {
+export const CustomConnectBtn = ({
+  handleWalletModal,
+}: {
+  handleWalletModal?: () => void;
+}) => {
   return (
     <ConnectButton.Custom>
       {({
@@ -34,7 +38,13 @@ export const CustomConnectBtn = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <StWalletBtn onClick={openConnectModal} type='button'>
+                  <StWalletBtn
+                    onClick={() => {
+                      openConnectModal();
+                      handleWalletModal && handleWalletModal();
+                    }}
+                    type='button'
+                  >
                     Connect Wallet
                   </StWalletBtn>
                 );
@@ -48,7 +58,13 @@ export const CustomConnectBtn = () => {
               }
               return (
                 <div style={{ display: 'flex', gap: 12 }}>
-                  <StWalletBtn onClick={openAccountModal} type='button'>
+                  <StWalletBtn
+                    onClick={() => {
+                      openAccountModal();
+                      handleWalletModal && handleWalletModal();
+                    }}
+                    type='button'
+                  >
                     <StIconBtn
                       onClick={(event) => {
                         event.stopPropagation();

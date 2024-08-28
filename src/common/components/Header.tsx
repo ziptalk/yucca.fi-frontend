@@ -15,6 +15,7 @@ interface HeaderProps {
   section3Ref?: React.RefObject<HTMLDivElement>;
   section4Ref?: React.RefObject<HTMLDivElement>;
   onClose?: () => void;
+  handleWalletModal?: () => void;
 }
 
 const Header = ({
@@ -41,16 +42,7 @@ const Header = ({
                 onClose={() => {
                   setIsMenuOpen(false);
                 }}
-              >
-                <HeaderNav
-                  pathname={location.pathname}
-                  scrollToSection={scrollToSection}
-                  section2Ref={section2Ref}
-                  section3Ref={section3Ref}
-                  section4Ref={section4Ref}
-                  onClose={() => setIsMenuOpen(false)}
-                />
-              </MobileSideNav>
+              />
             )}
           </>
         ) : location.pathname === '/onboarding' ? (
@@ -69,13 +61,14 @@ const Header = ({
   );
 };
 
-const HeaderNav = ({
+export const HeaderNav = ({
   pathname,
   scrollToSection,
   section2Ref,
   section3Ref,
   section4Ref,
   onClose,
+  handleWalletModal,
 }: HeaderProps) => {
   return (
     <StNav>
@@ -108,7 +101,11 @@ const HeaderNav = ({
       >
         Docs
       </StNavItem>
-      {pathname === '/onboarding' ? <TradeNowBtn /> : <ConnectWallet />}
+      {pathname === '/onboarding' ? (
+        <TradeNowBtn />
+      ) : (
+        <ConnectWallet onClick={handleWalletModal} />
+      )}
     </StNav>
   );
 };
