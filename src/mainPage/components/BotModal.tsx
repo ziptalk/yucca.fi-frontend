@@ -15,11 +15,9 @@ import { formatPercentValue } from '../../common/utils/formatPercentValue';
 import { useOutsideClick } from '../../common/hooks/useOutsideClick';
 import { slideUp } from '../../common/utils/animation';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
-import {
-  depositTransfer,
-  getContractTokenBalance,
-} from '../../common/contracts/contractFunctions';
+import { depositTransfer } from '../../common/contracts/contractFunctions';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
+import { useAccountBalance } from '../../wallet/hooks/useAccountBalance';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 10;
@@ -42,7 +40,7 @@ const BotModal = ({
   const user_id = useUserAccount();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState('Deposit');
-  const [balance, setBalance] = useState('');
+  const { balance } = useAccountBalance();
   useOutsideClick(wrapperRef, onClose);
 
   useEffect(() => {
@@ -51,15 +49,9 @@ const BotModal = ({
     if (!user_id) {
       setPlaceholder(DEPOSIT_PLACEHOLDER.notConnectWallet);
     }
-    getTokenBalance();
     // fetchBalance();
   }, []);
   if (!isOpen) return null;
-
-  const getTokenBalance = async () => {
-    const userBalance = await getContractTokenBalance();
-    setBalance(formatNumberWithCommas(`${userBalance}`));
-  };
 
   // const fetchBalance = async () => {
   //   if (!user_id) return;
@@ -101,7 +93,7 @@ const BotModal = ({
         bot_id: id,
         amount: _amount, // 입금할 금액
       };
-      // await axios.post(`${base_url}/api/deposit`, postData);
+      await axios.post(`${base_url}/api/deposit`, postData);
       onClose();
       setIsLoading('Deposit');
       showToast('Your deposit has been successfully completed!');
