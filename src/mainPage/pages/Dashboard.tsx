@@ -9,13 +9,11 @@ import {
   STCOMGreyBtn,
 } from '../../common/styles/commonStyleComs';
 import { IDashboard } from '../types/dashboardType';
-import { IcStrokeLogo } from '../../common/assets/0_index';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import ConnectWallet from '../../wallet/ConnectWallet';
 import axios from 'axios';
 import { formatPriceValue } from '../../common/utils/formatPriceValue';
 import BotLogo from '../../common/components/BotLogo';
-import { dashboardBackIMG } from '../assets/0_index';
 import useTablet from '../../common/hooks/useTablet';
 import TableTablet from '../components/TableTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
@@ -130,8 +128,6 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
 const ISnotConnectWallet = () => {
   return (
     <StNotConnectContainer>
-      <StBackbround src={dashboardBackIMG} />
-      <IcStrokeLogo />
       <span>
         <StText1>MYTETHER is not connected</StText1>
         <StText1>to your wallet</StText1>
@@ -148,8 +144,6 @@ const ISnotSelectBot = () => {
   const navigate = useNavigate();
   return (
     <StNotConnectContainer>
-      <StBackbround src={dashboardBackIMG} />
-      <IcStrokeLogo />
       <span>
         <StText1>You are not investing in the</StText1>
         <StText1>trading bot. Go invest now!</StText1>
@@ -335,17 +329,9 @@ const StText1 = styled.p`
 
 const StText2 = styled.p`
   ${({ theme }) => theme.fonts.body_3};
-  color: ${({ theme }) => theme.colors.sub_white};
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 const StConnectWallet = styled(STCOMPinkBtn)`
   padding: 1.8rem 3.2rem;
-`;
-
-const StBackbround = styled.img`
-  width: 100%;
-  position: absolute;
-  top: 27rem;
-  right: 0;
-  z-index: -1;
 `;

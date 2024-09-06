@@ -3,11 +3,7 @@ import {
   STCOMPinkBtn,
   STCOMBoxWrapper,
 } from '../../common/styles/commonStyleComs';
-import {
-  IcPersons,
-  LogoCyclicArbBot,
-  LogoGradationBot,
-} from '../assets/0_index';
+import { IcPersons, LogoCyclicArbBot } from '../assets/0_index';
 import { ITRADEBOTS } from '../types/dashboardType';
 import { formatPriceValue } from '../../common/utils/formatPriceValue';
 import { formatNumberValue } from '../../common/utils/formatNumberValue';
@@ -56,7 +52,7 @@ const BotBoard = ({
     <StGlassWrapper>
       <StContainer>
         <StBotInfo>
-          {active ? <StLogoCyclicArbBot /> : <StLogoGradationBot />}
+          {active ? <StLogoCyclicArbBot /> : <StLogoCyclicArbBot />}
           <StBotInfoLayout>
             <StBotName>{propsData.name}</StBotName>
             <div>
@@ -118,12 +114,6 @@ const StGlassWrapper = styled(STCOMBoxWrapper)`
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
     min-height: 33rem;
-  }
-`;
-
-const StLogoGradationBot = styled(LogoGradationBot)`
-  @media (${({ theme }) => theme.breakpoints.mobile}) {
-    width: 4rem;
   }
 `;
 
