@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { IChartData } from '../types/pnlChartType';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
+import { TOKEN_INFO } from '../../common/constants/TOKEN';
 
 interface IBotBoardProps {
   data: ITRADEBOTS;
@@ -32,6 +33,7 @@ const BotBoard = ({
   openUnConnectModal,
 }: IBotBoardProps) => {
   const [chartData, setChartData] = useState<IChartData[]>();
+
   const user_id = useUserAccount();
   useEffect(() => {
     if (!active) return;
@@ -83,7 +85,9 @@ const BotBoard = ({
               </div>
               <div>
                 <label>TVL</label>
-                <p>{formatPriceValue(propsData.tvl)} NTRN</p>
+                <p>
+                  {formatPriceValue(propsData.tvl)} {TOKEN_INFO.token}
+                </p>
               </div>
             </StBotSummaryValue>
             <StBottomContainer>

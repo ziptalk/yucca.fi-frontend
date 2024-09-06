@@ -21,6 +21,8 @@
     "apexcharts": "^3.52.0",
     "axios": "^1.7.3",
     "emotion-reset": "^3.0.1",
+    "ethers": "^6.13.2",
+    "ethers-utils": "^2.1.11",
     "react": "^18.3.1",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18.3.1",

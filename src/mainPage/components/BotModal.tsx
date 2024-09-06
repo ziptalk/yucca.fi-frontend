@@ -13,10 +13,13 @@ import { DEPOSIT_PLACEHOLDER } from '../constants/DEPOSIT_PLACEHOLDER';
 import { formatNumberWithCommas } from '../../common/utils/formatNumberWithCommas';
 import { formatPercentValue } from '../../common/utils/formatPercentValue';
 import { useOutsideClick } from '../../common/hooks/useOutsideClick';
-// import { depositTransfer } from '../../contract/deposit';
 import { slideUp } from '../../common/utils/animation';
-import { useAccountBalance } from '../../wallet/hooks/useAccountBalance';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
+import {
+  depositTransfer,
+  getContractTokenBalance,
+} from '../../common/contracts/contractFunctions';
+import { TOKEN_INFO } from '../../common/constants/TOKEN';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 10;
@@ -24,9 +27,9 @@ const BotModal = ({
   isOpen,
   onClose,
   botId,
-}: // showToast,
-// onDataRefreshRequest,
-{
+  showToast,
+  onDataRefreshRequest,
+}: {
   isOpen: boolean;
   onClose: () => void;
   botId: string | null;
@@ -38,8 +41,8 @@ const BotModal = ({
   const [data, setData] = useState<IPnlChart>();
   const user_id = useUserAccount();
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [isLoading] = useState('Deposit');
-  const { balance, symbol } = useAccountBalance();
+  const [isLoading, setIsLoading] = useState('Deposit');
+  const [balance, setBalance] = useState('');
   useOutsideClick(wrapperRef, onClose);
 
   useEffect(() => {
@@ -48,9 +51,15 @@ const BotModal = ({
     if (!user_id) {
       setPlaceholder(DEPOSIT_PLACEHOLDER.notConnectWallet);
     }
+    getTokenBalance();
     // fetchBalance();
   }, []);
   if (!isOpen) return null;
+
+  const getTokenBalance = async () => {
+    const userBalance = await getContractTokenBalance();
+    setBalance(formatNumberWithCommas(`${userBalance}`));
+  };
 
   // const fetchBalance = async () => {
   //   if (!user_id) return;
@@ -78,30 +87,30 @@ const BotModal = ({
     setDepositValue(formatValue);
   };
 
-  // const deposit = async (id: string | null) => {
-  //   if (!id) return;
-  //   const base_url = import.meta.env.VITE_BASE_URL;
-  //   if (!depositValue) return;
-  //   const _amount = Number(depositValue.replace(/,/g, ''));
-  //   try {
-  //     setIsLoading('Open Wallet...');
-  //     await depositTransfer(_amount);
-  //     setIsLoading('Depositing...');
-  //     const postData = {
-  //       user_id: user_id, // 지갑 주소
-  //       bot_id: id,
-  //       amount: _amount, // 입금할 금액
-  //     };
-  //     await axios.post(`${base_url}/api/deposit`, postData);
-  //     onClose();
-  //     setIsLoading('Deposit');
-  //     showToast('Your deposit has been successfully completed!');
-  //     onDataRefreshRequest();
-  //   } catch (err) {
-  //     setIsLoading('Deposit');
-  //     console.log(err);
-  //   }
-  // };
+  const deposit = async (id: string | null) => {
+    if (!id) return;
+    const base_url = import.meta.env.VITE_BASE_URL;
+    if (!depositValue) return;
+    const _amount = Number(depositValue.replace(/,/g, ''));
+    try {
+      setIsLoading('Open Wallet...');
+      await depositTransfer(_amount);
+      setIsLoading('Depositing...');
+      const postData = {
+        user_id: user_id, // 지갑 주소
+        bot_id: id,
+        amount: _amount, // 입금할 금액
+      };
+      // await axios.post(`${base_url}/api/deposit`, postData);
+      onClose();
+      setIsLoading('Deposit');
+      showToast('Your deposit has been successfully completed!');
+      onDataRefreshRequest();
+    } catch (err) {
+      setIsLoading('Deposit');
+      console.log(err);
+    }
+  };
 
   return data ? (
     <StBotModalBackGround>
@@ -120,7 +129,7 @@ const BotModal = ({
               <StModalLabel>Investment</StModalLabel>
               <StAvailable>
                 <span>Available:</span> {balance}
-                {symbol}
+                {TOKEN_INFO.token}
               </StAvailable>
             </StSpaceBetween>
             <StinputContainer>
@@ -144,10 +153,7 @@ const BotModal = ({
               !depositValue ||
               Number(depositValue.replace(/,/g, '')) < MINVAL
             }
-            onClick={
-              () => {}
-              // deposit(botId)
-            }
+            onClick={() => deposit(botId)}
           >
             {isLoading}
           </StDepositBtn>

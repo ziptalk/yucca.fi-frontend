@@ -1,3 +1,4 @@
+import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import {
   STCOMPinkBtn,
   STCOMGreyBtn,
@@ -17,7 +18,7 @@ const TableTablet = ({
   openBotModal: (id: string) => void;
   openRemoveModal: (id: string) => void;
 }) => {
-  const TOKEN = 'NTRN';
+  const TOKEN = TOKEN_INFO.token;
   return (
     <StWrapper>
       {data.map((item) => (

@@ -18,12 +18,13 @@ import useTablet from '../../common/hooks/useTablet';
 import TableTablet from '../components/TableTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
+import { TOKEN_INFO } from '../../common/constants/TOKEN';
 // import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
 const ShowDashboardData = ({ data }: { data: IDashboard }) => {
-  const TOKEN = 'NTRN';
+  const TOKEN = TOKEN_INFO.token;
   const { openBotModal, openRemoveModal } = useOutletContext<{
     openBotModal: (id: string) => void;
     openRemoveModal: (id: string) => void;
@@ -45,7 +46,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
           <label>Total Profit</label>
           <StTotalTokenValue>
             <StColor isPositive={data.total_profit >= 0}>
-              {formatUnits(data.total_profit)} NTRN
+              {formatUnits(data.total_profit)} {TOKEN_INFO.token}
             </StColor>
           </StTotalTokenValue>
           <StTotalDollarValue>
