@@ -42,11 +42,11 @@ export const MOCK_TRADEBOTS: ITRADEBOTS[] = [
 
 export const DUMMY_BOT: ITRADEBOTS = {
   bot_id: '',
-  name: 'NTRN/USDT Arb bot',
+  name: 'CEX-DEX Arb bot',
   subscriber: 0,
   total_profits: 0,
   apy: 0,
   runtime: 0,
   tvl: 0,
-  operated_in: 'Neutron',
+  operated_in: '',
 };
