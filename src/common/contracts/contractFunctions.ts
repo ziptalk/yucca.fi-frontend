@@ -1,24 +1,19 @@
 import { ethers, parseUnits } from 'ethers';
 import { erc20Abi } from 'viem';
-import { abi as TokenVaultAbi } from '../abis/TokenVault.json';
-import { signer } from './signer';
-import {
-  BOTWalletAddress,
-  USDTTokenAddress,
-  tokenVaultAddress,
-} from './tokenAddress';
-import { convertTokenBalance } from '../utils/convertTokenBalance';
+import { setupSigner } from './signer';
+import { BOTWalletAddress, USDTTokenAddress } from './tokenAddress';
 
-const erc20ContractInstance = new ethers.Contract(
-  USDTTokenAddress,
-  erc20Abi,
-  signer
-);
-const tokenVaultInstance = new ethers.Contract(
-  tokenVaultAddress,
-  TokenVaultAbi,
-  signer
-);
+let erc20ContractInstance: ethers.Contract;
+
+const initialize = async () => {
+  const signer = await setupSigner();
+
+  erc20ContractInstance = new ethers.Contract(
+    USDTTokenAddress,
+    erc20Abi,
+    signer
+  );
+};
 
 const approveToken = async (depositAmount: bigint) => {
   const tx = await erc20ContractInstance.approve(
@@ -35,18 +30,12 @@ const deposit = async (depositAmount: bigint) => {
     depositAmount
   );
   await tx.wait();
-  console.log('success deposit');
+  console.log('Success deposit');
 };
 
 export const depositTransfer = async (amount: number) => {
+  await initialize();
   const depositAmount = parseUnits(`${amount}`, 6);
   await approveToken(depositAmount);
   await deposit(depositAmount);
-};
-
-export const getContractTokenBalance = async () => {
-  const balance = await tokenVaultInstance.getContractTokenBalance(
-    USDTTokenAddress
-  );
-  return convertTokenBalance(balance, 6);
 };

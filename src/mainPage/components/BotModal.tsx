@@ -23,7 +23,7 @@ import { USDTTokenAddress } from '../../common/contracts/tokenAddress';
 import { convertTokenBalance } from '../../common/utils/convertTokenBalance';
 
 const base_url = import.meta.env.VITE_BASE_URL;
-const MINVAL = 10;
+const MINVAL = 0;
 const BotModal = ({
   isOpen,
   onClose,
