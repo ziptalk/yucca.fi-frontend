@@ -7,6 +7,7 @@ import { transformStyles } from '../styles/transformStyles';
 import useMobile from '../hooks/useMobile';
 import MobileSideNav from './MobileSideNav';
 import { useState } from 'react';
+import { LINKS } from '../constants/LINKS';
 
 interface HeaderProps {
   pathname?: string;
@@ -96,11 +97,7 @@ export const HeaderNav = ({
       >
         Process
       </StNavItem>
-      <StNavItem
-        onClick={() => window.open('https://blockwavelabs-1.gitbook.io/qve')}
-      >
-        Docs
-      </StNavItem>
+      <StNavItem onClick={() => window.open(LINKS.docs)}>Docs</StNavItem>
       {pathname === '/onboarding' ? (
         <TradeNowBtn />
       ) : (

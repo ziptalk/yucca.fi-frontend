@@ -17,12 +17,13 @@ import { ABOUTQVE } from './constants/constants.ts';
 import TradeNowBtn from './Components/TradeNowBtn.tsx';
 import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
-import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
 import { STCOMBoxWrapper } from '../common/styles/commonStyleComs.ts';
 import { ONBOARDING4 } from './constants/constants.ts';
 import { LINKS } from '../common/constants/LINKS.ts';
 import useMobile from '../common/hooks/useMobile.tsx';
+// import { getContractTokenBalance } from '../common/contracts/contractFunctions.ts';
+import axios from 'axios';
+import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
 
 interface IOnboardingProps {
   isMobile: boolean;
@@ -76,7 +77,7 @@ const OnBoarding = () => {
 
 const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
   const base_url = import.meta.env.VITE_BASE_URL;
-  const [totalValueLocked, setTotalValueLocked] = useState(0);
+  const [totalValueLocked, setTotalValueLocked] = useState('');
 
   useEffect(() => {
     getData();
@@ -85,7 +86,8 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
   const getData = async () => {
     try {
       const { data } = await axios.get(`${base_url}/api/onboarding`);
-      setTotalValueLocked(data.total_value_locked);
+      // const total_value_locked = await getContractTokenBalance();
+      setTotalValueLocked(formatPriceValue(data.total_value_locked));
     } catch (err) {
       console.log(err);
     }
@@ -103,9 +105,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
           <St.Mobile.GlassWrapper>
             <St.Mobile.ValueContainer>
               <St.Mobile.ValueLabel>Total Value Locked</St.Mobile.ValueLabel>
-              <St.Mobile.Value>
-                $ {formatPriceValue(totalValueLocked)}
-              </St.Mobile.Value>
+              <St.Mobile.Value>$ {totalValueLocked}</St.Mobile.Value>
             </St.Mobile.ValueContainer>
           </St.Mobile.GlassWrapper>
           <TradeNowBtn />
@@ -122,7 +122,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
           </St.Section1.QVEIntroduce>
           <St.Section1.TotalValue>
             <p>Total Value Locked</p>
-            <p>$ {formatPriceValue(totalValueLocked)}</p>
+            <p>$ {totalValueLocked}</p>
           </St.Section1.TotalValue>
         </St.Section1.ContentLayout>
       )}

@@ -4,4 +4,5 @@ export const LINKS = {
   telegrem: '',
   medium: '',
   github: '',
+  docs: '',
 };

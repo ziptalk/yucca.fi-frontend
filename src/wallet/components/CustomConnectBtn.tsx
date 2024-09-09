@@ -93,9 +93,9 @@ export const CustomConnectBtn = ({
                       )}
                     </StIconBtn>
                     {account.displayName}
-                    {account.displayBalance
+                    {/* {account.displayBalance
                       ? ` (${account.displayBalance})`
-                      : ''}
+                      : ''} */}
                   </StWalletBtn>
                 </div>
               );
