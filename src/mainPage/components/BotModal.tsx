@@ -174,6 +174,10 @@ const BotModal = ({
               these parameters cannot guarantee the same results.
             </span>
           </StModalNotice>
+          <StNoticeP>
+            If you remove the bot, a 20% fee on the revenue it generated will be
+            charged.
+          </StNoticeP>
         </StWrapper>
       </StScroll>
     </StBotModalBackGround>
@@ -193,7 +197,7 @@ const StBotModalBackGround = styled(STCOMBackground)`
 const StScroll = styled.div`
   overflow-y: auto;
   width: 56rem;
-  max-height: 74.4rem;
+  max-height: 76rem;
   height: 100%;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.pink_background};
@@ -329,4 +333,11 @@ const StModalNotice = styled.div`
   gap: 0.9rem;
   line-height: 120%;
   color: ${({ theme }) => theme.colors.white};
+`;
+
+const StNoticeP = styled.p`
+  width: 100%;
+  text-align: center;
+  ${({ theme }) => theme.fonts.index_steptitle};
+  color: ${({ theme }) => theme.colors.not_important};
 `;
