@@ -42,7 +42,7 @@ const RemoveModal = ({
       if (axios.isAxiosError(err) && err.response) {
         setIsLoading(false);
         err.response.status === 499 &&
-          alert('You can remove this bot after 3 days of deposing!');
+          alert('You can remove this bot after a month of deposing!');
         return;
       }
     }
