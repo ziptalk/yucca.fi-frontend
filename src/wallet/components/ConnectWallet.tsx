@@ -1,6 +1,6 @@
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
-import { CustomConnectBtn } from './components/CustomConnectBtn';
+import { CustomConnectBtn } from './CustomConnectBtn';
 
 const ConnectWallet = ({ onClick }: { onClick?: () => void }) => {
   return (

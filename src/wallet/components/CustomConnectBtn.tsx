@@ -71,7 +71,7 @@ export const CustomConnectBtn = ({
                         openChainModal();
                       }}
                     >
-                      {chain.hasIcon && (
+                      {chain.hasIcon ? (
                         <div
                           style={{
                             background: chain.iconBackground,
@@ -90,6 +90,9 @@ export const CustomConnectBtn = ({
                             />
                           )}
                         </div>
+                      ) : (
+                        //체인 아이콘 없을 시 들어갈 대체 아이콘
+                        <></>
                       )}
                     </StIconBtn>
                     {account.displayName}

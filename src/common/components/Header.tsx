@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { IcMenu, Logo } from '../assets/0_index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import TradeNowBtn from '../../onboarding/Components/TradeNowBtn';
-import ConnectWallet from '../../wallet/ConnectWallet';
+import ConnectWallet from '../../wallet/components/ConnectWallet';
 import { transformStyles } from '../styles/transformStyles';
 import useMobile from '../hooks/useMobile';
 import MobileSideNav from './MobileSideNav';

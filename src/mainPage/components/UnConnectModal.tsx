@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { STCOMBackground } from '../../common/styles/commonStyleComs';
 import { IcModalX, IcNotice } from '../assets/0_index';
-import ConnectWallet from '../../wallet/ConnectWallet';
+import ConnectWallet from '../../wallet/components/ConnectWallet';
 import { useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from '../../common/hooks/useOutsideClick';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
