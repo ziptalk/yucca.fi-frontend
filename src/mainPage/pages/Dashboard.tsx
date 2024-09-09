@@ -19,6 +19,7 @@ import TableTablet from '../components/TableTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
+import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 // import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 
 const base_url = import.meta.env.VITE_BASE_URL;
@@ -175,7 +176,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     getData();
-    console.log(data);
   }, [refreshTrigger, address]);
 
   const getData = async () => {
@@ -185,8 +185,11 @@ const Dashboard = () => {
       );
       // console.log(`🫥dashboard :`, data);
       setData(data);
-    } catch {
-      //err
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response) {
+        err.response.status === 404 && setData(MOCK_DASHBOARD);
+        return;
+      }
     }
   };
 
@@ -202,6 +205,7 @@ const Dashboard = () => {
           )
         ) : (
           <>loading..</>
+          // <ISnotSelectBot />
         )
       ) : (
         <ISnotConnectWallet />
