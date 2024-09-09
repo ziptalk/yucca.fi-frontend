@@ -1,7 +1,11 @@
 import { useAccount, useBalance } from 'wagmi';
+import { getBalance } from '@wagmi/core';
+import { walletConfig } from '../walletConfig';
+import { arbitrum } from 'viem/chains';
 
 export const useAccountBalance = () => {
   const { address } = useAccount();
+
   const {
     data,
     isError,
@@ -10,7 +14,13 @@ export const useAccountBalance = () => {
     address,
   });
 
-  const balance = data?.formatted || '';
+  if (!address) return;
+  // const balance = data?.formatted || '';
+
+  const balance = getBalance(walletConfig, {
+    address: address,
+    chainId: arbitrum.id,
+  });
 
   return {
     balance: balance,

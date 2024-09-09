@@ -17,7 +17,10 @@ import { slideUp } from '../../common/utils/animation';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 import { depositTransfer } from '../../common/contracts/contractFunctions';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
-import { useAccountBalance } from '../../wallet/hooks/useAccountBalance';
+import { walletConfig } from '../../wallet/walletConfig';
+import { getBalance } from 'wagmi/actions';
+import { USDTTokenAddress } from '../../common/contracts/tokenAddress';
+import { convertTokenBalance } from '../../common/utils/convertTokenBalance';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 10;
@@ -40,7 +43,7 @@ const BotModal = ({
   const user_id = useUserAccount();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState('Deposit');
-  const { balance } = useAccountBalance();
+  const [balance, setBalance] = useState<string>();
   useOutsideClick(wrapperRef, onClose);
 
   useEffect(() => {
@@ -48,10 +51,22 @@ const BotModal = ({
     getData();
     if (!user_id) {
       setPlaceholder(DEPOSIT_PLACEHOLDER.notConnectWallet);
+      return;
     }
-    // fetchBalance();
+
+    getUserBalance();
   }, []);
   if (!isOpen) return null;
+
+  const getUserBalance = async () => {
+    if (!user_id) return;
+    const tmp = await getBalance(walletConfig, {
+      address: user_id,
+      token: USDTTokenAddress,
+    });
+
+    setBalance(convertTokenBalance(tmp.value, tmp.decimals));
+  };
 
   // const fetchBalance = async () => {
   //   if (!user_id) return;
@@ -130,7 +145,9 @@ const BotModal = ({
                 value={depositValue}
                 onChange={handleDepositValue}
               />
-              <button onClick={() => setDepositValue(balance)}>Max</button>
+              <button onClick={() => balance && setDepositValue(balance)}>
+                Max
+              </button>
             </StinputContainer>
           </StColumn>
 
