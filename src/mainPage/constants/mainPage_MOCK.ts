@@ -26,7 +26,7 @@ export const MOCK_TRADEBOTS: ITRADEBOTS[] = [
     apy: 15.5,
     runtime: 10,
     tvl: 1500000,
-    operated_in: 'Neutron',
+    operated_in: '',
   },
   {
     bot_id: '',
@@ -36,7 +36,7 @@ export const MOCK_TRADEBOTS: ITRADEBOTS[] = [
     apy: 0,
     runtime: 0,
     tvl: 0,
-    operated_in: 'Neutron',
+    operated_in: '',
   },
 ];
 

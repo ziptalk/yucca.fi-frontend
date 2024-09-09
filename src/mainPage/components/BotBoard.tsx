@@ -24,7 +24,6 @@ interface IBotBoardProps {
 }
 
 const base_url = import.meta.env.VITE_BASE_URL;
-// const user_id = localStorage.getItem('NEUTRONADDRESS');
 
 const BotBoard = ({
   data: propsData,

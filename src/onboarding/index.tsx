@@ -100,7 +100,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
           <h1>Quant Vault Escrow Protocol</h1>
           <p>
             A hybrid DeFi platform combining arbitrage trading bots and
-            liquidity staking protocols in Neutron
+            liquidity staking protocols in Arbitrum
           </p>
           <St.Mobile.GlassWrapper>
             <St.Mobile.ValueContainer>
@@ -117,7 +117,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
             <Logo />
             <p>
               A hybrid DeFi platform combining arbitrage trading bots and
-              liquidity staking protocols in Neutron
+              liquidity staking protocols in Arbitrum
             </p>
           </St.Section1.QVEIntroduce>
           <St.Section1.TotalValue>

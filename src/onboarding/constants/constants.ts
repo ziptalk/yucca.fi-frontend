@@ -42,7 +42,7 @@ export const ABOUTQVE: IAboutQve[] = [
     keyWord: 'Safety',
     title: 'Stability and Security',
     explain:
-      'We use advanced algorithms to balance asset prices on Neutron DEXs, ensuring stable profits.',
+      'We use advanced algorithms to balance asset prices on Arbitrum DEXs, ensuring stable profits.',
   },
 ];
 
