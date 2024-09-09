@@ -10,7 +10,7 @@ import {
 } from '../../common/styles/commonStyleComs';
 import { IDashboard } from '../types/dashboardType';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import ConnectWallet from '../../wallet/ConnectWallet';
+import ConnectWallet from '../../wallet/components/ConnectWallet';
 import axios from 'axios';
 import { formatPriceValue } from '../../common/utils/formatPriceValue';
 import BotLogo from '../../common/components/BotLogo';

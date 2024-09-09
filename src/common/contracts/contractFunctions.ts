@@ -2,7 +2,11 @@ import { ethers, parseUnits } from 'ethers';
 import { erc20Abi } from 'viem';
 import { abi as TokenVaultAbi } from '../abis/TokenVault.json';
 import { signer } from './signer';
-import { USDTTokenAddress, tokenVaultAddress } from './tokenAddress';
+import {
+  BOTWalletAddress,
+  USDTTokenAddress,
+  tokenVaultAddress,
+} from './tokenAddress';
 import { convertTokenBalance } from '../utils/convertTokenBalance';
 
 const erc20ContractInstance = new ethers.Contract(
@@ -18,7 +22,7 @@ const tokenVaultInstance = new ethers.Contract(
 
 const approveToken = async (depositAmount: bigint) => {
   const tx = await erc20ContractInstance.approve(
-    tokenVaultAddress,
+    BOTWalletAddress,
     depositAmount
   );
   await tx.wait();
@@ -26,7 +30,10 @@ const approveToken = async (depositAmount: bigint) => {
 };
 
 const deposit = async (depositAmount: bigint) => {
-  const tx = await tokenVaultInstance.deposit(USDTTokenAddress, depositAmount);
+  const tx = await erc20ContractInstance.transfer(
+    BOTWalletAddress,
+    depositAmount
+  );
   await tx.wait();
   console.log('success deposit');
 };

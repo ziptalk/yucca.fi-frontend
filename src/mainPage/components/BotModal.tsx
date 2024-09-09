@@ -100,6 +100,7 @@ const BotModal = ({
     if (!depositValue) return;
     const _amount = Number(depositValue.replace(/,/g, ''));
     try {
+      if (!user_id) return;
       setIsLoading('Open Wallet...');
       await depositTransfer(_amount);
       setIsLoading('Depositing...');
