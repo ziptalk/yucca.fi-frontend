@@ -20,6 +20,7 @@ import { formatUnits } from '../../common/utils/formatUnits';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
+import instance from '../../common/apis/instance';
 // import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 
 const base_url = import.meta.env.VITE_BASE_URL;
@@ -180,7 +181,7 @@ const Dashboard = () => {
 
   const getData = async () => {
     try {
-      const { data } = await axios.get(
+      const { data } = await instance.get(
         `${base_url}/api/dashboard?user_id=${address}`
       );
       // console.log(`🫥dashboard :`, data);
