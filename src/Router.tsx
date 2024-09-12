@@ -1,10 +1,10 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
-import MainPage from '../mainPage';
-import OnBoarding from '../onboarding';
-import TradeBots from '../mainPage/pages/TradeBots';
-import Dashboard from '../mainPage/pages/Dashboard';
-import ErrorNotFound from './pages/ErrorNotFound';
-import ErrorServer from './pages/ErrorServer';
+import MainPage from './mainPage';
+import OnBoarding from './onboarding';
+import TradeBots from './mainPage/pages/TradeBots';
+import Dashboard from './mainPage/pages/Dashboard';
+import ErrorNotFound from './common/pages/ErrorNotFound';
+import ErrorServer from './common/pages/ErrorServer';
 
 const router = createBrowserRouter([
   {
