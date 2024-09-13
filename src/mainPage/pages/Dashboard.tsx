@@ -169,14 +169,14 @@ const ISnotSelectBot = () => {
 
 const Dashboard = () => {
   const address = useUserAccount();
-  const [data, setData] = useState<IDashboard>(MOCK_DASHBOARD);
+  const [data, setData] = useState<IDashboard>();
   // const data = MOCK_DASHBOARD;
   const { refreshTrigger } = useOutletContext<{
     refreshTrigger: boolean;
   }>();
 
   useEffect(() => {
-    // getData();
+    getData();
   }, [refreshTrigger, address]);
 
   const getData = async () => {
