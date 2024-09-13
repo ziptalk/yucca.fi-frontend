@@ -38,7 +38,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
         <div>
           <label>Total Balance</label>
           <StTotalTokenValue>
-            {formatPriceValue(data.total_balance)}
+            {formatPriceValue(data.total_balance)} {TOKEN_INFO.token}
           </StTotalTokenValue>
           <StTotalDollarValue>
             ≈ ${Math.abs(Number(formatPriceValue(data.total_profit_usdt)))}
