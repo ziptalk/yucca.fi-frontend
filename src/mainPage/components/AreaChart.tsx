@@ -8,7 +8,6 @@ const getYRange = (data: IChartData[]) => {
   const yValues = data.map((item) => item.pnlRate);
   const minY = Math.min(...yValues);
   const maxY = Math.max(...yValues);
-  console.log(minY, maxY);
   return { minY, maxY };
 };
 
