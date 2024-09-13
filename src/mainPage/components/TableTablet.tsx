@@ -40,7 +40,7 @@ const TableTablet = ({
             <span>{DASHBORADTABLEHEADER[3]}</span>
             <span>
               <StColor isPositive={item.daily_pnl >= 0}>
-                {formatUnits(item.daily_pnl)} {TOKEN}
+                {formatUnits(item.daily_pnl)} %
               </StColor>
             </span>
           </StRow>

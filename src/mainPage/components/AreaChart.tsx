@@ -1,8 +1,27 @@
 import ApexCharts from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { IChartData } from '../types/pnlChartType';
+import useMobile from '../../common/hooks/useMobile';
+import { formatPriceValue } from '../../common/utils/formatPriceValue';
+
+const getYRange = (data: IChartData[]) => {
+  const yValues = data.map((item) => item.pnlRate);
+  const minY = Math.min(...yValues);
+  const maxY = Math.max(...yValues);
+  console.log(minY, maxY);
+  return { minY, maxY };
+};
 
 const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
+  const isMobile = useMobile();
+  // const data = [
+  //   { createdAt: '2024-08-16T10:05:16.000Z', pnlRate: 10 },
+  //   { createdAt: '2024-08-17T10:05:16.000Z', pnlRate: 15 },
+  //   { createdAt: '2024-08-18T10:05:16.000Z', pnlRate: 30 },
+  //   { createdAt: '2024-08-19T10:05:16.000Z', pnlRate: 40 },
+  //   { createdAt: '2024-08-20T10:05:16.000Z', pnlRate: 20 },
+  // ];
+  const { minY, maxY } = getYRange(chartData);
   const series = [
     {
       name: '이번 연도',
@@ -10,13 +29,6 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
         new Date(item.createdAt).getTime(),
         item.pnlRate,
       ]),
-      // data: [
-      //   [new Date('2024-08-01').getTime(), 10],
-      //   [new Date('2024-08-02').getTime(), 20],
-      //   [new Date('2024-08-03').getTime(), 15],
-      //   [new Date('2024-08-04').getTime(), 40],
-      //   [new Date('2024-08-05').getTime(), 25],
-      // ],
 
       type: 'area',
     },
@@ -34,7 +46,7 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
     },
     stroke: {
       curve: 'smooth',
-      colors: ['#02D689'],
+      colors: ['#19F6C1'],
       width: 2,
     },
     fill: {
@@ -42,19 +54,18 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
       gradient: {
         shade: 'light', // 그라데이션의 밝기
         type: 'vertical', // 수직 그라데이션
-        shadeIntensity: 0.3,
-        gradientToColors: ['#02D689'], // 그라데이션의 끝 색상
+        shadeIntensity: 0.5,
+        gradientToColors: ['#19F6C1'], // 그라데이션의 끝 색상
         inverseColors: false,
         opacityFrom: 0.3, // 시작 색상의 투명도
         opacityTo: 0, // 끝 색상의 투명도
-        stops: [30, 100], // 그라데이션의 위치
+        stops: [0, 100], // 그라데이션의 위치
       },
     },
     xaxis: {
       type: 'category',
       tickAmount: 4,
       tickPlacement: 'on',
-      // categories: ['2023-01', '2023-02', '2023-03', '2023-04', '2023-05'],
       labels: {
         formatter: (value) => {
           const date = new Date(value);
@@ -80,14 +91,22 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
     },
     yaxis: {
       labels: {
+        // show: false,
         formatter: (value) => {
-          return value + '%'; // y축의 값을 %로 포맷팅합니다.
+          if (value === 0) {
+            return '';
+          }
+          return formatPriceValue(value) + '%'; // y축의 값을 %로 포맷팅합니다.
         },
         style: {
           colors: ['#696969'],
         },
       },
       tickAmount: 5,
+      min: minY > 0 ? 0 : minY - 10,
+      max: maxY + 10,
+      // min: -10,
+      // max: 100,
     },
     grid: {
       borderColor: '#696969', // 그리드 선 색상 하얀색으로 설정
@@ -98,7 +117,15 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
     },
   };
 
-  return (
+  return isMobile ? (
+    <ApexCharts
+      options={options}
+      series={series}
+      type='area'
+      height={240}
+      width={450}
+    />
+  ) : (
     <ApexCharts
       options={options}
       series={series}
