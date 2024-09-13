@@ -13,7 +13,6 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import ConnectWallet from '../../wallet/components/ConnectWallet';
 import axios from 'axios';
 import { formatPriceValue } from '../../common/utils/formatPriceValue';
-import BotLogo from '../../common/components/BotLogo';
 import useTablet from '../../common/hooks/useTablet';
 import TableTablet from '../components/TableTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
@@ -21,6 +20,7 @@ import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 import instance from '../../common/apis/instance';
+import { LogoCyclicArbBot } from '../assets/0_index';
 // import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 
 const base_url = import.meta.env.VITE_BASE_URL;
@@ -41,7 +41,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
             {formatPriceValue(data.total_balance)}
           </StTotalTokenValue>
           <StTotalDollarValue>
-            ≈ ${formatPriceValue(data.total_balance_usdt)}
+            ≈ ${Math.abs(Number(formatPriceValue(data.total_profit_usdt)))}
           </StTotalDollarValue>
         </div>
         <div>
@@ -53,7 +53,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
           </StTotalTokenValue>
           <StTotalDollarValue>
             <StColor isPositive={data.total_profit >= 0}>
-              ≈ ${formatPriceValue(data.total_profit_usdt)}
+              ≈ ${Math.abs(Number(formatPriceValue(data.total_profit_usdt)))}
             </StColor>
           </StTotalDollarValue>
         </div>
@@ -84,7 +84,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
                       gap: '0.6rem',
                     }}
                   >
-                    <BotLogo width='24' height='24' />
+                    <LogoCyclicArbBot width='24' height='24' />
                     {item.bot_name}
                   </div>
                 </StTableCell>
@@ -96,7 +96,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
                 </StTableCell>
                 <StTableCell>
                   <StColor isPositive={item.daily_pnl >= 0}>
-                    {formatPriceValue(item.daily_pnl)} {TOKEN}
+                    {formatPriceValue(item.daily_pnl)} %
                   </StColor>
                 </StTableCell>
                 <StTableCell>

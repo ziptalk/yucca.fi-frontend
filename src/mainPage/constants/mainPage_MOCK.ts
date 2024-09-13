@@ -7,14 +7,14 @@ export const MOCK_DASHBOARD: IDashboard = {
   total_balance_usdt: 0,
   total_profit_usdt: 0,
   bots: [
-    // {
-    //   bot_name: 'Cyclic Arb bot',
-    //   bot_id: 'Cyclic Arb bot',
-    //   total_investment: 5000,
-    //   current_value: 5500,
-    //   daily_pnl: 100,
-    //   total_profit: 500,
-    // },
+    {
+      bot_name: 'Cyclic Arb bot',
+      bot_id: 'Cyclic Arb bot',
+      total_investment: 5000,
+      current_value: 5500,
+      daily_pnl: 100,
+      total_profit: 500,
+    },
   ],
 };
 
