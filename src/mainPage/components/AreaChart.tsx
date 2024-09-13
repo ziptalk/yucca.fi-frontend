@@ -63,7 +63,7 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
     },
     xaxis: {
       type: 'category',
-      tickAmount: 4,
+      tickAmount: 3,
       tickPlacement: 'on',
       labels: {
         formatter: (value) => {
