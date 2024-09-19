@@ -1,4 +1,4 @@
-import * as St from './style_MainContent';
+import * as St from './MainPage.style';
 import Footer from '../common/components/Footer';
 import Header from '../common/components/Header';
 import { announceIMG } from './assets/0_index';
