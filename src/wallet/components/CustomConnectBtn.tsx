@@ -1,5 +1,6 @@
-import styled from '@emotion/styled';
+//지갑연결 커스텀 버튼
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import * as St from '../styles/CustomConnectBtn.style';
 export const CustomConnectBtn = ({
   handleWalletModal,
 }: {
@@ -16,8 +17,6 @@ export const CustomConnectBtn = ({
         authenticationStatus,
         mounted,
       }) => {
-        // Note: If your app doesn't use authentication, you
-        // can remove all 'authenticationStatus' checks
         const ready = mounted && authenticationStatus !== 'loading';
         const connected =
           ready &&
@@ -38,7 +37,7 @@ export const CustomConnectBtn = ({
             {(() => {
               if (!connected) {
                 return (
-                  <StWalletBtn
+                  <St.WalletBtn
                     onClick={() => {
                       openConnectModal();
                       handleWalletModal && handleWalletModal();
@@ -46,7 +45,7 @@ export const CustomConnectBtn = ({
                     type='button'
                   >
                     Connect Wallet
-                  </StWalletBtn>
+                  </St.WalletBtn>
                 );
               }
               if (chain.unsupported) {
@@ -58,14 +57,14 @@ export const CustomConnectBtn = ({
               }
               return (
                 <div style={{ display: 'flex', gap: 12 }}>
-                  <StWalletBtn
+                  <St.WalletBtn
                     onClick={() => {
                       openAccountModal();
                       handleWalletModal && handleWalletModal();
                     }}
                     type='button'
                   >
-                    <StIconBtn
+                    <St.IconBtn
                       onClick={(event) => {
                         event.stopPropagation();
                         openChainModal();
@@ -94,12 +93,12 @@ export const CustomConnectBtn = ({
                         //체인 아이콘 없을 시 들어갈 대체 아이콘
                         <></>
                       )}
-                    </StIconBtn>
+                    </St.IconBtn>
                     {account.displayName}
                     {/* {account.displayBalance
                       ? ` (${account.displayBalance})`
                       : ''} */}
-                  </StWalletBtn>
+                  </St.WalletBtn>
                 </div>
               );
             })()}
@@ -109,29 +108,3 @@ export const CustomConnectBtn = ({
     </ConnectButton.Custom>
   );
 };
-
-const StWalletBtn = styled.button`
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(125deg, #f45dd3 1%, #fc954b 99%);
-  min-width: 16.7rem;
-  width: fit-content;
-  height: 4.6rem;
-  border-radius: 20px;
-  padding: 1.6rem;
-  color: ${({ theme }) => theme.colors.white};
-  ${({ theme }) => theme.fonts.body_2m};
-
-  &:hover {
-    background: linear-gradient(125deg, #fc954b 1%, #f45dd3 99%);
-  }
-`;
-
-const StIconBtn = styled.div`
-  display: 'flex';
-  align-items: 'center';
-  justify-content: center;
-  background-color: transparent;
-`;

@@ -1,5 +1,5 @@
 import Header from '../common/components/Header';
-import * as St from './style_onboarding.tsx';
+import * as St from './Onboarding.style.tsx';
 import {
   Logo,
   // onBoardingBackImg2,
