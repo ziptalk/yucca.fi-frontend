@@ -84,7 +84,7 @@ export const Announcement = {
   `,
 };
 
-export const Dashboard = {
+export const MainContent = {
   Container: styled.div`
     width: 100%;
     display: flex;

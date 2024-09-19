@@ -1,4 +1,4 @@
-import * as St from './style_dashboard';
+import * as St from './style_MainContent';
 import Footer from '../common/components/Footer';
 import Header from '../common/components/Header';
 import { announceIMG } from './assets/0_index';
@@ -17,7 +17,7 @@ const MainPage = () => {
   const [dataRefreshTrigger, setDataRefreshTrigger] = useState<boolean>(false);
 
   const handleDataRefreshRequest = () => {
-    setDataRefreshTrigger((prev) => !prev); // 상태를 토글하여 Dashboard에 데이터 새로 고침을 트리거
+    setDataRefreshTrigger((prev) => !prev); // 상태를 토글하여 MainContent에 데이터 새로 고침을 트리거
   };
 
   //Bot Modal
@@ -46,7 +46,7 @@ const MainPage = () => {
       <Header />
       <St.MainContainer>
         <Announcement />
-        <Dashboard
+        <MainContent
           openBotModal={openBotMoal}
           openRemoveModal={openRemoveModal}
           openUnConnectModal={openUnConnectModal}
@@ -102,9 +102,9 @@ const Announcement = () => {
   );
 };
 
-// Dashboard 컴포넌트
+// MainContent 컴포넌트
 
-const Dashboard = ({
+const MainContent = ({
   openBotModal,
   openRemoveModal,
   openUnConnectModal,
@@ -116,7 +116,7 @@ const Dashboard = ({
   refreshTrigger: boolean;
 }) => {
   return (
-    <St.Dashboard.Container>
+    <St.MainContent.Container>
       <Outlet
         context={{
           openBotModal,
@@ -125,7 +125,7 @@ const Dashboard = ({
           refreshTrigger,
         }}
       />
-    </St.Dashboard.Container>
+    </St.MainContent.Container>
   );
 };
 
