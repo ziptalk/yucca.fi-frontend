@@ -1,20 +1,28 @@
-import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { http } from 'viem';
-import { arbitrum } from 'viem/chains';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+import { botanixTestnet } from './chains';
+import { createConfig } from 'wagmi';
 
-const wallets = {
-  groupName: 'recommend',
-  wallets: [metaMaskWallet],
-};
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommend',
+      wallets: [metaMaskWallet],
+    },
+  ],
+  {
+    appName: 'yuccafi-frontend',
+    projectId: 'dd28643ef18d85bb03244bc90163b47d',
+  }
+);
 
-export const walletConfig = getDefaultConfig({
-  wallets: [wallets],
-  appName: 'mytether-frontend-typescript',
-  projectId: 'dd28643ef18d85bb03244bc90163b47d',
-  chains: [arbitrum],
+export const walletConfig = createConfig({
+  connectors,
+  multiInjectedProviderDiscovery: false,
+  chains: [botanixTestnet],
   transports: {
-    [arbitrum.id]: http('https://arbitrum.llamarpc.com'),
+    [botanixTestnet.id]: http(botanixTestnet.rpcUrls.default.http[0]),
   },
-  ssr: false,
+  // ssr: false,
 });

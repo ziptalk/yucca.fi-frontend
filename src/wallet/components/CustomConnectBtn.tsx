@@ -50,9 +50,9 @@ export const CustomConnectBtn = ({
               }
               if (chain.unsupported) {
                 return (
-                  <button onClick={openChainModal} type='button'>
+                  <St.WalletBtn onClick={openChainModal} type='button'>
                     Wrong network
-                  </button>
+                  </St.WalletBtn>
                 );
               }
               return (
@@ -94,6 +94,7 @@ export const CustomConnectBtn = ({
                         <></>
                       )}
                     </St.IconBtn>
+                    <p>Disconnect</p>
                     {account.displayName}
                     {/* {account.displayBalance
                       ? ` (${account.displayBalance})`
