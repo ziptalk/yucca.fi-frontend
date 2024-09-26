@@ -5,6 +5,7 @@ import {
   IcTelegram,
   IcTwitter,
 } from '../../onboarding/assets/0_index';
+import { transformStyles } from '../styles/transformStyles';
 
 const Footer = () => {
   return (
@@ -38,6 +39,8 @@ export default Footer;
 
 const StFooter = {
   Container: styled.footer`
+    ${transformStyles}
+
     position: relative;
     width: 100%;
     padding: 6.4rem 0;

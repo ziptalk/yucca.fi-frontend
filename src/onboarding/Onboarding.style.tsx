@@ -3,17 +3,17 @@ import { STCOMBoxWrapper } from '../common/styles/commonStyleComs';
 import { transformStyles } from '../common/styles/transformStyles';
 import { onboardingBackImg1 } from './assets/0_index';
 export const MainContainer = styled.div`
-  width: 100vw;
-  max-width: 120rem;
+  width: 100%;
+  /* max-width: 120rem; */
   min-width: 89.6rem;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 9.5rem 6.4rem 0;
-
-  ${transformStyles}
+  background-color: ${({ theme }) => theme.colors.background};
+  z-index: 1;
+  /* margin-top: 100vh; */
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     min-width: 375px;
@@ -45,19 +45,21 @@ export const Title = styled.div`
 
 export const Section1 = {
   Container: styled.section`
-    width: 100%;
+    ${transformStyles}
+    width: 100vw;
     height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 20rem;
   `,
   ContentLayout: styled.div`
     min-width: 76.9rem;
     width: 100%;
     max-width: 132.8rem;
-    margin: 0 0.8rem 7.8rem;
+    margin: 0 0 7.8rem;
     display: flex;
     flex-direction: column;
     gap: 5.4rem;
@@ -163,6 +165,8 @@ export const Section1 = {
 
 export const Section2 = {
   Container: styled.div`
+    ${transformStyles}
+
     width: 100%;
     position: relative;
     display: flex;
@@ -170,7 +174,7 @@ export const Section2 = {
     justify-content: center;
     align-items: center;
     margin-bottom: 14rem;
-    margin-top: 10rem;
+    margin-top: 5rem;
     & > p {
       ${({ theme }) => theme.fonts.mont_18_medium};
       color: ${({ theme }) => theme.colors.darkgray};
@@ -242,6 +246,8 @@ export const Section2 = {
 
 export const Section3 = {
   Container: styled.div`
+    ${transformStyles}
+
     width: 100%;
     position: relative;
     display: flex;
@@ -291,6 +297,8 @@ export const Section3 = {
 
 export const Section4 = {
   Container: styled.div`
+    ${transformStyles}
+
     width: 100%;
     position: relative;
     display: flex;
@@ -326,19 +334,6 @@ export const Section4 = {
     & > img {
       width: 10rem;
       height: 10rem;
-    }
-  `,
-  BackgroundImg: styled.img`
-    width: 57rem;
-    position: absolute;
-    top: -30rem;
-    right: -180px;
-    z-index: -1;
-
-    @media (${({ theme }) => theme.breakpoints.mobile}) {
-      top: auto;
-      bottom: -10rem;
-      right: 50px;
     }
   `,
 };

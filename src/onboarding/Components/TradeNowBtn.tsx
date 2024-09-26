@@ -36,6 +36,6 @@ const StTradeNowBtn = styled.button`
   }
 
   &:hover {
-    background: linear-gradient(125deg, #fc954b 1%, #f45dd3 99%);
+    background: ${({ theme }) => theme.colors.dark_pink};
   }
 `;

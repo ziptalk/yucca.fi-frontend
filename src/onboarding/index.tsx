@@ -58,15 +58,15 @@ const OnBoarding = () => {
         section3Ref={section3Ref}
         section4Ref={section4Ref}
       />
+      <OnBoarding1 isMobile={isMobile} />
       <St.MainContainer>
-        <OnBoarding1 isMobile={isMobile} />
-        <div ref={section2Ref} style={{ width: '100%' }}>
+        <div ref={section2Ref} style={{ width: '100vh' }}>
           <OnBoarding2 isMobile={isMobile} />
         </div>
-        <div ref={section3Ref} style={{ width: '100%' }}>
+        <div ref={section3Ref} style={{ width: '100vh' }}>
           <OnBoarding3 isMobile={isMobile} />
         </div>
-        <div ref={section4Ref} style={{ width: '100%' }}>
+        <div ref={section4Ref} style={{ width: '100vh' }}>
           <OnBoarding4 isMobile={isMobile} />
         </div>
         <Footer />
@@ -224,10 +224,6 @@ const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
 const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
   return (
     <St.Section3.Container>
-      {/* <St.Section3.BackgroundImg
-        src={onBoardingBackImg2}
-        alt='background-img'
-      /> */}
       <St.Section3.InTro>
         {isMobile ? (
           <St.PreTitle>Vaults Trading bots</St.PreTitle>

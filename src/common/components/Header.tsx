@@ -121,7 +121,7 @@ const StContainer = styled.header`
   align-items: center;
   /* background: linear-gradient(to bottom, #f8f2fc 80%, #f8f2fc 100%); */
   backdrop-filter: blur(15px);
-  z-index: 1;
+  z-index: 10;
   padding: 0;
   margin: 0;
 `;
