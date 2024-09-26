@@ -2,7 +2,7 @@ import { defineChain } from 'viem';
 
 export const botanixTestnet = defineChain({
   id: 3636,
-  name: 'Botanix',
+  name: 'Botanix Testnet',
   nativeCurrency: {
     name: '',
     symbol: 'BTC',

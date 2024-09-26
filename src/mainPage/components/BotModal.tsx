@@ -200,7 +200,7 @@ const StScroll = styled.div`
   max-height: 76rem;
   height: 100%;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.pink_background};
+  background-color: ${({ theme }) => theme.colors.background_pink};
   z-index: 4;
   padding: 2.4rem;
   scrollbar-width: none;

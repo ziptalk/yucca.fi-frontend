@@ -44,7 +44,7 @@ const globalStyles = css`
   body {
     width: 100vw;
     color: #000;
-    background-color: ${theme.colors.pink_background};
+    background-color: ${theme.colors.background_pink};
     overflow-x: hidden;
     display: flex;
     justify-content: center;

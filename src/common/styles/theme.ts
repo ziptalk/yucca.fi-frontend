@@ -6,7 +6,6 @@ const colors = {
   invest_background: '#232323',
   white: '#ffffff',
   not_important: '#AEAEAE',
-  pink_background: '#F8F2FC',
   sub_white: '#E2E3E2',
   positive: '#00C37C',
   negative: '##E5809E',
@@ -15,7 +14,17 @@ const colors = {
   darkgray: '#696969',
   pink_main: '#FF6E99',
   pink_sub: '#F2D1E4',
-  gray: '#B3B3B3',
+  gray: '#577B6E',
+  yucca_gradient:
+    'linear-gradient(118deg, rgba(4, 31, 21, 0.10) 10.14%, #00B676 68.92%, #8AD9BE 91.68%)',
+  dark_spring_green: '#337357',
+  spring_green: '#6D9F71',
+  deep_dark_green: '#1C4A3A',
+  light_pink: '#FFDBE5',
+  normal_pink: '#EA9AB2',
+  dark_pink: '#E27396',
+  background_pink: '#FFF1F5',
+  dark_gray: '#444444',
 };
 
 const FONT = (
@@ -35,6 +44,14 @@ const FONT = (
 `;
 
 const fonts = {
+  kumbh_snas_42: FONT(
+    '"Kumbh Sans", sans-serif',
+    4.2,
+    'normal',
+    '600',
+    '140',
+    0
+  ),
   title_0: FONT('Montserrat', 4.2, 'normal', '600', '140', 0),
   title_0_pre: FONT('Pretendard Variable', 4, 'normal', '600', '140', 0),
   title_TVL: FONT('Montserrat', 4, 'normal', 'Bold', 'auto', 0),
