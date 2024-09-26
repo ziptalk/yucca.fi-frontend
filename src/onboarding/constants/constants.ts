@@ -24,18 +24,18 @@ interface IOnboarding4 {
 
 export const ABOUTQVE: IAboutQve[] = [
   {
-    icon: IcProfits,
-    keyWord: 'Profits',
-    title: 'Optimize profit',
-    explain:
-      'A yield-maximizing bot uses AI and algorithms to automate investment strategies.',
-  },
-  {
     icon: IcRisk,
     keyWord: 'Risk',
     title: 'Minimize Risk',
     explain:
       'Our approach minimizes risk and secures earnings without major losses.',
+  },
+  {
+    icon: IcProfits,
+    keyWord: 'Profits',
+    title: 'Optimize profit',
+    explain:
+      'A yield-maximizing bot uses AI and algorithms to automate investment strategies.',
   },
   {
     icon: IcSafety,

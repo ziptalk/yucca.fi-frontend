@@ -26,6 +26,7 @@ const colors = {
   background_pink: '#FFF1F5',
   dark_gray: '#444444',
   background: '#FFFFDB',
+  dark_label: '#B7B8CD',
 };
 
 const FONT = (
@@ -64,6 +65,14 @@ const fonts = {
   kumbh_snas_22: FONT(
     '"Kumbh Sans", sans-serif',
     2.2,
+    'normal',
+    '600',
+    'normal',
+    0
+  ),
+  kumbh_snas_20: FONT(
+    '"Kumbh Sans", sans-serif',
+    2,
     'normal',
     '600',
     'normal',

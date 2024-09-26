@@ -24,7 +24,7 @@ export const MainContainer = styled.div`
 
 export const PreTitle = styled.div`
   ${({ theme }) => theme.fonts.mont_18_medium};
-  color: ${({ theme }) => theme.colors.darkgray};
+  color: ${({ theme }) => theme.colors.gray};
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     ${({ theme }) => theme.fonts.body_2m};
     margin-top: 1rem;
@@ -32,6 +32,7 @@ export const PreTitle = styled.div`
   }
 `;
 export const Title = styled.div`
+  max-width: 70rem;
   ${({ theme }) => theme.fonts.title_0};
   color: ${({ theme }) => theme.colors.black};
   text-align: center;
@@ -51,7 +52,6 @@ export const Section1 = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10rem;
   `,
   ContentLayout: styled.div`
     min-width: 76.9rem;
@@ -169,7 +169,8 @@ export const Section2 = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    margin-bottom: 14rem;
+    margin-top: 10rem;
     & > p {
       ${({ theme }) => theme.fonts.mont_18_medium};
       color: ${({ theme }) => theme.colors.darkgray};
@@ -185,16 +186,19 @@ export const Section2 = {
     margin: 6.4rem 0 12.8rem;
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 8rem;
 
     @media (${({ theme }) => theme.breakpoints.tablet}) {
-      gap: 2.5rem;
+      gap: 8rem;
     }
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       flex-direction: column;
       align-items: center;
       gap: 1.6rem;
     }
+  `,
+  Wrapper: styled(STCOMBoxWrapper)`
+    background-color: ${({ theme }) => theme.colors.spring_green};
   `,
   AboutItem: styled.div`
     min-width: 28.2em;
@@ -211,8 +215,8 @@ export const Section2 = {
     align-items: center;
     margin-bottom: 3.8rem;
     & > span {
-      color: ${({ theme }) => theme.colors.pink_main};
-      ${({ theme }) => theme.fonts.body_1m};
+      color: ${({ theme }) => theme.colors.white};
+      ${({ theme }) => theme.fonts.poppins_18};
     }
   `,
   AbouItemLayout: styled.div`
@@ -222,13 +226,16 @@ export const Section2 = {
     justify-content: space-between;
   `,
   ItemTitle: styled.p`
-    ${({ theme }) => theme.fonts.title_2am};
+    ${({ theme }) => theme.fonts.kumbh_snas_28};
+    color: ${({ theme }) => theme.colors.white};
     word-wrap: break-word;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid;
   `,
   Explain: styled.p`
-    ${({ theme }) => theme.fonts.body_1_1};
+    ${({ theme }) => theme.fonts.poppins_18};
     word-wrap: break-word;
-    color: ${({ theme }) => theme.colors.darkgray};
+    color: ${({ theme }) => theme.colors.background_pink};
     height: 8.4rem;
   `,
 };
@@ -278,7 +285,7 @@ export const Section3 = {
 
   SubTitle: styled.p`
     ${({ theme }) => theme.fonts.body_3};
-    color: ${({ theme }) => theme.colors.not_important};
+    color: ${({ theme }) => theme.colors.gray};
   `,
 };
 
@@ -312,7 +319,9 @@ export const Section4 = {
     justify-content: center;
     align-items: center;
     gap: 2.3rem;
-    ${({ theme }) => theme.fonts.body_2};
+    ${({ theme }) => theme.fonts.kumbh_snas_20};
+    color: white;
+    background-color: ${({ theme }) => theme.colors.spring_green};
 
     & > img {
       width: 10rem;

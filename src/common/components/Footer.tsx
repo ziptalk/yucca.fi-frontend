@@ -1,11 +1,10 @@
-import {
-  IcFooterGithub,
-  // IcFooterMedium,
-  IcFooterTelegram,
-  IcFooterTwitter,
-} from '../assets/0_index';
 import styled from '@emotion/styled';
 import { LINKS } from '../constants/LINKS';
+import {
+  IcGithub,
+  IcTelegram,
+  IcTwitter,
+} from '../../onboarding/assets/0_index';
 
 const Footer = () => {
   return (
@@ -19,16 +18,16 @@ const Footer = () => {
       </StFooter.BlockWave>
       <StFooter.ConnectIcon>
         <a href={LINKS.twitter} target='_blank'>
-          <IcFooterTwitter />
+          <IcTwitter />
         </a>
         <a href={LINKS.telegrem} target='_blank'>
-          <IcFooterTelegram />
+          <IcTelegram />
         </a>
         {/* <a href={LINKS.medium} target='_blank'>
           <IcFooterMedium />
         </a> */}
         <a href={LINKS.github} target='_blank'>
-          <IcFooterGithub />
+          <IcGithub />
         </a>
       </StFooter.ConnectIcon>
     </StFooter.Container>
@@ -59,7 +58,7 @@ const StFooter = {
     flex-direction: column;
     justify-content: center;
     gap: 0.8rem;
-    color: ${({ theme }) => theme.colors.pink_sub};
+    color: ${({ theme }) => theme.colors.dark_label};
 
     & p {
       ${({ theme }) => theme.fonts.body};

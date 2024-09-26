@@ -14,10 +14,10 @@ import onboarding3 from './onboarding_mock3.webp';
 import onboarding3_mobile from './onboarding_mock3_mobile.webp';
 import onboardingBackPng from './test.png';
 
-import imgDepositFunds from './depositFundsIMG.webp';
-import imgGenerateProfits from './generateProfitsIMG.webp';
-import imgLiquifyPosition from './liquifyPositionIMG.webp';
-import imgWithdrawAssets from './withdrawAssetsIMG.webp';
+import imgDepositFunds from './section4_depositFunds.webp';
+import imgGenerateProfits from './section4_generateProfits.webp';
+import imgLiquifyPosition from './section4_liquifyPosition.webp';
+import imgWithdrawAssets from './section4_withdrawAssets.webp';
 
 import yuccafiBackground from './yuccafiBackground.webp';
 import Botanix from './botanix.svg?react';

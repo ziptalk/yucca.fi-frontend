@@ -18,7 +18,6 @@ import { ABOUTQVE } from './constants/constants.ts';
 import TradeNowBtn from './Components/TradeNowBtn.tsx';
 import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
-import { STCOMBoxWrapper } from '../common/styles/commonStyleComs.ts';
 import { ONBOARDING4 } from './constants/constants.ts';
 import { LINKS } from '../common/constants/LINKS.ts';
 import useMobile from '../common/hooks/useMobile.tsx';
@@ -100,7 +99,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
           <h1>Quant Vault Escrow Protocol</h1>
           <p>
             A hybrid DeFi platform combining arbitrage trading bots and
-            liquidity staking protocols in Arbitrum
+            liquidity staking protocols in Botanix Labs.
           </p>
           <St.Mobile.GlassWrapper>
             <St.Mobile.ValueContainer>
@@ -117,7 +116,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
             <h1>Quant Vault Escrow Protocol</h1>
             <p>
               A hybrid DeFi platform combining arbitrage trading bots and
-              liquidity staking protocols in Arbitrum
+              liquidity staking protocols in Botanix Labs.
             </p>
             <St.Section1.Ecosystem>
               <p>Ecosystem</p>
@@ -157,8 +156,8 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
 const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
   return (
     <St.Section2.Container>
-      <p>About Mytether</p>
-      <St.Title>Optimizing Yields in the Abcdef Ecosystem</St.Title>
+      <p>About yucca.fi</p>
+      <St.Title>Optimizing Yields in the Layer 2 on Bitcoin Ecosystem</St.Title>
       <St.Section2.Contents>
         {isMobile ? (
           <>
@@ -174,9 +173,32 @@ const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
           </>
         ) : (
           <>
-            {ABOUTQVE.map((item) => {
+            {ABOUTQVE.map((item, idx) => {
+              let rotateValue = 22.5;
+              let translateYValue = 8;
+              switch (idx) {
+                case 0:
+                  rotateValue = -rotateValue;
+                  translateYValue;
+                  break;
+                case 1:
+                  rotateValue = 0;
+                  translateYValue = 0;
+                  break;
+                case 2:
+                  rotateValue;
+                  translateYValue;
+                  break;
+                default:
+                  rotateValue = 0;
+              }
               return (
-                <STCOMBoxWrapper key={item.keyWord}>
+                <St.Section2.Wrapper
+                  key={item.keyWord}
+                  style={{
+                    transform: `rotate(${rotateValue}deg) translateY(${translateYValue}rem)`,
+                  }}
+                >
                   <St.Section2.AboutItem>
                     <St.Section2.IconContainer>
                       <item.icon />
@@ -189,7 +211,7 @@ const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
                       <St.Section2.Explain>{item.explain}</St.Section2.Explain>
                     </St.Section2.AbouItemLayout>
                   </St.Section2.AboutItem>
-                </STCOMBoxWrapper>
+                </St.Section2.Wrapper>
               );
             })}
           </>
@@ -211,13 +233,13 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
           <St.PreTitle>Vaults Trading bots</St.PreTitle>
         ) : (
           <St.PreTitle>
-            Mytether offers various ‘vaults’, which are operated by the trading
+            Yucca.fi offers various ‘vaults’, which are operated by the trading
             bots
           </St.PreTitle>
         )}
         <St.Title>Assets Into The Vault</St.Title>
         <St.Section3.SubTitle>
-          Arbitrage is one of the strategies we use
+          ( Arbitrage is one of the strategies we use )
         </St.Section3.SubTitle>
       </St.Section3.InTro>
       {isMobile ? (
@@ -227,7 +249,7 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
         />
       ) : (
         <img
-          style={{ width: '69.4rem', margin: '6.4rem 0 13rem' }}
+          style={{ width: '120rem', margin: '6.4rem 0 13rem' }}
           src={onboarding3}
         />
       )}
