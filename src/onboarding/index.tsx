@@ -113,8 +113,8 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
       ) : (
         <St.Section1.ContentLayout>
           <St.Section1.QVEIntroduce>
-            <h1>Quant Vault Escrow Protocol</h1>
             <Logo />
+            <h1>Quant Vault Escrow Protocol</h1>
             <p>
               A hybrid DeFi platform combining arbitrage trading bots and
               liquidity staking protocols in Arbitrum
