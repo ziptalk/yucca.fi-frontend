@@ -25,6 +25,7 @@ const colors = {
   dark_pink: '#E27396',
   background_pink: '#FFF1F5',
   dark_gray: '#444444',
+  background: '#FFFFDB',
 };
 
 const FONT = (
@@ -84,7 +85,7 @@ const fonts = {
     'normal',
     0
   ),
-  poppins_18: FONT('"Poppins", sans-serif', 1.8, 'normal', '500', 'normal', 0),
+  poppins_18: FONT('"Poppins", sans-serif', 1.8, 'normal', '500', '140', 0),
   poppins_16: FONT('"Poppins", sans-serif', 1.6, 'normal', '500', '150', 0),
   pretendard_22: FONT('Pretendard Variable', 2.2, 'normal', '600', 'normal', 0),
   title_0: FONT('Montserrat', 4.2, 'normal', '600', '140', 0),

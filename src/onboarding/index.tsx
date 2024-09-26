@@ -6,6 +6,7 @@ import {
   // onBoardingBackImg3,
 } from '../common/assets/0_index';
 import {
+  Botanix,
   IcGithub,
   // IcMedium,
   IcTelegram,
@@ -94,7 +95,6 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
   };
   return (
     <St.Section1.Container>
-      <St.Section1.BackgroundImg1 />
       {isMobile ? (
         <St.Mobile.ContentLayout>
           <h1>Quant Vault Escrow Protocol</h1>
@@ -119,11 +119,11 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
               A hybrid DeFi platform combining arbitrage trading bots and
               liquidity staking protocols in Arbitrum
             </p>
+            <St.Section1.Ecosystem>
+              <p>Ecosystem</p>
+              <Botanix />
+            </St.Section1.Ecosystem>
           </St.Section1.QVEIntroduce>
-          <St.Section1.TotalValue>
-            <p>Total Value Locked</p>
-            <p>$ {totalValueLocked}</p>
-          </St.Section1.TotalValue>
         </St.Section1.ContentLayout>
       )}
       <St.Section1.Bottom>
@@ -139,12 +139,16 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
             </a>
             {/* <a href={LINKS.medium} target='_blank'>
               <IcMedium />
-            </a> */}
+              </a> */}
             <a href={LINKS.github} target='_blank'>
               <IcGithub />
             </a>
           </nav>
         )}
+        <St.Section1.TotalValue>
+          <p>Total Value Locked</p>
+          <p>$ {totalValueLocked}</p>
+        </St.Section1.TotalValue>
       </St.Section1.Bottom>
     </St.Section1.Container>
   );

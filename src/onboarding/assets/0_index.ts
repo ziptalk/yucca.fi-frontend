@@ -19,6 +19,9 @@ import imgGenerateProfits from './generateProfitsIMG.webp';
 import imgLiquifyPosition from './liquifyPositionIMG.webp';
 import imgWithdrawAssets from './withdrawAssetsIMG.webp';
 
+import yuccafiBackground from './yuccafiBackground.webp';
+import Botanix from './botanix.svg?react';
+
 export {
   IcGithub,
   IcMedium,
@@ -36,4 +39,6 @@ export {
   onboarding3_mobile,
   onboardingBackPng,
   onboardingBackImg1,
+  yuccafiBackground,
+  Botanix,
 };

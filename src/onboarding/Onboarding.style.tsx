@@ -45,6 +45,7 @@ export const Title = styled.div`
 export const Section1 = {
   Container: styled.section`
     width: 100%;
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -56,7 +57,7 @@ export const Section1 = {
     min-width: 76.9rem;
     width: 100%;
     max-width: 132.8rem;
-    margin: 24rem 0.8rem 7.8rem;
+    margin: 0 0.8rem 7.8rem;
     display: flex;
     flex-direction: column;
     gap: 5.4rem;
@@ -64,39 +65,61 @@ export const Section1 = {
   QVEIntroduce: styled.div`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
     & > h1 {
-      ${({ theme }) => theme.fonts.body_0};
-      color: ${({ theme }) => theme.colors.black};
+      ${({ theme }) => theme.fonts.kumbh_snas_22};
+      color: ${({ theme }) => theme.colors.deep_dark_green};
+      margin-top: 1.2rem;
     }
 
     & > p {
       max-width: 51.5rem;
       word-wrap: break-word;
-      ${({ theme }) => theme.fonts.body_1_1};
-      color: ${({ theme }) => theme.colors.not_important};
+      ${({ theme }) => theme.fonts.poppins_18};
+      color: ${({ theme }) => theme.colors.gray};
       margin-top: 0.4rem;
+    }
+  `,
+  Ecosystem: styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 15vh;
+
+    & > p {
+      ${({ theme }) => theme.fonts.kumbh_snas_18_semi};
+      color: ${({ theme }) => theme.colors.deep_dark_green};
     }
   `,
   TotalValue: styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
+    min-width: 30rem;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 40px;
+    padding: 2rem 4rem;
+    background-color: ${({ theme }) => theme.colors.white};
     & > p:nth-of-type(1) {
       ${({ theme }) => theme.fonts.body_2m};
     }
     & > p:nth-of-type(2) {
-      ${({ theme }) => theme.fonts.title_TVL};
-      color: ${({ theme }) => theme.colors.black};
+      ${({ theme }) => theme.fonts.title_1};
+      color: ${({ theme }) => theme.colors.deep_dark_green};
     }
   `,
   Bottom: styled.div`
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 7.2rem 0;
+    margin: 1rem 0;
 
     & nav {
+      position: absolute;
+      left: 0;
       display: flex;
       gap: 1rem;
       & > * {
@@ -105,7 +128,6 @@ export const Section1 = {
     }
 
     & p {
-      margin: 3.4rem 0 0.5rem;
       ${({ theme }) => theme.fonts.body_3m};
     }
   `,

@@ -22,16 +22,17 @@ export default TradeNowBtn;
 const StTradeNowBtn = styled.button`
   display: flex;
   gap: 0.5rem;
+  padding: 1.4rem 2.2rem;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(125deg, #f45dd3 1%, #fc954b 99%);
-  width: 16.7rem;
-  height: 4.6rem;
-  border-radius: 20px;
+  background: ${({ theme }) => theme.colors.dark_spring_green};
+  width: fit-content;
+  height: fit-content;
+  border-radius: 100px;
 
   & > span {
     color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.fonts.body_2m};
+    ${({ theme }) => theme.fonts.kumbh_snas_18_semi};
   }
 
   &:hover {
