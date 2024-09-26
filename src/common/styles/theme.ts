@@ -52,8 +52,41 @@ const fonts = {
     '140',
     0
   ),
+  kumbh_snas_28: FONT(
+    '"Kumbh Sans", sans-serif',
+    2.8,
+    'normal',
+    '600',
+    'normal',
+    0
+  ),
+  kumbh_snas_22: FONT(
+    '"Kumbh Sans", sans-serif',
+    2.2,
+    'normal',
+    '600',
+    'normal',
+    0
+  ),
+  kumbh_snas_18_semi: FONT(
+    '"Kumbh Sans", sans-serif',
+    1.8,
+    'normal',
+    '600',
+    'normal',
+    0
+  ),
+  kumbh_snas_18_medi: FONT(
+    '"Kumbh Sans", sans-serif',
+    1.8,
+    'normal',
+    '500',
+    'normal',
+    0
+  ),
   poppins_18: FONT('"Poppins", sans-serif', 1.8, 'normal', '500', 'normal', 0),
   poppins_16: FONT('"Poppins", sans-serif', 1.6, 'normal', '500', '150', 0),
+  pretendard_22: FONT('Pretendard Variable', 2.2, 'normal', '600', 'normal', 0),
   title_0: FONT('Montserrat', 4.2, 'normal', '600', '140', 0),
   title_0_pre: FONT('Pretendard Variable', 4, 'normal', '600', '140', 0),
   title_TVL: FONT('Montserrat', 4, 'normal', 'Bold', 'auto', 0),
