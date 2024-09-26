@@ -73,31 +73,33 @@ export const HeaderNav = ({
 }: HeaderProps) => {
   return (
     <StNav>
-      <StNavItem
-        onClick={() => {
-          onClose && onClose();
-          scrollToSection && section2Ref && scrollToSection(section2Ref);
-        }}
-      >
-        About
-      </StNavItem>
-      <StNavItem
-        onClick={() => {
-          onClose && onClose();
-          scrollToSection && section3Ref && scrollToSection(section3Ref);
-        }}
-      >
-        Features
-      </StNavItem>
-      <StNavItem
-        onClick={() => {
-          onClose && onClose();
-          scrollToSection && section4Ref && scrollToSection(section4Ref);
-        }}
-      >
-        Process
-      </StNavItem>
-      <StNavItem onClick={() => window.open(LINKS.docs)}>Docs</StNavItem>
+      <StNavItemContainer>
+        <StNavItem
+          onClick={() => {
+            onClose && onClose();
+            scrollToSection && section2Ref && scrollToSection(section2Ref);
+          }}
+        >
+          About
+        </StNavItem>
+        <StNavItem
+          onClick={() => {
+            onClose && onClose();
+            scrollToSection && section3Ref && scrollToSection(section3Ref);
+          }}
+        >
+          Features
+        </StNavItem>
+        <StNavItem
+          onClick={() => {
+            onClose && onClose();
+            scrollToSection && section4Ref && scrollToSection(section4Ref);
+          }}
+        >
+          Process
+        </StNavItem>
+        <StNavItem onClick={() => window.open(LINKS.docs)}>Docs</StNavItem>
+      </StNavItemContainer>
       {pathname === '/onboarding' ? (
         <TradeNowBtn />
       ) : (
@@ -151,7 +153,8 @@ const StLogo = styled(Logo)`
 
 const StNav = styled.nav`
   display: flex;
-  gap: 3.5rem;
+  align-items: center;
+  gap: 4rem;
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;
@@ -162,13 +165,28 @@ const StNav = styled.nav`
   }
 `;
 
+const StNavItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @media (${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+  }
+`;
+
 const StNavItem = styled.button`
   background-color: transparent;
-  color: ${({ theme }) => theme.colors.black};
-  ${({ theme }) => theme.fonts.body_2m};
+  padding: 1.4rem 2.3rem;
+  border-radius: 50px;
+  color: ${({ theme }) => theme.colors.dark_gray};
+  ${({ theme }) => theme.fonts.poppins_18};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.pink_main};
+    color: ${({ theme }) => theme.colors.dark_spring_green};
+    background-color: rgba(255, 255, 255, 0.5);
   }
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     &:nth-of-type(4) {
