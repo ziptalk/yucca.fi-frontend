@@ -8,8 +8,6 @@ import IcProfits from './section2_profits.svg?react';
 import IcRisk from './section2_risk.svg?react';
 import IcSafety from './section2_safety.svg?react';
 
-import onboardingBackImg1 from './onBoardingBackImg1.webp';
-
 import onboarding3 from './onboarding_mock3.webp';
 import onboarding3_mobile from './section3_mobile.webp';
 import onboardingBackPng from './test.png';
@@ -38,7 +36,6 @@ export {
   imgWithdrawAssets,
   onboarding3_mobile,
   onboardingBackPng,
-  onboardingBackImg1,
   yuccafiBackground,
   Botanix,
 };

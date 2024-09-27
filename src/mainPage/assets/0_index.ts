@@ -6,7 +6,6 @@ import IcSort from './sortIcon.svg?react';
 import LogoCyclicArbBot from './cyclicArbBotLogo.svg?react';
 import IcPersons from './personsIcon.svg?react';
 import Graph from './botPreviewGraph.svg?react';
-import operatedLogo from './operatedLogo.png';
 import IcModalX from './modalXIcon.svg?react';
 import IcNotice from './noticeIcon.svg?react';
 import IcDropdown from './dropdownIcon.svg?react';
@@ -14,8 +13,6 @@ import IcDropUp from './dropupIcon.svg?react';
 import LogoGradationBot from './gradationBotLogo.svg?react';
 import LogoNeutron from './neutronLogo.svg?react';
 import IcSwap from './swapIcon.svg?react';
-
-import dashboardBackIMG from './dashboardBackIMG.webp';
 
 export {
   announceIMG,
@@ -27,12 +24,10 @@ export {
   LogoGradationBot,
   IcPersons,
   Graph,
-  operatedLogo,
   IcModalX,
   IcNotice,
   IcDropdown,
   IcDropUp,
   LogoNeutron,
-  dashboardBackIMG,
   IcSwap,
 };

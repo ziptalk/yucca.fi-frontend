@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { STCOMBoxWrapper } from '../common/styles/commonStyleComs';
 import { transformStyles } from '../common/styles/transformStyles';
-import { onboardingBackImg1 } from './assets/0_index';
 export const MainContainer = styled.div`
   width: 100%;
   /* max-width: 120rem; */
@@ -144,24 +143,6 @@ export const Section1 = {
   `,
   Eco: styled.span`
     ${({ theme }) => theme.fonts.body_2m};
-  `,
-  BackgroundImg1: styled.div`
-    width: 97rem;
-    height: 98rem;
-    position: absolute;
-    right: -25rem;
-    z-index: -1;
-    background-image: url(${onboardingBackImg1});
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    @media (${({ theme }) => theme.breakpoints.mobile}) {
-      width: 112.8rem;
-      height: 101rem;
-      top: -5rem;
-      right: -35rem;
-      opacity: 0.6;
-    }
   `,
   BackgroundImg2: styled.img`
     width: 100%;

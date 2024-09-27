@@ -22,7 +22,7 @@ import axios from 'axios';
 import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
 
 import styled from '@emotion/styled';
-import LinkBtns from './Components/linkBtns.tsx';
+import LinkBtns from './Components/LinkBtns.tsx';
 
 interface IOnboardingProps {
   isMobile: boolean;

@@ -13,9 +13,6 @@ import IcStrokeLogo from './protonStrokeLogo.svg?react';
 import SadLogo from './sadLogo.svg?react';
 
 import IcSuccess from './icSuccess.svg?react';
-import onBoardingBackImg1 from './onboardingBackImg1.webp';
-import onBoardingBackImg2 from './onboardingBackImg2.webp';
-import onBoardingBackImg3 from './onboardingBackImg3.webp';
 
 export {
   Logo,
@@ -26,9 +23,6 @@ export {
   IcFooterTwitter,
   IcStrokeLogo,
   IcSuccess,
-  onBoardingBackImg1,
-  onBoardingBackImg2,
-  onBoardingBackImg3,
   IcMenu,
   SadLogo,
 };
