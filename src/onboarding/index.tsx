@@ -7,10 +7,6 @@ import {
 } from '../common/assets/0_index';
 import {
   Botanix,
-  IcGithub,
-  // IcMedium,
-  IcTelegram,
-  IcTwitter,
   onboarding3,
   onboarding3_mobile,
   yuccafiBackground,
@@ -20,13 +16,13 @@ import TradeNowBtn from './Components/TradeNowBtn.tsx';
 import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
 import { ONBOARDING4 } from './constants/constants.ts';
-import { LINKS } from '../common/constants/LINKS.ts';
 import useMobile from '../common/hooks/useMobile.tsx';
 // import { getContractTokenBalance } from '../common/contracts/contractFunctions.ts';
 import axios from 'axios';
 import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
 
 import styled from '@emotion/styled';
+import LinkBtns from './Components/linkBtns.tsx';
 
 interface IOnboardingProps {
   isMobile: boolean;
@@ -112,7 +108,11 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
               <St.Mobile.Value>$ {totalValueLocked}</St.Mobile.Value>
             </St.Mobile.ValueContainer>
           </St.Mobile.GlassWrapper>
-          <TradeNowBtn />
+          <St.Mobile.Ecosystem>
+            <p>Ecosystem</p>
+            <Botanix />
+          </St.Mobile.Ecosystem>
+          {/* <TradeNowBtn /> */}
         </St.Mobile.ContentLayout>
       ) : (
         <St.Section1.ContentLayout>
@@ -132,27 +132,19 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
       )}
       <St.Section1.Bottom>
         {isMobile ? (
-          <></>
+          <St.Mobile.Bottom>
+            <TradeNowBtn />
+            <LinkBtns />
+          </St.Mobile.Bottom>
         ) : (
-          <nav>
-            <a href={LINKS.twitter} target='_blank'>
-              <IcTwitter />
-            </a>
-            <a href={LINKS.telegrem} target='_blank'>
-              <IcTelegram />
-            </a>
-            {/* <a href={LINKS.medium} target='_blank'>
-              <IcMedium />
-              </a> */}
-            <a href={LINKS.github} target='_blank'>
-              <IcGithub />
-            </a>
-          </nav>
+          <>
+            <LinkBtns />
+            <St.Section1.TotalValue>
+              <p>Total Value Locked</p>
+              <p>$ {totalValueLocked}</p>
+            </St.Section1.TotalValue>
+          </>
         )}
-        <St.Section1.TotalValue>
-          <p>Total Value Locked</p>
-          <p>$ {totalValueLocked}</p>
-        </St.Section1.TotalValue>
       </St.Section1.Bottom>
     </St.Section1.Container>
   );
@@ -169,7 +161,7 @@ const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
             {ABOUTQVE.map((item) => {
               return (
                 <St.Mobile.SectionItemBox key={item.keyWord}>
-                  <item.icon style={{ width: '6.4rem', height: '6.4rem' }} />
+                  <item.icon style={{ width: '2.4rem', height: '2.4rem' }} />
                   <St.Mobile.AboutItem>{item.title}</St.Mobile.AboutItem>
                   <St.Mobile.Explain>{item.explain}</St.Mobile.Explain>
                 </St.Mobile.SectionItemBox>
@@ -272,7 +264,11 @@ const OnBoarding4 = ({ isMobile }: IOnboardingProps) => {
           <>
             {ONBOARDING4.map((item) => (
               <St.Mobile.Section4ItemBox key={item.label}>
-                <img src={item.icon} alt={item.label} />
+                <img
+                  src={item.icon}
+                  alt={item.label}
+                  style={{ width: '5rem', height: '5rem' }}
+                />
                 <St.Mobile.Body1>{item.label}</St.Mobile.Body1>
                 <St.Mobile.Explain>{item.explain}</St.Mobile.Explain>
               </St.Mobile.Section4ItemBox>

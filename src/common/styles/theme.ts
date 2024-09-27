@@ -27,6 +27,7 @@ const colors = {
   dark_gray: '#444444',
   background: '#FFFFDB',
   dark_label: '#B7B8CD',
+  light_gray: '#AEAEAE',
 };
 
 const FONT = (

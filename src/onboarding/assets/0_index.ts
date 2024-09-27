@@ -11,7 +11,7 @@ import IcSafety from './section2_safety.svg?react';
 import onboardingBackImg1 from './onBoardingBackImg1.webp';
 
 import onboarding3 from './onboarding_mock3.webp';
-import onboarding3_mobile from './onboarding_mock3_mobile.webp';
+import onboarding3_mobile from './section3_mobile.webp';
 import onboardingBackPng from './test.png';
 
 import imgDepositFunds from './section4_depositFunds.webp';

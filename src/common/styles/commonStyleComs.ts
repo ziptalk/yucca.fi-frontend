@@ -3,7 +3,7 @@ import { transformStyles } from './transformStyles';
 
 export const STCOMBoxWrapper = styled.div`
   border-radius: 40px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: rgba(255, 255, 255, 0.6);
 `;
 
 export const STCOMGlassWrapper = styled.div`

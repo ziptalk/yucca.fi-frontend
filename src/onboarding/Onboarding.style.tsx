@@ -14,9 +14,7 @@ export const MainContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
   z-index: 1;
   margin-top: 100vh;
-
   @media (${({ theme }) => theme.breakpoints.mobile}) {
-    min-width: 375px;
     max-width: 480px;
     padding: 6.4rem 2.4rem 0;
   }
@@ -131,6 +129,15 @@ export const Section1 = {
       }
     }
 
+    @media (${({ theme }) => theme.breakpoints.mobile}) {
+      bottom: 2.8rem;
+      & nav {
+        position: relative;
+        display: flex;
+        gap: 1rem;
+      }
+    }
+
     & p {
       ${({ theme }) => theme.fonts.body_3m};
     }
@@ -185,6 +192,10 @@ export const Section2 = {
       @media (${({ theme }) => theme.breakpoints.tablet}) {
         flex: 0 1 calc(50% - 2rem); /* 2개씩 wrap되도록 설정 */
       }
+    }
+
+    @media (${({ theme }) => theme.breakpoints.mobile}) {
+      padding: 0 5rem;
     }
   `,
   Contents: styled.div`
@@ -364,14 +375,13 @@ export const Mobile = {
     }
   `,
   GlassWrapper: styled.div`
-    border-radius: 20px;
-    width: 100%;
+    border-radius: 40px;
+    width: fit-content;
     height: 12rem;
-    color: ${({ theme }) => theme.colors.sub_white};
     margin-top: 5.1rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: 12rem;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.6);
     border: none;
     backdrop-filter: saturate(130%) blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -388,36 +398,58 @@ export const Mobile = {
   `,
   ValueLabel: styled.p`
     ${({ theme }) => theme.fonts.body_2m};
+    color: ${({ theme }) => theme.colors.dark_gray};
   `,
   Value: styled.p`
     ${({ theme }) => theme.fonts.title_2a};
-    color: white;
+    color: ${({ theme }) => theme.colors.deep_dark_green};
   `,
   SectionItemBox: styled.div`
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     gap: 1.2rem;
     padding: 3.2rem 3rem;
   `,
   Section4ItemBox: styled.div`
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.2rem;
-    padding: 3.2rem 0;
+    padding: 3.1rem;
   `,
   Body1: styled.p`
     margin-top: 1.8rem;
     ${({ theme }) => theme.fonts.body_1};
   `,
   Explain: styled.p`
-    ${({ theme }) => theme.fonts.body_2};
+    ${({ theme }) => theme.fonts.poppins_18};
+    color: ${({ theme }) => theme.colors.light_gray};
     text-align: center;
   `,
   AboutItem: styled.p`
     ${({ theme }) => theme.fonts.body_0m};
+  `,
+  Ecosystem: styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    & > p {
+      ${({ theme }) => theme.fonts.poppins_16};
+      color: ${({ theme }) => theme.colors.dark_spring_green};
+    }
+  `,
+  Bottom: styled.div`
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
   `,
 };

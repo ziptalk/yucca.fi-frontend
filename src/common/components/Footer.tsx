@@ -50,7 +50,7 @@ const StFooter = {
     justify-content: space-between;
     bottom: 0;
     @media (${({ theme }) => theme.breakpoints.mobile}) {
-      width: 70%;
+      width: 50%;
       flex-wrap: wrap-reverse;
       align-items: center;
       justify-content: center;
