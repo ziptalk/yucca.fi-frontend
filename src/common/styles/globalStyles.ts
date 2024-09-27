@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import emotionReset from 'emotion-reset';
 import { theme } from './theme';
-import { yuccafiBackground } from '../../onboarding/assets/0_index';
 
 const globalStyles = css`
   ${emotionReset}
@@ -26,7 +25,6 @@ const globalStyles = css`
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      background-image: none;
     }
 
     #root {
@@ -51,9 +49,6 @@ const globalStyles = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(${yuccafiBackground});
-    background-size: 100% 100vh;
-    background-repeat: no-repeat;
   }
 
   button {

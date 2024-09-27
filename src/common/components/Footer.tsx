@@ -43,6 +43,7 @@ const StFooter = {
 
     position: relative;
     width: 100%;
+    max-width: 120rem;
     padding: 6.4rem 0;
     margin-top: 13.6rem;
     display: flex;

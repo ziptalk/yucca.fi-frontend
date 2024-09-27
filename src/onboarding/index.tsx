@@ -13,6 +13,7 @@ import {
   IcTwitter,
   onboarding3,
   onboarding3_mobile,
+  yuccafiBackground,
 } from './assets/0_index';
 import { ABOUTQVE } from './constants/constants.ts';
 import TradeNowBtn from './Components/TradeNowBtn.tsx';
@@ -24,6 +25,8 @@ import useMobile from '../common/hooks/useMobile.tsx';
 // import { getContractTokenBalance } from '../common/contracts/contractFunctions.ts';
 import axios from 'axios';
 import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
+
+import styled from '@emotion/styled';
 
 interface IOnboardingProps {
   isMobile: boolean;
@@ -58,15 +61,17 @@ const OnBoarding = () => {
         section3Ref={section3Ref}
         section4Ref={section4Ref}
       />
-      <OnBoarding1 isMobile={isMobile} />
+      <StOnboardingBackground>
+        <OnBoarding1 isMobile={isMobile} />
+      </StOnboardingBackground>
       <St.MainContainer>
-        <div ref={section2Ref} style={{ width: '100vh' }}>
+        <div ref={section2Ref} style={{ width: '100vw' }}>
           <OnBoarding2 isMobile={isMobile} />
         </div>
-        <div ref={section3Ref} style={{ width: '100vh' }}>
+        <div ref={section3Ref} style={{ width: '100vw' }}>
           <OnBoarding3 isMobile={isMobile} />
         </div>
-        <div ref={section4Ref} style={{ width: '100vh' }}>
+        <div ref={section4Ref} style={{ width: '100vw' }}>
           <OnBoarding4 isMobile={isMobile} />
         </div>
         <Footer />
@@ -291,3 +296,13 @@ const OnBoarding4 = ({ isMobile }: IOnboardingProps) => {
 };
 
 export default OnBoarding;
+
+const StOnboardingBackground = styled.div`
+  background-image: url(${yuccafiBackground});
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;

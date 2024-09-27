@@ -47,13 +47,14 @@ export const Section1 = {
   Container: styled.section`
     ${transformStyles}
     width: 100vw;
+    max-width: 120rem;
     height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 20rem;
+    /* padding-top: 20rem; */
   `,
   ContentLayout: styled.div`
     min-width: 76.9rem;
@@ -118,6 +119,8 @@ export const Section1 = {
     justify-content: center;
     align-items: center;
     margin: 1rem 0;
+    position: absolute;
+    bottom: 10rem;
 
     & nav {
       position: absolute;
