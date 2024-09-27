@@ -91,22 +91,6 @@ const StBtn = styled.button<{
   ${({ theme }) => theme.fonts.body_1};
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
-    width: calc(50% - 0.7rem);
-    height: 5rem;
-    border-radius: 10px;
-    border: ${({ selectView, name, theme }) =>
-      selectView === name ? 'none' : `2px solid ${theme.colors.pink_sub}`};
-    color: ${({ selectView, name, theme }) =>
-      selectView === name ? theme.colors.white : theme.colors.gray};
-    ${({ theme }) => theme.fonts.body_2_semibold};
-
-    &::before {
-      border-radius: 11px;
-      top: 0px;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
-    }
   }
 `;
 

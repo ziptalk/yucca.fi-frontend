@@ -3,7 +3,7 @@ import { IcModalX, IcNotice } from '../assets/0_index';
 import AreaChart from './AreaChart';
 import {
   STCOMBackground,
-  STCOMPinkBtn,
+  STCOMActiveBtn,
 } from '../../common/styles/commonStyleComs';
 import DropDown from './DropDown';
 import axios from 'axios';
@@ -21,6 +21,8 @@ import { walletConfig } from '../../wallet/walletConfig';
 import { getBalance } from 'wagmi/actions';
 import { USDTTokenAddress } from '../../common/contracts/tokenAddress';
 import { convertTokenBalance } from '../../common/utils/convertTokenBalance';
+import BotModalReceive from './BotModalReceive';
+import { parseNumber } from '../../common/utils/parseNumber';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 10;
@@ -44,6 +46,7 @@ const BotModal = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState('Deposit');
   const [balance, setBalance] = useState<string>();
+  const [isFocused, setIsFocused] = useState(false);
   useOutsideClick(wrapperRef, onClose);
 
   useEffect(() => {
@@ -140,16 +143,21 @@ const BotModal = ({
                 {TOKEN_INFO.token}
               </StAvailable>
             </StSpaceBetween>
-            <StinputContainer>
+            <StinputContainer isFocused={isFocused || depositValue.length > 0}>
               <input
                 placeholder={placeholder}
                 value={depositValue}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
                 onChange={handleDepositValue}
               />
               <button onClick={() => balance && setDepositValue(balance)}>
                 Max
               </button>
             </StinputContainer>
+            {(isFocused || depositValue) && (
+              <BotModalReceive value={parseNumber(depositValue)} />
+            )}
           </StColumn>
 
           <StGraphContaienr>
@@ -200,7 +208,7 @@ const StScroll = styled.div`
   max-height: 76rem;
   height: 100%;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.background_pink};
+  background-color: ${({ theme }) => theme.colors.background};
   z-index: 4;
   padding: 2.4rem;
   scrollbar-width: none;
@@ -235,7 +243,7 @@ const StSpaceBetween = styled.div`
 `;
 
 const StModalTitle = styled.p`
-  ${({ theme }) => theme.fonts.body_2};
+  ${({ theme }) => theme.fonts.pretendard_22};
   color: ${({ theme }) => theme.colors.darkgray};
 `;
 
@@ -264,13 +272,14 @@ const StAvailable = styled.p`
   }
 `;
 
-const StinputContainer = styled.div`
+const StinputContainer = styled.div<{ isFocused: boolean }>`
   width: 100%;
-  height: 5rem;
+  height: ${({ isFocused }) => (isFocused ? '6rem' : '5rem')};
   padding: 1.4rem 1.5rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.colors.white};
   position: relative;
+  border: ${({ isFocused }) => (isFocused ? '1px solid #6D9F71' : '')};
 
   & > input {
     width: 80%;
@@ -281,7 +290,7 @@ const StinputContainer = styled.div`
     color: ${({ theme }) => theme.colors.black};
 
     &::placeholder {
-      color: ${({ theme }) => theme.colors.gray};
+      color: ${({ theme }) => theme.colors.light_gray};
     }
   }
 
@@ -316,7 +325,7 @@ const StGraphContaienr = styled.div`
   }
 `;
 
-const StDepositBtn = styled(STCOMPinkBtn)<{ disabled: boolean }>`
+const StDepositBtn = styled(STCOMActiveBtn)<{ disabled: boolean }>`
   width: 100%;
   min-height: 4.6rem;
   ${(props) => props.disabled && ' background-color: #ccc'};
@@ -327,12 +336,12 @@ const StModalNotice = styled.div`
   justify-content: center;
   width: 100%;
   height: 5.8rem;
-  background-color: ${({ theme }) => theme.colors.gray};
+  background-color: ${({ theme }) => theme.colors.white_opacity};
   padding: 1.2rem 2.4rem;
   ${({ theme }) => theme.fonts.caption};
   gap: 0.9rem;
   line-height: 120%;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.light_gray};
 `;
 
 const StNoticeP = styled.p`

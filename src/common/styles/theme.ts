@@ -7,7 +7,7 @@ const colors = {
   white: '#ffffff',
   not_important: '#AEAEAE',
   sub_white: '#E2E3E2',
-  positive: '#00C37C',
+  positive: '#6D9F71',
   negative: '##E5809E',
   label: '#B7B8CD',
   black: '#000000',
@@ -28,6 +28,7 @@ const colors = {
   background: '#FFFFDB',
   dark_label: '#B7B8CD',
   light_gray: '#AEAEAE',
+  white_opacity: 'rgba(255, 255, 255, 0.60)',
 };
 
 const FONT = (
@@ -106,6 +107,7 @@ const fonts = {
   poppins_18: FONT('"Poppins", sans-serif', 1.8, 'normal', '500', '140', 0),
   poppins_16: FONT('"Poppins", sans-serif', 1.6, 'normal', '500', '150', 0),
   pretendard_22: FONT('Pretendard Variable', 2.2, 'normal', '600', 'normal', 0),
+  pre_18_semi: FONT('Pretendard Variable', 1.8, 'normal', '600', 'auto', 0),
   title_0: FONT('Montserrat', 4.2, 'normal', '600', '140', 0),
   title_0_pre: FONT('Pretendard Variable', 4, 'normal', '600', '140', 0),
   title_TVL: FONT('Montserrat', 4, 'normal', 'Bold', 'auto', 0),

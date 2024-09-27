@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { DASHBORADTABLEHEADER } from '../constants/DASHBOARD';
 // import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 import {
-  STCOMPinkBtn,
+  STCOMActiveBtn,
   STCOMGreyBtn,
 } from '../../common/styles/commonStyleComs';
 import { IDashboard } from '../types/dashboardType';
@@ -21,6 +21,7 @@ import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 import instance from '../../common/apis/instance';
 import { LogoCyclicArbBot } from '../assets/0_index';
+import { SadLogo } from '../../common/assets/0_index';
 // import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 
 const base_url = import.meta.env.VITE_BASE_URL;
@@ -132,7 +133,8 @@ const ISnotConnectWallet = () => {
   return (
     <StNotConnectContainer>
       <span>
-        <StText1>MYTETHER is not connected</StText1>
+        <SadLogo />
+        <StText1>YUCCA.FI is not connected</StText1>
         <StText1>to your wallet</StText1>
         <div />
         <StText2>To see more information about this vault</StText2>
@@ -148,10 +150,11 @@ const ISnotSelectBot = () => {
   return (
     <StNotConnectContainer>
       <span>
+        <SadLogo />
         <StText1>You are not investing in the</StText1>
         <StText1>trading bot. Go invest now!</StText1>
         <div />
-        <StText2>You have not deposited to MYTETHER.</StText2>
+        <StText2>You have not deposited to YUCCA.FI.</StText2>
         <StText2>
           If you want to earn profits, go ahead and make a deposit!
         </StText2>
@@ -281,7 +284,7 @@ const StTableCell = styled.td`
   text-align: left;
 `;
 
-const StAddBtn = styled(STCOMPinkBtn)`
+const StAddBtn = styled(STCOMActiveBtn)`
   padding: 1.2rem 2.5rem;
   ${({ theme }) => theme.fonts.body_3m};
   margin-right: 1rem;
@@ -328,17 +331,18 @@ const StNotConnectContainer = styled.div`
 `;
 
 const StText1 = styled.p`
-  ${({ theme }) => theme.fonts.title_0};
+  ${({ theme }) => theme.fonts.kumbh_snas_42};
+  color: ${({ theme }) => theme.colors.spring_green};
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     ${({ theme }) => theme.fonts.title_2};
   }
 `;
 
 const StText2 = styled.p`
-  ${({ theme }) => theme.fonts.body_3};
-  color: ${({ theme }) => theme.colors.gray};
+  ${({ theme }) => theme.fonts.pre_18_semi};
+  color: ${({ theme }) => theme.colors.light_gray};
 `;
 
-const StConnectWallet = styled(STCOMPinkBtn)`
+const StConnectWallet = styled(STCOMActiveBtn)`
   padding: 1.8rem 3.2rem;
 `;

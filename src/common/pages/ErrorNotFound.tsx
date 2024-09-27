@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { STCOMPinkBtn } from '../styles/commonStyleComs';
+import { STCOMActiveBtn } from '../styles/commonStyleComs';
 import { useNavigate } from 'react-router-dom';
 
 const ErrorNotFound = () => {
@@ -38,7 +38,7 @@ const StSubText = styled.p`
   text-align: center;
 `;
 
-const StBtn = styled(STCOMPinkBtn)`
+const StBtn = styled(STCOMActiveBtn)`
   width: fit-content;
   padding: 1rem 2rem;
 `;

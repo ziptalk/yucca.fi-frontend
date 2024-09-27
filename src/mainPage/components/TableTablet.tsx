@@ -1,6 +1,6 @@
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import {
-  STCOMPinkBtn,
+  STCOMActiveBtn,
   STCOMGreyBtn,
 } from '../../common/styles/commonStyleComs';
 import { formatPriceValue } from '../../common/utils/formatPriceValue';
@@ -110,7 +110,7 @@ const StColor = styled.span<{ isPositive: boolean }>`
   }
 `;
 
-const StAddBtn = styled(STCOMPinkBtn)`
+const StAddBtn = styled(STCOMActiveBtn)`
   padding: 1.5rem 2.8rem;
   ${({ theme }) => theme.fonts.caption};
   margin-right: 1rem;

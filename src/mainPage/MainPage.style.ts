@@ -64,7 +64,6 @@ export const Announcement = {
     padding: 0.6rem 2rem;
     border-radius: 93.75px;
     background-color: ${({ theme }) => theme.colors.spring_green};
-    border: 0.1rem solid #fff;
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.poppins_18};
     margin-bottom: 1.2rem;

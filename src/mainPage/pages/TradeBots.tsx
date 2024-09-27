@@ -64,9 +64,10 @@ const TradeBots = () => {
     }
   };
 
-  return data ? (
+  return (
     <StContainer>
       <SelectView view={VIEW.TRADE_BOTS} />
+
       <StTopContainer>
         <StSearchInput>
           <IcSearch />
@@ -84,32 +85,33 @@ const TradeBots = () => {
           <SortBtn title='Runtime' getData={getData} />
         </StSortContainer>
       </StTopContainer>
-
-      <StBotsContainer>
-        {data?.map((bot) => (
-          <BotBoard
-            key={bot.bot_id}
-            data={bot}
-            active={bot.bot_id}
-            openModal={openBotModal}
-            openUnConnectModal={openUnConnectModal}
-            showToast={showToast}
-          />
-        ))}
-        {!searchValue && (
-          <BotBoard
-            key={DUMMY_BOT.bot_id}
-            data={DUMMY_BOT}
-            active={DUMMY_BOT.bot_id}
-            openModal={openBotModal}
-            openUnConnectModal={openUnConnectModal}
-            showToast={showToast}
-          />
-        )}
-      </StBotsContainer>
+      {data ? (
+        <StBotsContainer>
+          {data?.map((bot) => (
+            <BotBoard
+              key={bot.bot_id}
+              data={bot}
+              active={bot.bot_id}
+              openModal={openBotModal}
+              openUnConnectModal={openUnConnectModal}
+              showToast={showToast}
+            />
+          ))}
+          {!searchValue && (
+            <BotBoard
+              key={DUMMY_BOT.bot_id}
+              data={DUMMY_BOT}
+              active={DUMMY_BOT.bot_id}
+              openModal={openBotModal}
+              openUnConnectModal={openUnConnectModal}
+              showToast={showToast}
+            />
+          )}
+        </StBotsContainer>
+      ) : (
+        <>loading..</>
+      )}
     </StContainer>
-  ) : (
-    <>loading..</>
   );
 };
 
@@ -151,9 +153,9 @@ const StSearchInput = styled.div`
   width: 100%;
   max-width: 45rem;
   height: 5rem;
-  background-color: transparent;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.not_important};
-  padding: 0.75rem 1.4rem;
+  background-color: ${({ theme }) => theme.colors.white_opacity};
+  border-radius: 100px;
+  padding: 1.2rem 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -187,8 +189,8 @@ const StSortBtn = styled.button`
   border-radius: 100px;
   padding: 0 1.6rem 0;
   ${({ theme }) => theme.fonts.body_3m};
-  background-color: ${({ theme }) => theme.colors.pink_sub};
-  color: ${({ theme }) => theme.colors.pink_main};
+  background-color: ${({ theme }) => theme.colors.white_opacity};
+  color: ${({ theme }) => theme.colors.spring_green};
   gap: 0.7rem;
   cursor: pointer;
   display: flex;

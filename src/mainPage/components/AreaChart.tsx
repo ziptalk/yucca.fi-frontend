@@ -45,7 +45,7 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
     },
     stroke: {
       curve: 'smooth',
-      colors: ['#19F6C1'],
+      colors: ['#6D9F71'],
       width: 2,
     },
     fill: {
@@ -54,7 +54,7 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
         shade: 'light', // 그라데이션의 밝기
         type: 'vertical', // 수직 그라데이션
         shadeIntensity: 0.5,
-        gradientToColors: ['#19F6C1'], // 그라데이션의 끝 색상
+        gradientToColors: ['#6D9F71'], // 그라데이션의 끝 색상
         inverseColors: false,
         opacityFrom: 0.3, // 시작 색상의 투명도
         opacityTo: 0, // 끝 색상의 투명도
@@ -75,14 +75,14 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
             .padStart(2, '0')}`;
         },
         style: {
-          colors: '#696969',
+          colors: '#AEAEAE',
         },
 
         offsetX: 0,
       },
       axisBorder: {
         show: true,
-        color: '#696969', // x축 경계선 색상 하얀색으로 설정
+        color: '#AEAEAE', // x축 경계선 색상 하얀색으로 설정
       },
       axisTicks: {
         show: false,
@@ -98,7 +98,7 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
           return formatPriceValue(value) + '%'; // y축의 값을 %로 포맷팅합니다.
         },
         style: {
-          colors: ['#696969'],
+          colors: ['#AEAEAE'],
         },
       },
       tickAmount: 5,
@@ -108,7 +108,7 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
       // max: 100,
     },
     grid: {
-      borderColor: '#696969', // 그리드 선 색상 하얀색으로 설정
+      borderColor: '#AEAEAE', // 그리드 선 색상 하얀색으로 설정
       strokeDashArray: 3, // 점선 스타일
     },
     tooltip: {

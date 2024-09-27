@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import {
-  STCOMPinkBtn,
+  STCOMActiveBtn,
   STCOMBoxWrapper,
 } from '../../common/styles/commonStyleComs';
 import { IcPersons, LogoCyclicArbBot } from '../assets/0_index';
@@ -14,6 +14,7 @@ import { IChartData } from '../types/pnlChartType';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import instance from '../../common/apis/instance';
+import { Botanix } from '../../onboarding/assets/0_index';
 
 interface IBotBoardProps {
   data: ITRADEBOTS;
@@ -90,6 +91,10 @@ const BotBoard = ({
               </div>
             </StBotSummaryValue>
             <StBottomContainer>
+              <StOperated>
+                <label>operated in</label>
+                <Botanix />
+              </StOperated>
               <StDeposit
                 onClick={() =>
                   user_id ? openModal(propsData.bot_id) : openUnConnectModal()
@@ -100,7 +105,7 @@ const BotBoard = ({
             </StBottomContainer>
           </>
         ) : (
-          <StComingSoon>Coming Soon...</StComingSoon>
+          <StComingSoon>Coming Soon.. :)</StComingSoon>
         )}
       </StContainer>
     </StGlassWrapper>
@@ -148,7 +153,7 @@ const StBotInfo = styled.section`
   gap: 1.6rem;
   padding-bottom: 2rem;
   margin-bottom: 0.5rem;
-  border-bottom: 1.5px solid ${({ theme }) => theme.colors.pink_sub};
+  border-bottom: 1.5px solid ${({ theme }) => theme.colors.not_important};
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     padding-bottom: 1.2rem;
@@ -244,25 +249,43 @@ const StBotSummaryValue = styled.div`
 `;
 
 const StBottomContainer = styled.div`
-  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: end;
-  padding-top: 3.5rem;
-  padding-bottom: 1rem;
 `;
 
-const StDeposit = styled(STCOMPinkBtn)`
-  width: 100%;
+const StOperated = styled.span`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  & label {
+    color: ${({ theme }) => theme.colors.not_important};
+    ${({ theme }) => theme.fonts.body_2_auto};
+    @media (${({ theme }) => theme.breakpoints.mobile}) {
+      ${({ theme }) => theme.fonts.caption};
+    }
+  }
+
+  & > img {
+    width: 4.5rem;
+    @media (${({ theme }) => theme.breakpoints.mobile}) {
+      width: 2.8rem;
+    }
+  }
+`;
+
+const StDeposit = styled(STCOMActiveBtn)`
   padding: 1.25rem 3.7rem;
   @media (${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 0.8rem 2.7rem;
+    padding: 1.2rem 3.7rem;
     ${({ theme }) => theme.fonts.small_phrase};
   }
 `;
 
 const StComingSoon = styled.div`
   ${({ theme }) => theme.fonts.title_0_pre};
+  color: ${({ theme }) => theme.colors.spring_green};
   width: 100%;
   height: 60%;
   display: flex;

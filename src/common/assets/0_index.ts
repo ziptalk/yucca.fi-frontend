@@ -10,6 +10,8 @@ import IcFooterGithub from './icGithub.svg?react';
 
 import Logo from './Logo.svg?react';
 import IcStrokeLogo from './protonStrokeLogo.svg?react';
+import SadLogo from './sadLogo.svg?react';
+
 import IcSuccess from './icSuccess.svg?react';
 import onBoardingBackImg1 from './onboardingBackImg1.webp';
 import onBoardingBackImg2 from './onboardingBackImg2.webp';
@@ -28,4 +30,5 @@ export {
   onBoardingBackImg2,
   onBoardingBackImg3,
   IcMenu,
+  SadLogo,
 };

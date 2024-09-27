@@ -25,10 +25,10 @@ export const STCOMGlassWrapper = styled.div`
   -webkit-backdrop-filter: blur(5px);
 `;
 
-export const STCOMPinkBtn = styled.button`
+export const STCOMActiveBtn = styled.button`
   width: fit-content;
   height: fit-content;
-  background-color: ${({ theme }) => theme.colors.pink_main};
+  background-color: ${({ theme }) => theme.colors.dark_spring_green};
   border-radius: 100px;
   ${({ theme }) => theme.fonts.body_2_bold};
   color: ${({ theme }) => theme.colors.white};
@@ -37,7 +37,7 @@ export const STCOMPinkBtn = styled.button`
 export const STCOMGreyBtn = styled.button`
   width: fit-content;
   height: fit-content;
-  background-color: ${({ theme }) => theme.colors.gray};
+  background-color: ${({ theme }) => theme.colors.not_important};
   border-radius: 100px;
   ${({ theme }) => theme.fonts.body_2_bold};
   color: ${({ theme }) => theme.colors.white};
@@ -47,6 +47,7 @@ export const STCOMBackground = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
+  padding-top: 10rem;
   top: 0;
   left: 0;
   right: 0;
@@ -54,7 +55,7 @@ export const STCOMBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 3;
+  z-index: 30;
 
   ${transformStyles}
 `;

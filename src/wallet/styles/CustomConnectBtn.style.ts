@@ -14,7 +14,7 @@ export const WalletBtn = styled.button`
   border-radius: 20px;
   padding: 1.6rem;
   color: ${({ theme }) => theme.colors.white};
-  ${({ theme }) => theme.fonts.body_2m};
+  ${({ theme }) => theme.fonts.kumbh_snas_18_medi};
 
   &:hover {
     background: ${({ theme }) => theme.colors.dark_pink};
