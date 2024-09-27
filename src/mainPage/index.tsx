@@ -89,7 +89,7 @@ const Announcement = () => {
   return (
     <St.Announcement.GlassWrapper>
       <St.Announcement.Container>
-        <St.Announcement.Label>Announcement</St.Announcement.Label>
+        <St.Announcement.Label>Notice</St.Announcement.Label>
         <St.Announcement.Text>
           Unlock the Full Potential of Your
         </St.Announcement.Text>

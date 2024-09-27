@@ -29,11 +29,10 @@ export const Announcement = {
     overflow: hidden;
     z-index: -1;
     background: linear-gradient(
-      266deg,
-      #eeb8c2 14.03%,
-      #f4c8da 33.02%,
-      #f45dd3 99.76%,
-      #f45dd3 100.39%
+      140deg,
+      #041f151a 1.14%,
+      #00b676 68.92%,
+      #6d9f71 91.68%
     );
     border-radius: 20px;
 
@@ -53,7 +52,6 @@ export const Announcement = {
     right: 0;
     bottom: 0;
     z-index: -1;
-    opacity: 0.6;
 
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       right: -10rem;
@@ -63,12 +61,12 @@ export const Announcement = {
   Label: styled.div`
     width: fit-content;
     height: auto;
-    padding: 0.9rem;
+    padding: 0.6rem 2rem;
     border-radius: 93.75px;
-    background-color: transparent;
+    background-color: ${({ theme }) => theme.colors.spring_green};
     border: 0.1rem solid #fff;
     color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.fonts.caption};
+    ${({ theme }) => theme.fonts.poppins_18};
     margin-bottom: 1.2rem;
 
     @media (${({ theme }) => theme.breakpoints.mobile}) {
@@ -77,7 +75,7 @@ export const Announcement = {
   `,
   Text: styled.p`
     color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.fonts.title_1};
+    ${({ theme }) => theme.fonts.kumbh_snas_34};
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       ${({ theme }) => theme.fonts.body_1};
     }

@@ -55,6 +55,14 @@ const fonts = {
     '140',
     0
   ),
+  kumbh_snas_34: FONT(
+    '"Kumbh Sans", sans-serif',
+    3.4,
+    'normal',
+    '600',
+    'normal',
+    0
+  ),
   kumbh_snas_28: FONT(
     '"Kumbh Sans", sans-serif',
     2.8,
