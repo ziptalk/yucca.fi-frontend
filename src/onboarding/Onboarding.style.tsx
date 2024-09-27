@@ -13,7 +13,7 @@ export const MainContainer = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
   z-index: 1;
-  /* margin-top: 100vh; */
+  margin-top: 100vh;
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     min-width: 375px;
@@ -54,7 +54,6 @@ export const Section1 = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* padding-top: 20rem; */
   `,
   ContentLayout: styled.div`
     min-width: 76.9rem;
