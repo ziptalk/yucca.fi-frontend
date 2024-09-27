@@ -51,6 +51,11 @@ const globalStyles = css`
     align-items: center;
   }
 
+  html,
+  body {
+    overscroll-behavior: none; /* 스크롤이 끝에 도달했을 때 다음 동작 방지 */
+  }
+
   button {
     border: none;
     cursor: pointer;
