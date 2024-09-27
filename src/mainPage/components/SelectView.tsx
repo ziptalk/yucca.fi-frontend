@@ -1,21 +1,28 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { css } from '@emotion/react';
+import { IcDashboard, IcSwap, IcTradeBots } from '../assets/0_index';
 
 export const VIEW = {
   TRADE_BOTS: 'Trade Bots',
   DASHBOARD: 'Dashboard',
+  Swap: 'Swap on DEX',
 };
 
 const SelectView = ({ view }: { view: string }) => {
   const navigate = useNavigate();
 
   const handleView = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (e.currentTarget.name === VIEW.TRADE_BOTS) {
-      navigate('/tradeBots');
-    } else {
-      navigate('/dashboard');
+    switch (e.currentTarget.name) {
+      case VIEW.TRADE_BOTS:
+        navigate('/tradeBots');
+        break;
+      case VIEW.Swap:
+        navigate('/swap');
+        break;
+      case VIEW.DASHBOARD:
+        navigate('/dashboard');
+        break;
     }
   };
   return (
@@ -26,7 +33,17 @@ const SelectView = ({ view }: { view: string }) => {
         name={VIEW.TRADE_BOTS}
         onClick={handleView}
       >
+        <StIcon>{view === VIEW.TRADE_BOTS ? <IcTradeBots /> : <></>}</StIcon>
         {VIEW.TRADE_BOTS}
+      </StBtn>
+      <StBtn
+        selectView={view}
+        type='button'
+        name={VIEW.Swap}
+        onClick={handleView}
+      >
+        <StIcon>{view === VIEW.Swap ? <IcSwap /> : <></>}</StIcon>
+        {VIEW.Swap}
       </StBtn>
       <StBtn
         selectView={view}
@@ -34,6 +51,7 @@ const SelectView = ({ view }: { view: string }) => {
         name={VIEW.DASHBOARD}
         onClick={handleView}
       >
+        <StIcon>{view === VIEW.DASHBOARD ? <IcDashboard /> : <></>}</StIcon>
         {VIEW.DASHBOARD}
       </StBtn>
     </StContainer>
@@ -44,7 +62,6 @@ export default SelectView;
 
 const StContainer = styled.div`
   display: flex;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.pink_sub};
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
     justify-content: space-between;
@@ -63,50 +80,13 @@ const StBtn = styled.button<{
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  border-radius: 20px 20px 0 0;
   border: none;
-
-  ${({ selectView, name }) =>
-    selectView === name
-      ? css`
-          background: linear-gradient(
-              180deg,
-              #fff -40%,
-              rgba(255, 255, 255, 0.1) 100%
-            ),
-            linear-gradient(
-              90deg,
-              #fff -20%,
-              #ff6e99c2 30.74%,
-              #fb905b90 80.26%,
-              #fff 120%
-            );
-
-          &::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: 0;
-            border-radius: 21px 21px 0 0;
-            background: linear-gradient(
-              180deg,
-              #ff6e99b5 0%,
-              #ffffff 180%
-            ); /* 그라디언트 보더 */
-            z-index: -1; /* 버튼 내용보다 뒤에 위치 */
-            padding: 2px; /* Border의 두께 */
-            box-sizing: border-box; /* padding이 border-box로 작동하도록 설정 */
-          }
-        `
-      : css`
-          background-color: transparent;
-        `}
+  background-color: transparent;
 
   color: ${({ selectView, name, theme }) =>
-    selectView === name ? theme.colors.white : theme.colors.gray};
-
+    selectView === name ? theme.colors.deep_dark_green : '#AEAEAE'};
+  border-bottom: ${({ selectView, name }) =>
+    selectView === name ? '2px solid #337357' : ''};
   cursor: pointer;
   ${({ theme }) => theme.fonts.body_1};
 
@@ -127,5 +107,14 @@ const StBtn = styled.button<{
       right: 0px;
       bottom: 0px;
     }
+  }
+`;
+
+const StIcon = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
   }
 `;

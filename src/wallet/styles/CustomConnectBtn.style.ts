@@ -7,7 +7,7 @@ export const WalletBtn = styled.button`
   gap: 0.5rem;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(125deg, #f45dd3 1%, #fc954b 99%);
+  background: ${({ theme }) => theme.colors.dark_spring_green};
   min-width: 16.7rem;
   width: fit-content;
   height: 4.6rem;
@@ -17,7 +17,7 @@ export const WalletBtn = styled.button`
   ${({ theme }) => theme.fonts.body_2m};
 
   &:hover {
-    background: linear-gradient(125deg, #fc954b 1%, #f45dd3 99%);
+    background: ${({ theme }) => theme.colors.dark_pink};
   }
 `;
 
