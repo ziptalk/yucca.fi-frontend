@@ -64,13 +64,10 @@ const StContainer = styled.div`
   display: flex;
   box-sizing: border-box;
   border-bottom: 2px solid ${({ theme }) => theme.colors.not_important};
-  /* box-shadow: 0 -1px 0 2px ${({ theme }) =>
-    theme.colors.not_important} inset; */
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
     justify-content: space-between;
-    border-bottom: none;
   }
 `;
 
@@ -80,7 +77,8 @@ const StBtn = styled.button<{
 }>`
   position: relative;
   bottom: -2px;
-  width: 17.9rem;
+  width: fit-content;
+  padding: 0 0.5rem;
   height: 5rem;
   display: flex;
   justify-content: center;
