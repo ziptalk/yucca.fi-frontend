@@ -22,6 +22,7 @@ import { getBalance } from 'wagmi/actions';
 import { convertTokenBalance } from '../../common/utils/convertTokenBalance';
 import BotModalReceive from './BotModalReceive';
 import { parseNumber } from '../../common/utils/parseNumber';
+import { MOCK_PNLCHART } from '../constants/mainPage_MOCK';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 10;
@@ -40,7 +41,7 @@ const BotModal = ({
 }) => {
   const [depositValue, setDepositValue] = useState<string>('');
   const [placeholder, setPlaceholder] = useState(DEPOSIT_PLACEHOLDER.default);
-  const [data, setData] = useState<IPnlChart>();
+  const [data, setData] = useState<IPnlChart>(MOCK_PNLCHART);
   const user_id = useUserAccount();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState('Deposit');

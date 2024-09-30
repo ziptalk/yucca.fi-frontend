@@ -19,6 +19,7 @@ import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import instance from '../../common/apis/instance';
 import { Botanix } from '../../onboarding/assets/0_index';
+import { MOCK_PNLCHART } from '../constants/mainPage_MOCK';
 
 interface IBotBoardProps {
   data: ITRADEBOTS;
@@ -36,7 +37,7 @@ const BotBoard = ({
   openModal,
   openUnConnectModal,
 }: IBotBoardProps) => {
-  const [chartData, setChartData] = useState<IChartData[]>();
+  const [chartData, setChartData] = useState<IChartData[]>(MOCK_PNLCHART.data);
 
   const user_id = useUserAccount();
   useEffect(() => {

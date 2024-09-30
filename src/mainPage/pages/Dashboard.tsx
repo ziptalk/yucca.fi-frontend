@@ -174,7 +174,7 @@ const ISnotSelectBot = () => {
 
 const Dashboard = () => {
   const address = useUserAccount();
-  const [data, setData] = useState<IDashboard>();
+  const [data, setData] = useState<IDashboard>(MOCK_DASHBOARD);
   // const data = MOCK_DASHBOARD;
   const { refreshTrigger } = useOutletContext<{
     refreshTrigger: boolean;
