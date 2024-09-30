@@ -30,7 +30,7 @@ export const STCOMActiveBtn = styled.button`
   height: fit-content;
   background-color: ${({ theme }) => theme.colors.dark_spring_green};
   border-radius: 100px;
-  ${({ theme }) => theme.fonts.body_2_bold};
+  ${({ theme }) => theme.fonts.kumbh_snas_18_medi};
   color: ${({ theme }) => theme.colors.white};
 `;
 
@@ -47,7 +47,8 @@ export const STCOMBackground = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
-  padding-top: 10rem;
+  /* padding-top: 10rem; */
+  padding: 10rem;
   top: 0;
   left: 0;
   right: 0;
@@ -58,6 +59,10 @@ export const STCOMBackground = styled.div`
   z-index: 30;
 
   ${transformStyles}
+
+  @media (${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 10rem 0 0;
+  }
 `;
 
 export const STCOMBackdrop = styled.div`

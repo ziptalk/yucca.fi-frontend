@@ -1,15 +1,11 @@
 import { Theme } from '@emotion/react';
 
 const colors = {
-  qve_gradient: 'linear-gradient(100deg, #2f44af 13%, #581a38 54%)',
-  qve_blue: '#4A3EE9',
-  invest_background: '#232323',
   white: '#ffffff',
   not_important: '#AEAEAE',
   sub_white: '#E2E3E2',
   positive: '#6D9F71',
   negative: '##E5809E',
-  label: '#B7B8CD',
   black: '#000000',
   darkgray: '#696969',
   pink_main: '#FF6E99',
@@ -88,6 +84,14 @@ const fonts = {
     'normal',
     0
   ),
+  kumbh_snas_18: FONT(
+    '"Kumbh Sans", sans-serif',
+    1.8,
+    'normal',
+    '700',
+    'normal',
+    0
+  ),
   kumbh_snas_18_semi: FONT(
     '"Kumbh Sans", sans-serif',
     1.8,
@@ -108,6 +112,7 @@ const fonts = {
   poppins_16: FONT('"Poppins", sans-serif', 1.6, 'normal', '500', '150', 0),
   pretendard_22: FONT('Pretendard Variable', 2.2, 'normal', '600', 'normal', 0),
   pre_18_semi: FONT('Pretendard Variable', 1.8, 'normal', '600', 'auto', 0),
+  pre_36: FONT('Pretendard Variable', 3.6, 'normal', '700', 'auto', 0),
   title_0: FONT('Montserrat', 4.2, 'normal', '600', '140', 0),
   title_0_pre: FONT('Pretendard Variable', 4, 'normal', '600', '140', 0),
   title_TVL: FONT('Montserrat', 4, 'normal', 'Bold', 'auto', 0),

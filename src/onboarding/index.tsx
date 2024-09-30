@@ -1,14 +1,11 @@
 import Header from '../common/components/Header';
 import * as St from './Onboarding.style.tsx';
-import {
-  Logo,
-  // onBoardingBackImg2,
-  // onBoardingBackImg3,
-} from '../common/assets/0_index';
+
 import {
   Botanix,
   onboarding3,
   onboarding3_mobile,
+  yuccaLogoMotion,
   yuccafiBackground,
 } from './assets/0_index';
 import { ABOUTQVE } from './constants/constants.ts';
@@ -117,7 +114,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
       ) : (
         <St.Section1.ContentLayout>
           <St.Section1.QVEIntroduce>
-            <Logo />
+            <St.Section1.Logo src={yuccaLogoMotion} />
             <h1>Quant Vault Escrow Protocol</h1>
             <p>
               A hybrid DeFi platform combining arbitrage trading bots and

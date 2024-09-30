@@ -4,14 +4,15 @@ import styled from '@emotion/styled';
 
 export const WalletBtn = styled.button`
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
+
   background: ${({ theme }) => theme.colors.dark_spring_green};
   min-width: 16.7rem;
   width: fit-content;
   height: 4.6rem;
-  border-radius: 20px;
+  border-radius: 100px;
   padding: 1.6rem;
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fonts.kumbh_snas_18_medi};

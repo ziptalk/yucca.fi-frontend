@@ -20,7 +20,7 @@ export const MainContainer = styled.div`
 `;
 
 export const PreTitle = styled.div`
-  ${({ theme }) => theme.fonts.mont_18_medium};
+  ${({ theme }) => theme.fonts.kumbh_snas_18_medi};
   color: ${({ theme }) => theme.colors.gray};
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     ${({ theme }) => theme.fonts.body_2m};
@@ -60,6 +60,9 @@ export const Section1 = {
     display: flex;
     flex-direction: column;
     gap: 5.4rem;
+  `,
+  Logo: styled.img`
+    width: 60rem;
   `,
   QVEIntroduce: styled.div`
     display: flex;
@@ -102,10 +105,10 @@ export const Section1 = {
     padding: 2rem 4rem;
     background-color: ${({ theme }) => theme.colors.white};
     & > p:nth-of-type(1) {
-      ${({ theme }) => theme.fonts.body_2m};
+      ${({ theme }) => theme.fonts.kumbh_snas_18};
     }
     & > p:nth-of-type(2) {
-      ${({ theme }) => theme.fonts.title_1};
+      ${({ theme }) => theme.fonts.pre_36};
       color: ${({ theme }) => theme.colors.deep_dark_green};
     }
   `,
@@ -166,8 +169,8 @@ export const Section2 = {
     margin-bottom: 14rem;
     margin-top: 5rem;
     & > p {
-      ${({ theme }) => theme.fonts.mont_18_medium};
-      color: ${({ theme }) => theme.colors.darkgray};
+      ${({ theme }) => theme.fonts.kumbh_snas_18_medi};
+      color: ${({ theme }) => theme.colors.gray};
       margin-bottom: 1rem;
 
       @media (${({ theme }) => theme.breakpoints.tablet}) {

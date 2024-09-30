@@ -76,7 +76,7 @@ const StWrapper = styled.div`
   height: 25.2rem;
   border-radius: 16px;
   padding: 2.4rem;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background};
   z-index: 3;
   display: flex;
   flex-direction: column;

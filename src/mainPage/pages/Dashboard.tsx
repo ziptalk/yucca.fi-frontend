@@ -164,7 +164,7 @@ const ISnotSelectBot = () => {
           navigate('/tradeBots');
         }}
       >
-        Trade Now
+        Go Invest Now!
       </StConnectWallet>
     </StNotConnectContainer>
   );
@@ -247,6 +247,16 @@ const StTotalContainer = styled.div`
     gap: 1.2rem;
     & label {
       ${({ theme }) => theme.fonts.body_1};
+    }
+  }
+
+  @media (${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: column;
+    gap: 3rem;
+
+    & > div {
+      width: 100%;
+      gap: 0.2rem;
     }
   }
 `;

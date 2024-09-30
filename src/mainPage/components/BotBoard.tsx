@@ -3,7 +3,11 @@ import {
   STCOMActiveBtn,
   STCOMBoxWrapper,
 } from '../../common/styles/commonStyleComs';
-import { IcPersons, LogoCyclicArbBot } from '../assets/0_index';
+import {
+  IcPersons,
+  LogoCyclicArbBot,
+  LogoGradationBot,
+} from '../assets/0_index';
 import { ITRADEBOTS } from '../types/dashboardType';
 import { formatPriceValue } from '../../common/utils/formatPriceValue';
 import { formatNumberValue } from '../../common/utils/formatNumberValue';
@@ -54,7 +58,7 @@ const BotBoard = ({
     <StGlassWrapper>
       <StContainer>
         <StBotInfo>
-          {active ? <StLogoCyclicArbBot /> : <StLogoCyclicArbBot />}
+          {active ? <StLogoCyclicArbBot /> : <LogoGradationBot />}
           <StBotInfoLayout>
             <StBotName>{propsData.name}</StBotName>
             <div>

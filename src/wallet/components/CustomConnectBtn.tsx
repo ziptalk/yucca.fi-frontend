@@ -1,6 +1,7 @@
 //지갑연결 커스텀 버튼
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import * as St from '../styles/CustomConnectBtn.style';
+import { IcWallet } from '../assets/0_index';
 export const CustomConnectBtn = ({
   handleWalletModal,
 }: {
@@ -45,6 +46,7 @@ export const CustomConnectBtn = ({
                     type='button'
                   >
                     Connect Wallet
+                    <IcWallet />
                   </St.WalletBtn>
                 );
               }

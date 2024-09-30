@@ -23,6 +23,7 @@ const StTradeNowBtn = styled.button`
   display: flex;
   gap: 0.5rem;
   padding: 1.4rem 2.2rem;
+  max-height: 5rem;
   justify-content: center;
   align-items: center;
   background: ${({ theme }) => theme.colors.dark_spring_green};
