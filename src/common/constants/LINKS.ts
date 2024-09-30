@@ -1,8 +1,8 @@
 // 외부 링크
 export const LINKS = {
-  twitter: 'https://x.com/MytetherBwl',
-  telegrem: 'https://t.me/mytetherQVE',
+  twitter: '',
+  telegrem: '',
   medium: '',
-  github: 'https://github.com/ziptalk/mytether-frontend-typescript',
+  github: '',
   docs: '',
 };
