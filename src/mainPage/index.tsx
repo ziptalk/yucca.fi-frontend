@@ -12,6 +12,7 @@ import DepositToast from '../common/components/DepositToast';
 import useToast from '../common/hooks/useToast';
 import { useState } from 'react';
 import useMobile from '../common/hooks/useMobile';
+import styled from '@emotion/styled';
 
 const MainPage = () => {
   const { toast, showToast } = useToast();
@@ -43,7 +44,7 @@ const MainPage = () => {
     closeModal: closeUnConnectModal,
   } = useModal();
   return (
-    <>
+    <StContainer>
       <Header />
       <St.MainContainer>
         <Announcement />
@@ -53,8 +54,8 @@ const MainPage = () => {
           openUnConnectModal={openUnConnectModal}
           refreshTrigger={dataRefreshTrigger}
         />
-        <Footer />
       </St.MainContainer>
+      <Footer />
       {(isBotModalOpen || isRemoveMoalOpen || isUnConnectMoalOpen) && (
         <STCOMBackdrop />
       )}
@@ -82,7 +83,7 @@ const MainPage = () => {
         />
       )}
       {toast && <DepositToast message={toast.message} />}
-    </>
+    </StContainer>
   );
 };
 
@@ -132,3 +133,10 @@ const MainContent = ({
 };
 
 export default MainPage;
+
+const StContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
