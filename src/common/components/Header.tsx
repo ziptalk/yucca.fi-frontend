@@ -9,7 +9,10 @@ import { LINKS } from '../constants/LINKS';
 
 interface HeaderProps {
   pathname?: string;
-  scrollToSection?: (ref: React.RefObject<HTMLDivElement>) => void;
+  scrollToSection?: (
+    ref: React.RefObject<HTMLDivElement>,
+    isTop?: boolean
+  ) => void;
   section2Ref?: React.RefObject<HTMLDivElement>;
   section3Ref?: React.RefObject<HTMLDivElement>;
   section4Ref?: React.RefObject<HTMLDivElement>;
@@ -75,7 +78,9 @@ export const HeaderNav = ({
         <StNavItem
           onClick={() => {
             onClose && onClose();
-            scrollToSection && section2Ref && scrollToSection(section2Ref);
+            scrollToSection &&
+              section2Ref &&
+              scrollToSection(section2Ref, true);
           }}
         >
           About

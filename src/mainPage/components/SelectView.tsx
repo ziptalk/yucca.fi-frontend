@@ -67,7 +67,7 @@ const StContainer = styled.div`
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-between;/
   }
 `;
 

@@ -167,7 +167,7 @@ export const Section2 = {
     justify-content: center;
     align-items: center;
     margin-bottom: 14rem;
-    margin-top: 5rem;
+    margin-top: 10rem;
     & > p {
       ${({ theme }) => theme.fonts.kumbh_snas_18_medi};
       color: ${({ theme }) => theme.colors.gray};

@@ -20,6 +20,7 @@ import imgWithdrawAssets from './section4_withdrawAssets.webp';
 import yuccafiBackground from './yuccafiBackground.webp';
 import Botanix from './botanix.svg?react';
 import yuccaLogoMotion from './yuccaLogoMotion.gif';
+import yuccaLogoOnce from './yuccaLogoOnce.gif';
 
 export {
   IcGithub,
@@ -40,4 +41,5 @@ export {
   yuccafiBackground,
   Botanix,
   yuccaLogoMotion,
+  yuccaLogoOnce,
 };

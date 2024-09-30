@@ -5,7 +5,7 @@ import {
   Botanix,
   onboarding3,
   onboarding3_mobile,
-  yuccaLogoMotion,
+  yuccaLogoOnce,
   yuccafiBackground,
 } from './assets/0_index';
 import { ABOUTQVE } from './constants/constants.ts';
@@ -30,17 +30,27 @@ const OnBoarding = () => {
   const section3Ref = useRef<HTMLDivElement>(null);
   const section4Ref = useRef<HTMLDivElement>(null);
 
-  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+  const scrollToSection = (
+    ref: React.RefObject<HTMLDivElement>,
+    isTop: boolean = false
+  ) => {
     if (ref.current) {
       const headerOffset = 100;
       const elementPosition =
         ref.current.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
+      if (isTop) {
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth',
+        });
+      } else {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+      }
     }
   };
 
@@ -114,7 +124,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
       ) : (
         <St.Section1.ContentLayout>
           <St.Section1.QVEIntroduce>
-            <St.Section1.Logo src={yuccaLogoMotion} />
+            <St.Section1.Logo src={yuccaLogoOnce + '?a=' + Math.random()} />
             <h1>Quant Vault Escrow Protocol</h1>
             <p>
               A hybrid DeFi platform combining arbitrage trading bots and
