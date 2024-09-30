@@ -1,11 +1,11 @@
-## MYTETHER
+## YUCCA.FI
 
 ### Installation Steps
 
 ```bash
 # Clone the repository
-git clone https://github.com/ziptalk/mytether-frontend-typescript.git
-cd mytether-frontend-typescript
+git clone https://github.com/ziptalk/yuccafi-frontend.git
+cd yuccafi-frontend
 
 # Install dependencies
 yarn install

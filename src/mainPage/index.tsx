@@ -95,7 +95,7 @@ const Announcement = () => {
         <St.Announcement.Text>
           Unlock the Full Potential of Your
         </St.Announcement.Text>
-        <St.Announcement.Text>Investments with MYTETHER!</St.Announcement.Text>
+        <St.Announcement.Text>Investments with Yucca!</St.Announcement.Text>
         <St.Announcement.Background
           src={isMobile ? noticeIMGMobile : announceIMG}
         />
