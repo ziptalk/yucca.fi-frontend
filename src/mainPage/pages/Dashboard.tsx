@@ -262,7 +262,8 @@ const StTotalContainer = styled.div`
 `;
 
 const StTotalTokenValue = styled.p`
-  ${({ theme }) => theme.fonts.title_1};
+  ${({ theme }) => theme.fonts.pre_36};
+  color: ${({ theme }) => theme.colors.dark_spring_green};
 `;
 
 const StTotalDollarValue = styled.p`

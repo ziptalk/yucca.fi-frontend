@@ -36,17 +36,16 @@ const PreviewChart = ({ chartData }: { chartData: IChartData[] }) => {
     },
     stroke: {
       curve: 'smooth',
-      colors: ['#02D689'],
+      colors: ['#6D9F71'],
       width: 2,
     },
     fill: {
       type: 'gradient',
       gradient: {
-        shade: 'light',
         type: 'vertical',
         shadeIntensity: 0.5,
-        gradientToColors: ['#02D689'],
-        inverseColors: false,
+        gradientToColors: ['#6D9F71'],
+        inverseColors: true,
         opacityFrom: 0.3,
         opacityTo: 0.2,
         stops: [0, 100],

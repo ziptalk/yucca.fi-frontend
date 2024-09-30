@@ -4,5 +4,5 @@ export const LINKS = {
   telegrem: '',
   medium: '',
   github: '',
-  docs: '',
+  docs: 'https://blockwavelabs-1.gitbook.io/yucca.fi',
 };
