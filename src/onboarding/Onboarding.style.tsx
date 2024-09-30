@@ -30,7 +30,7 @@ export const PreTitle = styled.div`
 `;
 export const Title = styled.div`
   max-width: 70rem;
-  ${({ theme }) => theme.fonts.title_0};
+  ${({ theme }) => theme.fonts.kumbh_snas_42};
   color: ${({ theme }) => theme.colors.black};
   text-align: center;
   word-wrap: break-word;
@@ -196,7 +196,7 @@ export const Section2 = {
     }
   `,
   Wrapper: styled(STCOMBoxWrapper)`
-    background-color: ${({ theme }) => theme.colors.spring_green};
+    background-color: ${({ theme }) => theme.colors.white};
   `,
   AboutItem: styled.div`
     min-width: 28.2em;
@@ -213,7 +213,7 @@ export const Section2 = {
     align-items: center;
     margin-bottom: 3.8rem;
     & > span {
-      color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.gray};
       ${({ theme }) => theme.fonts.poppins_18};
     }
   `,
@@ -225,15 +225,15 @@ export const Section2 = {
   `,
   ItemTitle: styled.p`
     ${({ theme }) => theme.fonts.kumbh_snas_28};
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.dark_gray};
     word-wrap: break-word;
     padding-bottom: 1rem;
-    border-bottom: 2px solid;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.normal_pink};
   `,
   Explain: styled.p`
     ${({ theme }) => theme.fonts.poppins_18};
     word-wrap: break-word;
-    color: ${({ theme }) => theme.colors.background_pink};
+    color: ${({ theme }) => theme.colors.light_gray};
     height: 8.4rem;
   `,
 };
@@ -322,8 +322,8 @@ export const Section4 = {
     align-items: center;
     gap: 2.3rem;
     ${({ theme }) => theme.fonts.kumbh_snas_20};
-    color: white;
-    background-color: ${({ theme }) => theme.colors.spring_green};
+    color: ${({ theme }) => theme.colors.dark_gray};
+    background-color: ${({ theme }) => theme.colors.white};
 
     & > img {
       width: 10rem;
