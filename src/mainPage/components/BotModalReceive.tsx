@@ -17,7 +17,7 @@ const BotModalReceive = ({ value }: IReceiveProps) => {
         <StLeftContent>
           <div>{formatPriceValue(value * 0.8) || 0}</div>
           <span />
-          <StBalance>$100.93</StBalance>
+          <StBalance>${formatPriceValue(value * 20.3)}</StBalance>
         </StLeftContent>
         <StRightContent>
           <div>qveBTC</div>
