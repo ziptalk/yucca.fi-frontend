@@ -200,7 +200,7 @@ export const Section2 = {
     }
   `,
   Wrapper: styled(STCOMBoxWrapper)`
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.white_opacity};
   `,
   AboutItem: styled.div`
     min-width: 28.2em;
@@ -327,7 +327,7 @@ export const Section4 = {
     gap: 2.3rem;
     ${({ theme }) => theme.fonts.kumbh_snas_20};
     color: ${({ theme }) => theme.colors.dark_gray};
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.white_opacity};
 
     & > img {
       width: 10rem;
