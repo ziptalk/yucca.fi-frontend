@@ -46,6 +46,7 @@ export const Section1 = {
     width: 100vw;
     max-width: 120rem;
     height: 100vh;
+    padding-top: 8rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -119,7 +120,7 @@ export const Section1 = {
     align-items: center;
     margin: 1rem 0;
     position: absolute;
-    bottom: 10rem;
+    bottom: 5rem;
 
     & nav {
       position: absolute;
