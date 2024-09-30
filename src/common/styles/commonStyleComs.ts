@@ -68,7 +68,7 @@ export const STCOMBackdrop = styled.div`
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 2;
+  z-index: 29;
   background-color: #545b67;
   opacity: 0.7;
 `;

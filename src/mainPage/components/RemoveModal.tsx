@@ -110,6 +110,7 @@ const StBottom = styled.div`
 `;
 
 const StRemoveBtn = styled(STCOMGreyBtn)`
+  background-color: ${({ theme }) => theme.colors.spring_green};
   width: 14.7rem;
   height: 4.5rem;
 `;

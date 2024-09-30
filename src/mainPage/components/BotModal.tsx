@@ -19,7 +19,6 @@ import { depositTransfer } from '../../common/contracts/contractFunctions';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import { walletConfig } from '../../wallet/walletConfig';
 import { getBalance } from 'wagmi/actions';
-import { USDTTokenAddress } from '../../common/contracts/tokenAddress';
 import { convertTokenBalance } from '../../common/utils/convertTokenBalance';
 import BotModalReceive from './BotModalReceive';
 import { parseNumber } from '../../common/utils/parseNumber';
@@ -65,7 +64,7 @@ const BotModal = ({
     if (!user_id) return;
     const tmp = await getBalance(walletConfig, {
       address: user_id,
-      token: USDTTokenAddress,
+      token: TOKEN_INFO.tokenAddress,
     });
 
     setBalance(convertTokenBalance(tmp.value, tmp.decimals));

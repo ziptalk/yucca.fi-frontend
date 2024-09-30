@@ -34,7 +34,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
   }>();
   const isTablet = useTablet();
   return (
-    <>
+    <StDashboardContainer>
       <StTotalContainer>
         <div>
           <label>Total Balance</label>
@@ -125,7 +125,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
           </tbody>
         </StTable>
       )}
-    </>
+    </StDashboardContainer>
   );
 };
 
@@ -227,10 +227,18 @@ const StContainer = styled.div`
   gap: 3.2rem;
 `;
 
+const StDashboardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3.4rem;
+  padding: 2rem 0;
+`;
+
 const StTotalContainer = styled.div`
   width: 100%;
   display: flex;
   color: ${({ theme }) => theme.colors.black};
+  padding: 0 2rem;
 
   & > div {
     width: 50%;

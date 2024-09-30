@@ -31,6 +31,15 @@ const DropDown = ({ detailData }: { detailData: IDetail }) => {
               <span>MDD</span>
               <span>{formatPercentValue(detailData.mdd)}%</span>
             </li>
+            <li>
+              <span>Health factor</span>
+              <span>{formatPercentValue(detailData.mdd)}</span>
+            </li>
+            <li>
+              <StDropdown.Notice>
+                If the health factor drops below 1, liquidation occurs.
+              </StDropdown.Notice>
+            </li>
           </StDropdown.List>
         </StDropdown.Container>
       ) : (
@@ -66,7 +75,7 @@ const StDropdown = {
     position: relative;
     width: 100%;
     border-radius: 6px;
-    padding: 1.6rem;
+    padding: 1.6rem 1.6rem 3rem;
     display: flex;
     flex-direction: column;
     ${({ theme }) => theme.fonts.caption};
@@ -78,6 +87,7 @@ const StDropdown = {
     align-items: center;
     justify-content: space-between;
     ${({ theme }) => theme.fonts.caption};
+    color: ${({ theme }) => theme.colors.dark_gray};
   `,
   List: styled.ul`
     width: 100%;
@@ -86,9 +96,18 @@ const StDropdown = {
     margin: 3rem 0 0.4rem;
     gap: 1.6rem;
     & > li {
+      position: relative;
       width: 100%;
       display: flex;
       justify-content: space-between;
+      & span {
+        color: ${({ theme }) => theme.colors.gray};
+      }
     }
+  `,
+  Notice: styled.p`
+    position: absolute;
+    color: ${({ theme }) => theme.colors.light_gray};
+    top: -0.8rem;
   `,
 };

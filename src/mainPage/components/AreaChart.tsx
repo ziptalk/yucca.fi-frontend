@@ -51,12 +51,11 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
     fill: {
       type: 'gradient', // 그라데이션으로 채우기
       gradient: {
-        shade: 'light', // 그라데이션의 밝기
         type: 'vertical', // 수직 그라데이션
-        shadeIntensity: 0.5,
-        gradientToColors: ['#6D9F71'], // 그라데이션의 끝 색상
-        inverseColors: false,
-        opacityFrom: 0.3, // 시작 색상의 투명도
+        shadeIntensity: 0.3,
+        gradientToColors: ['#6D9F71', '#273929', '#000'], // 그라데이션의 끝 색상
+        inverseColors: true,
+        opacityFrom: 0.5, // 시작 색상의 투명도
         opacityTo: 0, // 끝 색상의 투명도
         stops: [0, 100], // 그라데이션의 위치
       },

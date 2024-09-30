@@ -1,7 +1,7 @@
 import * as St from './MainPage.style';
 import Footer from '../common/components/Footer';
 import Header from '../common/components/Header';
-import { announceIMG } from './assets/0_index';
+import { announceIMG, noticeIMGMobile } from './assets/0_index';
 import { Outlet } from 'react-router-dom';
 import useModal from '../common/hooks/useModal';
 import BotModal from './components/BotModal';
@@ -11,6 +11,7 @@ import UnConnectModal from './components/UnConnectModal';
 import DepositToast from '../common/components/DepositToast';
 import useToast from '../common/hooks/useToast';
 import { useState } from 'react';
+import useMobile from '../common/hooks/useMobile';
 
 const MainPage = () => {
   const { toast, showToast } = useToast();
@@ -86,6 +87,7 @@ const MainPage = () => {
 };
 
 const Announcement = () => {
+  const isMobile = useMobile();
   return (
     <St.Announcement.GlassWrapper>
       <St.Announcement.Container>
@@ -95,8 +97,8 @@ const Announcement = () => {
         </St.Announcement.Text>
         <St.Announcement.Text>Investments with MYTETHER!</St.Announcement.Text>
         <St.Announcement.Background
-          src={announceIMG}
-        ></St.Announcement.Background>
+          src={isMobile ? noticeIMGMobile : announceIMG}
+        />
       </St.Announcement.Container>
     </St.Announcement.GlassWrapper>
   );

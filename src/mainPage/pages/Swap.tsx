@@ -10,7 +10,9 @@ const Swap = () => {
       <StContent>
         {LINK_SWAP.map((item) => {
           return (
-            <StItem onClick={() => window.open(item.link)}>{item.name}</StItem>
+            <StItem onClick={() => window.open(item.link)}>
+              <StIMG src={item.path} />
+            </StItem>
           );
         })}
       </StContent>
@@ -41,13 +43,25 @@ const StContent = styled.div`
 `;
 
 const StItem = styled(STCOMBoxWrapper)`
-  min-width: 28rem;
+  cursor: pointer;
+  min-width: 30rem;
   max-width: 38rem;
-  min-height: 28rem;
+  min-height: 30rem;
   max-height: 38rem;
   flex: 1;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 10rem;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.spring_green};
+  }
+`;
+
+const StIMG = styled.img`
+  height: 100%;
+  max-height: 10rem;
 `;

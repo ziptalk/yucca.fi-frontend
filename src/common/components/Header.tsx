@@ -1,12 +1,10 @@
 import styled from '@emotion/styled';
-import { IcMenu, Logo } from '../assets/0_index';
+import { IcHeaderLogo } from '../assets/0_index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import TradeNowBtn from '../../onboarding/Components/TradeNowBtn';
 import ConnectWallet from '../../wallet/components/ConnectWallet';
 import { transformStyles } from '../styles/transformStyles';
 import useMobile from '../hooks/useMobile';
-import MobileSideNav from './MobileSideNav';
-import { useState } from 'react';
 import { LINKS } from '../constants/LINKS';
 
 interface HeaderProps {
@@ -28,7 +26,6 @@ const Header = ({
   const navigate = useNavigate();
   const location = useLocation();
   const isMobile = useMobile();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <StContainer>
@@ -36,7 +33,7 @@ const Header = ({
         <StLogo onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
         {isMobile ? (
           <>
-            <IcMenu onClick={() => setIsMenuOpen(true)} />
+            {/* <IcMenu onClick={() => setIsMenuOpen(true)} />
             {isMenuOpen && (
               <MobileSideNav
                 isOpen={isMenuOpen}
@@ -44,7 +41,8 @@ const Header = ({
                   setIsMenuOpen(false);
                 }}
               />
-            )}
+            )} */}
+            <ConnectWallet />
           </>
         ) : location.pathname === '/onboarding' ? (
           <HeaderNav
@@ -143,7 +141,7 @@ const StWrapper = styled.div`
   }
 `;
 
-const StLogo = styled(Logo)`
+const StLogo = styled(IcHeaderLogo)`
   width: 15.9rem;
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {

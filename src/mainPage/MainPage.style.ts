@@ -52,11 +52,6 @@ export const Announcement = {
     right: 0;
     bottom: 0;
     z-index: -1;
-
-    @media (${({ theme }) => theme.breakpoints.mobile}) {
-      right: -10rem;
-      opacity: 0.8;
-    }
   `,
   Label: styled.div`
     width: fit-content;

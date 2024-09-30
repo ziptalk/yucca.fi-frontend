@@ -9,6 +9,7 @@ import IcFooterMedium from './icMedium.svg?react';
 import IcFooterGithub from './icGithub.svg?react';
 
 import Logo from './Logo.svg?react';
+import IcHeaderLogo from './icheaderLogo.svg?react';
 import IcStrokeLogo from './protonStrokeLogo.svg?react';
 import SadLogo from './sadLogo.svg?react';
 
@@ -25,4 +26,5 @@ export {
   IcSuccess,
   IcMenu,
   SadLogo,
+  IcHeaderLogo,
 };

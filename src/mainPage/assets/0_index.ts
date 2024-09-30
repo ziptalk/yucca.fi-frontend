@@ -14,6 +14,12 @@ import LogoGradationBot from './gradationBotLogo.svg?react';
 import LogoNeutron from './neutronLogo.svg?react';
 import IcSwap from './swapIcon.svg?react';
 
+import noticeIMGMobile from './noticeIMG_mobile.webp';
+
+import swapUniswap from './swap_uniswap.webp';
+import swapRaydium from './swap_raydium.webp';
+import swapJito from './swap_jito.webp';
+
 export {
   announceIMG,
   IcDashboard,
@@ -30,4 +36,8 @@ export {
   IcDropUp,
   LogoNeutron,
   IcSwap,
+  noticeIMGMobile,
+  swapUniswap,
+  swapRaydium,
+  swapJito,
 };
