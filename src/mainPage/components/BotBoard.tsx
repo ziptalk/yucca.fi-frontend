@@ -91,7 +91,7 @@ const BotBoard = ({
               <div>
                 <label>TVL</label>
                 <p>
-                  {formatPriceValue(propsData.tvl)} {TOKEN_INFO.token}
+                {formatPriceValue(propsData.tvl)} USDT
                 </p>
               </div>
             </StBotSummaryValue>

@@ -25,7 +25,7 @@ import { parseNumber } from '../../common/utils/parseNumber';
 import { MOCK_PNLCHART } from '../constants/mainPage_MOCK';
 
 const base_url = import.meta.env.VITE_BASE_URL;
-const MINVAL = 10;
+const MINVAL = 100;
 const BotModal = ({
   isOpen,
   onClose,
