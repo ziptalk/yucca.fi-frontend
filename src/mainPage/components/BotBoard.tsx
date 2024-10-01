@@ -16,7 +16,6 @@ import PreviewChart from './PreviewChart';
 import { useEffect, useState } from 'react';
 import { IChartData } from '../types/pnlChartType';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
-import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import instance from '../../common/apis/instance';
 import { Botanix } from '../../onboarding/assets/0_index';
 import { MOCK_PNLCHART } from '../constants/mainPage_MOCK';
