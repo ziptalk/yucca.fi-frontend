@@ -27,7 +27,7 @@ export const MOCK_TRADEBOTS: ITRADEBOTS[] = [
     total_profits: 45,
     apy: 15.5,
     runtime: 10,
-    tvl: 150,
+    tvl: 9626752.66,
     operated_in: '',
   },
   // {
