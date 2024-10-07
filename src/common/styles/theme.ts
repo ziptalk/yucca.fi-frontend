@@ -110,6 +110,7 @@ const fonts = {
   ),
   poppins_18: FONT('"Poppins", sans-serif', 1.8, 'normal', '500', '140', 0),
   poppins_16: FONT('"Poppins", sans-serif', 1.6, 'normal', '500', '150', 0),
+  pretendard_16: FONT('Pretendard Variable', 1.6, 'normal', '600', 'normal', 0),
   pretendard_22: FONT('Pretendard Variable', 2.2, 'normal', '600', 'normal', 0),
   pre_18_semi: FONT('Pretendard Variable', 1.8, 'normal', '600', 'auto', 0),
   pre_36: FONT('Pretendard Variable', 3.6, 'normal', '700', 'auto', 0),

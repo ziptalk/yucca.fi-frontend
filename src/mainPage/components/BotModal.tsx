@@ -268,7 +268,7 @@ const StAvailable = styled.p`
   color: ${({ theme }) => theme.colors.black};
 
   & > span {
-    color: ${({ theme }) => theme.colors.not_important};
+    color: ${({ theme }) => theme.colors.gray};
   }
 `;
 
@@ -301,14 +301,14 @@ const StinputContainer = styled.div<{ isFocused: boolean }>`
     width: 6.6rem;
     height: 3rem;
     border-radius: 6px;
-    border: 1px solid ${({ theme }) => theme.colors.sub_white};
-    background: linear-gradient(
-      144deg,
-      rgba(255, 255, 255, 0.1) -9.46%,
-      rgba(255, 255, 255, 0.25) 115.25%
-    );
-    ${({ theme }) => theme.fonts.caption};
-    color: ${({ theme }) => theme.colors.black};
+    border: 1px solid ${({ theme }) => theme.colors.spring_green};
+    background: rgba(109, 159, 113, 0.1);
+    ${({ theme }) => theme.fonts.pretendard_16};
+    color: ${({ theme }) => theme.colors.spring_green};
+
+    &:hover {
+      background: rgba(109, 159, 113, 0.4);
+    }
   }
 `;
 
