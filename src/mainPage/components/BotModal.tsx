@@ -80,7 +80,7 @@ const BotModal = ({
   const getData = async () => {
     try {
       const { data } = await axios.get(
-        `${base_url}/api/PnLChart?bot_id=${botId}&user_id=${user_id}&timeframe=5`
+        `${base_url}/yucca/PnLChart?bot_id=${botId}&user_id=${user_id}&timeframe=5`
       );
       // if (data.Available === 0) {
       //   setPlaceholder(DEPOSIT_PLACEHOLDER.lackOfMoney);
@@ -112,7 +112,7 @@ const BotModal = ({
         bot_id: id,
         amount: _amount, // 입금할 금액
       };
-      await axios.post(`${base_url}/api/deposit`, postData);
+      await axios.post(`${base_url}/yucca/deposit`, postData);
       onClose();
       setIsLoading('Deposit');
       showToast('Your deposit has been successfully completed!');

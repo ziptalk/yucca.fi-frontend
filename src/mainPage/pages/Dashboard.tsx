@@ -187,7 +187,7 @@ const Dashboard = () => {
   const getData = async () => {
     try {
       const { data } = await instance.get(
-        `${base_url}/api/dashboard?user_id=${address}`
+        `${base_url}/yucca/dashboard?user_id=${address}`
       );
       // console.log(`🫥dashboard :`, data);
       setData(data);

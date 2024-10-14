@@ -34,7 +34,7 @@ const RemoveModal = ({
     };
     try {
       setIsLoading(true);
-      await axios.post(`${base_url}/api/remove`, postBody);
+      await axios.post(`${base_url}/yucca/remove`, postBody);
       onClose();
       setIsLoading(false);
       window.location.reload();

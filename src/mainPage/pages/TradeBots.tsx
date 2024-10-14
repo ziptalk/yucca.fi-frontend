@@ -32,7 +32,7 @@ const TradeBots = () => {
     try {
       const sortKey = TRADE_BOTS_SORT[_sortKey];
       const { data } = await instance.get(
-        `${base_url}/api/trade-bots?sort=${sortKey}&order=${TRADE_BOTS_ORDER[1]}`
+        `${base_url}/yucca/trade-bots?sort=${sortKey}&order=${TRADE_BOTS_ORDER[1]}`
       );
       setData(data);
     } catch (err) {
@@ -55,7 +55,7 @@ const TradeBots = () => {
       }
       try {
         const { data } = await instance.get(
-          `${base_url}/api/trade-bots?search=${searchValue}`
+          `${base_url}/yucca/trade-bots?search=${searchValue}`
         );
         setData(data);
       } catch (err) {

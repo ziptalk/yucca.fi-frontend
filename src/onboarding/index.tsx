@@ -93,7 +93,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
 
   const getData = async () => {
     try {
-      const { data } = await axios.get(`${base_url}/api/onboarding`);
+      const { data } = await axios.get(`${base_url}/yucca/onboarding`);
       // const total_value_locked = await getContractTokenBalance();
       setTotalValueLocked(formatPriceValue(data.total_value_locked));
     } catch (err) {

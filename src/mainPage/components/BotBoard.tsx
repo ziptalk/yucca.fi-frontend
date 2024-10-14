@@ -47,7 +47,7 @@ const BotBoard = ({
   const getData = async () => {
     try {
       const { data } = await instance.get(
-        `${base_url}/api/PnLChart?bot_id=${active}&user_id=${user_id}&timeframe=5`
+        `${base_url}/yucca/PnLChart?bot_id=${active}&user_id=${user_id}&timeframe=5`
       );
       setChartData(data.data);
     } catch (err) {
@@ -89,9 +89,7 @@ const BotBoard = ({
               </div>
               <div>
                 <label>TVL</label>
-                <p>
-                {formatPriceValue(propsData.tvl)} USDT
-                </p>
+                <p>{formatPriceValue(propsData.tvl)} USDT</p>
               </div>
             </StBotSummaryValue>
             <StBottomContainer>
