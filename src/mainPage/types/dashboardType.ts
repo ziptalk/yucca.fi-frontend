@@ -1,8 +1,10 @@
+import { IChartData } from './pnlChartType';
+
 export interface IDashboard {
   total_balance: number;
-  total_profit: number;
-  total_balance_usdt: number;
-  total_profit_usdt: number;
+  total_amount: number;
+  total_pnl: number;
+  domesticRate: number;
   bots: IBOTS[];
 }
 
@@ -13,6 +15,12 @@ export interface IBOTS {
   current_value: number;
   daily_pnl: number;
   total_profit: number;
+  pnlData: IChartData[];
+}
+
+export interface IBotPnl {
+  bot_name: string;
+  pnlData: IChartData[];
 }
 
 export interface ITRADEBOTS {

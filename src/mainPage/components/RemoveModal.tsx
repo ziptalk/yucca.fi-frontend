@@ -13,10 +13,14 @@ const RemoveModal = ({
   isOpen,
   onClose,
   botId,
-}: {
+}: // totalInvest,
+// showToast,
+{
   isOpen: boolean;
   onClose: () => void;
   botId?: string | null;
+  totalInvest: number | null;
+  showToast: (message: string) => void;
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   useOutsideClick(wrapperRef, onClose);

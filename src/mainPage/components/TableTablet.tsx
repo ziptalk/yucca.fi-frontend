@@ -4,7 +4,7 @@ import {
   STCOMGreyBtn,
 } from '../../common/styles/commonStyleComs';
 import { formatPriceValue } from '../../common/utils/formatPriceValue';
-import { formatUnits } from '../../common/utils/formatUnits';
+// import { formatUnits } from '../../common/utils/formatUnits';
 import { DASHBORADTABLEHEADER } from '../constants/DASHBOARD';
 import { IBOTS } from '../types/dashboardType';
 import styled from '@emotion/styled';
@@ -16,7 +16,7 @@ const TableTablet = ({
 }: {
   data: IBOTS[];
   openBotModal: (id: string) => void;
-  openRemoveModal: (id: string) => void;
+  openRemoveModal: (id: string, totalInvest: number) => void;
 }) => {
   const TOKEN = TOKEN_INFO.token;
   return (
@@ -36,16 +36,16 @@ const TableTablet = ({
               {formatPriceValue(item.current_value)} {TOKEN}
             </span>
           </StRow>
-          <StRow>
+          {/* <StRow>
             <span>{DASHBORADTABLEHEADER[3]}</span>
             <span>
               <StColor isPositive={item.daily_pnl >= 0}>
                 {formatUnits(item.daily_pnl)} %
               </StColor>
             </span>
-          </StRow>
+          </StRow> */}
           <StRow>
-            <span>{DASHBORADTABLEHEADER[4]}</span>
+            <span>{DASHBORADTABLEHEADER[3]}</span>
             <span>
               <StColor isPositive={item.total_profit >= 0}>
                 {formatPriceValue(item.total_profit)} {TOKEN}
@@ -61,7 +61,11 @@ const TableTablet = ({
               }}
             >
               <StAddBtn onClick={() => openBotModal(item.bot_id)}>Add</StAddBtn>
-              <StRemoveBtn onClick={() => openRemoveModal(item.bot_id)}>
+              <StRemoveBtn
+                onClick={() =>
+                  openRemoveModal(item.bot_id, item.total_investment)
+                }
+              >
                 Remove
               </StRemoveBtn>
             </div>

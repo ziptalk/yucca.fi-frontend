@@ -15,7 +15,8 @@ import useMobile from '../common/hooks/useMobile';
 import styled from '@emotion/styled';
 
 const MainPage = () => {
-  const { toast, showToast } = useToast();
+  const { toast: depositToast, showToast: showDepositToast } = useToast();
+  const { toast: removeToast, showToast: showRemoveToast } = useToast();
   const [dataRefreshTrigger, setDataRefreshTrigger] = useState<boolean>(false);
 
   const handleDataRefreshRequest = () => {
@@ -35,6 +36,7 @@ const MainPage = () => {
     openModal: openRemoveModal,
     closeModal: closeRemoveModal,
     botId: removeBotId,
+    totalInvest,
   } = useModal();
 
   //unconnect Modal
@@ -64,7 +66,7 @@ const MainPage = () => {
           isOpen={isBotModalOpen}
           onClose={closeBotModal}
           botId={modalBotId}
-          showToast={showToast}
+          showToast={showDepositToast}
           onDataRefreshRequest={handleDataRefreshRequest}
         />
       )}
@@ -73,6 +75,8 @@ const MainPage = () => {
           isOpen={isRemoveMoalOpen}
           onClose={closeRemoveModal}
           botId={removeBotId}
+          totalInvest={totalInvest}
+          showToast={showRemoveToast}
         />
       )}
 
@@ -82,7 +86,8 @@ const MainPage = () => {
           onClose={closeUnConnectModal}
         />
       )}
-      {toast && <DepositToast message={toast.message} />}
+      {depositToast && <DepositToast message={depositToast.message} />}
+      {removeToast && <DepositToast message={removeToast.message} />}
     </StContainer>
   );
 };

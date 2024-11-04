@@ -4,18 +4,32 @@ import { IPnlChart } from '../types/pnlChartType';
 //한번도 deposit 하지 않은 유저 일 때
 export const MOCK_DASHBOARD: IDashboard = {
   total_balance: 0,
-  total_profit: 0,
-  total_balance_usdt: 0,
-  total_profit_usdt: 0,
+  total_amount: 110000000000,
+  domesticRate: 2.3,
+  total_pnl: 1.8,
   bots: [
-    // {
-    //   bot_name: 'Cyclic Arb bot',
-    //   bot_id: 'Cyclic Arb bot',
-    //   total_investment: 5000,
-    //   current_value: 5500,
-    //   daily_pnl: 100,
-    //   total_profit: 500,
-    // },
+    {
+      bot_name: 'Neutron Cyclic Bot',
+      bot_id: 'bot3',
+      total_investment: 5000,
+      current_value: 5500,
+      daily_pnl: 100,
+      total_profit: 500,
+      pnlData: [
+        {
+          createdAt: '2024-06-26T00:00:00.000Z',
+          pnlRate: 50,
+        },
+        {
+          createdAt: '2024-06-27T00:00:00.000Z',
+          pnlRate: 40,
+        },
+        {
+          createdAt: '2024-06-28T00:00:00.000Z',
+          pnlRate: 30,
+        },
+      ],
+    },
   ],
 };
 
