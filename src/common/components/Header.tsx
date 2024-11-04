@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { IcHeaderLogo } from '../assets/0_index';
 import { useLocation, useNavigate } from 'react-router-dom';
-import TradeNowBtn from '../../onboarding/Components/TradeNowBtn';
+import TradeNowBtn from '../../onboarding/components/TradeNowBtn';
 import ConnectWallet from '../../wallet/components/ConnectWallet';
 import { transformStyles } from '../styles/transformStyles';
 import useMobile from '../hooks/useMobile';

@@ -9,7 +9,7 @@ import {
   yuccafiBackground,
 } from './assets/0_index';
 import { ABOUTQVE } from './constants/constants.ts';
-import TradeNowBtn from './Components/TradeNowBtn.tsx';
+import TradeNowBtn from './components/TradeNowBtn.tsx';
 import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
 import { ONBOARDING4 } from './constants/constants.ts';
@@ -19,7 +19,7 @@ import axios from 'axios';
 import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
 
 import styled from '@emotion/styled';
-import LinkBtns from './Components/LinkBtns.tsx';
+import LinkBtns from './components/LinkBtns.tsx';
 
 interface IOnboardingProps {
   isMobile: boolean;
