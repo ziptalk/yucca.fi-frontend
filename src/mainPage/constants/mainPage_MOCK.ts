@@ -22,9 +22,9 @@ export const MOCK_DASHBOARD: IDashboard = {
 export const MOCK_TRADEBOTS: ITRADEBOTS[] = [
   {
     bot_id: 'bot_001',
-    name: 'Arb Bot',
+    name: 'MM Bot',
     subscriber: 100,
-    total_profits: 45,
+    total_profits: 13,
     apy: 15.5,
     runtime: 10,
     tvl: 130,
