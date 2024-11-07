@@ -27,7 +27,7 @@ const PriceCollection = ({
         <StPrice>{formatUnits(data.total_balance * 0.8)}</StPrice>
       </StTopRight>
       <StBottomLeft>
-        <StTitle>NTRN in my wallet</StTitle>
+        <StTitle>BTC in my wallet</StTitle>
         <StPrice>{formatUnits(balance)}</StPrice>
       </StBottomLeft>
       <StBottomRight>
