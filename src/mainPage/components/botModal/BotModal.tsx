@@ -1,28 +1,28 @@
 import styled from '@emotion/styled';
-import { IcModalX, IcNotice } from '../assets/0_index';
+import { IcModalX, IcNotice } from '../../assets/0_index';
 import AreaChart from './AreaChart';
 import {
   STCOMBackground,
   STCOMActiveBtn,
-} from '../../common/styles/commonStyleComs';
+} from '../../../common/styles/commonStyleComs';
 import DropDown from './DropDown';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
-import { IPnlChart } from '../types/pnlChartType';
-import { DEPOSIT_PLACEHOLDER } from '../constants/DEPOSIT_PLACEHOLDER';
-import { formatNumberWithCommas } from '../../common/utils/formatNumberWithCommas';
-import { formatPercentValue } from '../../common/utils/formatPercentValue';
-import { useOutsideClick } from '../../common/hooks/useOutsideClick';
-import { slideUp } from '../../common/utils/animation';
-import { useUserAccount } from '../../wallet/hooks/useUserAccount';
-import { depositTransfer } from '../../common/contracts/contractFunctions';
-import { TOKEN_INFO } from '../../common/constants/TOKEN';
-import { walletConfig } from '../../wallet/walletConfig';
+import { IPnlChart } from '../../types/pnlChartType';
+import { DEPOSIT_PLACEHOLDER } from '../../constants/DEPOSIT_PLACEHOLDER';
+import { formatNumberWithCommas } from '../../../common/utils/formatNumberWithCommas';
+import { formatPercentValue } from '../../../common/utils/formatPercentValue';
+import { useOutsideClick } from '../../../common/hooks/useOutsideClick';
+import { slideUp } from '../../../common/utils/animation';
+import { useUserAccount } from '../../../wallet/hooks/useUserAccount';
+import { depositTransfer } from '../../../common/contracts/contractFunctions';
+import { TOKEN_INFO } from '../../../common/constants/TOKEN';
+import { walletConfig } from '../../../wallet/walletConfig';
 import { getBalance } from 'wagmi/actions';
-import { convertTokenBalance } from '../../common/utils/convertTokenBalance';
+import { convertTokenBalance } from '../../../common/utils/convertTokenBalance';
 import BotModalReceive from './BotModalReceive';
-import { parseNumber } from '../../common/utils/parseNumber';
-import { MOCK_PNLCHART } from '../constants/mainPage_MOCK';
+import { parseNumber } from '../../../common/utils/parseNumber';
+import { MOCK_PNLCHART } from '../../constants/mainPage_MOCK';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 100;

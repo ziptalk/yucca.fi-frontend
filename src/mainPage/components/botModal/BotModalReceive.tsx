@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { IcNotice } from '../assets/0_index';
-import { formatPriceValue } from '../../common/utils/formatPriceValue';
+import { IcNotice } from '../../assets/0_index';
+import { formatPriceValue } from '../../../common/utils/formatPriceValue';
 
 interface IReceiveProps {
   value: number;

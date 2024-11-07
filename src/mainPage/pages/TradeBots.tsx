@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { VIEW } from '../components/SelectView';
 import SelectView from '../components/SelectView';
-import BotBoard from '../components/BotBoard';
+import BotBoard from '../components/tradebots/BotBoard';
 import { IcSearch, IcSort } from '../assets/0_index';
 import { DUMMY_BOT, MOCK_TRADEBOTS } from '../constants/mainPage_MOCK';
 import { useOutletContext } from 'react-router-dom';

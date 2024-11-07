@@ -1,13 +1,12 @@
-import { TOKEN_INFO } from '../../common/constants/TOKEN';
+import styled from '@emotion/styled';
+import { IBOTS } from '../../types/dashboardType';
+import { TOKEN_INFO } from '../../../common/constants/TOKEN';
+import { DASHBORADTABLEHEADER } from '../../constants/DASHBOARD';
+import { formatPriceValue } from '../../../common/utils/formatPriceValue';
 import {
   STCOMActiveBtn,
   STCOMGreyBtn,
-} from '../../common/styles/commonStyleComs';
-import { formatPriceValue } from '../../common/utils/formatPriceValue';
-// import { formatUnits } from '../../common/utils/formatUnits';
-import { DASHBORADTABLEHEADER } from '../constants/DASHBOARD';
-import { IBOTS } from '../types/dashboardType';
-import styled from '@emotion/styled';
+} from '../../../common/styles/commonStyleComs';
 
 const TableTablet = ({
   data,

@@ -1,7 +1,7 @@
 import ApexCharts from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { IChartData } from '../types/pnlChartType';
-import useTablet from '../../common/hooks/useTablet';
+import useTablet from '../../../common/hooks/useTablet';
+import { IChartData } from '../../types/pnlChartType';
 
 const PreviewChart = ({ chartData }: { chartData: IChartData[] }) => {
   const isTablet = useTablet();

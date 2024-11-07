@@ -13,7 +13,6 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import ConnectWallet from '../../wallet/components/ConnectWallet';
 import axios from 'axios';
 import useTablet from '../../common/hooks/useTablet';
-import TableTablet from '../components/TableTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
@@ -23,6 +22,7 @@ import { SadLogo } from '../../common/assets/0_index';
 import TotalAmount from '../components/dashboard/TotalAmount';
 import PriceCollection from '../components/dashboard/PriceCollection';
 import { LogoCyclicArbBot } from '../assets/0_index';
+import TableTablet from '../components/dashboard/TableTablet';
 // import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 
 // const base_url = import.meta.env.VITE_BASE_URL;

@@ -1,8 +1,8 @@
 import ApexCharts from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { IChartData } from '../types/pnlChartType';
-import useMobile from '../../common/hooks/useMobile';
-import { formatPriceValue } from '../../common/utils/formatPriceValue';
+import { IChartData } from '../../types/pnlChartType';
+import useMobile from '../../../common/hooks/useMobile';
+import { formatPriceValue } from '../../../common/utils/formatPriceValue';
 
 const getYRange = (data: IChartData[]) => {
   const yValues = data.map((item) => item.pnlRate);

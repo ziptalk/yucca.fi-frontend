@@ -4,7 +4,7 @@ import Header from '../common/components/Header';
 import { announceIMG, noticeIMGMobile } from './assets/0_index';
 import { Outlet } from 'react-router-dom';
 import useModal from '../common/hooks/useModal';
-import BotModal from './components/BotModal';
+import BotModal from './components/botModal/BotModal';
 import RemoveModal from './components/RemoveModal';
 import { STCOMBackdrop } from '../common/styles/commonStyleComs';
 import UnConnectModal from './components/UnConnectModal';
