@@ -3,7 +3,7 @@ import { VIEW } from '../components/SelectView';
 import SelectView from '../components/SelectView';
 import BotBoard from '../components/tradebots/BotBoard';
 import { IcSearch, IcSort } from '../assets/0_index';
-import { DUMMY_BOT, MOCK_TRADEBOTS } from '../constants/mainPage_MOCK';
+import { DUMMY_BOT } from '../constants/mainPage_MOCK';
 import { useOutletContext } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TRADE_BOTS_ORDER, TRADE_BOTS_SORT } from '../constants/TRADE_BOTS_API';
@@ -21,7 +21,7 @@ const TradeBots = () => {
       refreshTrigger: boolean;
     }>();
   const base_url = import.meta.env.VITE_BASE_URL;
-  const [data, setData] = useState<ITRADEBOTS[]>(MOCK_TRADEBOTS);
+  const [data, setData] = useState<ITRADEBOTS[]>();
   // const data = MOCK_TRADEBOTS;
   const [searchValue, setSearchValue] = useState('');
   useEffect(() => {

@@ -3,7 +3,6 @@ import SelectView from '../components/SelectView';
 import { VIEW } from '../components/SelectView';
 import styled from '@emotion/styled';
 import { DASHBORADTABLEHEADER } from '../constants/DASHBOARD';
-// import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 import {
   STCOMActiveBtn,
   STCOMGreyBtn,
@@ -16,16 +15,14 @@ import useTablet from '../../common/hooks/useTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
-import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
-// import instance from '../../common/apis/instance';
+import instance from '../../common/apis/instance';
 import { SadLogo } from '../../common/assets/0_index';
 import TotalAmount from '../components/dashboard/TotalAmount';
 import PriceCollection from '../components/dashboard/PriceCollection';
 import { LogoCyclicArbBot } from '../assets/0_index';
 import TableTablet from '../components/dashboard/TableTablet';
-// import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 
-// const base_url = import.meta.env.VITE_BASE_URL;
+const base_url = import.meta.env.VITE_BASE_URL;
 
 const ShowDashboardData = ({
   data,
@@ -176,8 +173,7 @@ const ISnotSelectBot = () => {
 
 const Dashboard = () => {
   const address = useUserAccount();
-  const [data, setData] = useState<IDashboard>(MOCK_DASHBOARD);
-  // const data = MOCK_DASHBOARD;
+  const [data, setData] = useState<IDashboard>();
   const { refreshTrigger } = useOutletContext<{
     refreshTrigger: boolean;
   }>();
@@ -188,14 +184,14 @@ const Dashboard = () => {
 
   const getData = async () => {
     try {
-      // const { data } = await instance.get(
-      //   `${base_url}/yucca/dashboard?user_id=${address}`
-      // );
-      // console.log(`🫥dashboard :`, data);
+      const { data } = await instance.get(
+        `${base_url}/yucca/dashboard?user_id=${address}`
+      );
+      console.log(`🫥dashboard :`, data);
       setData(data);
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
-        err.response.status === 404 && setData(MOCK_DASHBOARD);
+        err.response.status === 404;
         return;
       }
     }
@@ -222,8 +218,8 @@ const Dashboard = () => {
             <ISnotSelectBot />
           )
         ) : (
-          <>loading..</>
-          // <ISnotSelectBot />
+          // <>loading..</>
+          <ISnotSelectBot />
         )
       ) : (
         <ISnotConnectWallet />

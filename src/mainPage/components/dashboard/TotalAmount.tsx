@@ -11,13 +11,6 @@ interface ITotalAmountProps {
   bots: IBOTS[];
 }
 
-const SELECT_OPTION = {
-  bot3: {
-    unit: 'BTC',
-    label: 'Neutron Cyclic Bot',
-  },
-};
-
 const TotalAmount = ({
   totalAmount,
   domesticRate,
@@ -51,45 +44,6 @@ const TotalAmount = ({
     return bot?.pnlData;
   };
 
-  const render = () => {
-    switch (selected) {
-      case SELECT_OPTION.bot3.label:
-        return (
-          <>
-            <StRenderHeader>
-              <StTotalTokenValue>
-                {formatUnits(totalAmount)} {SELECT_OPTION.bot3.unit}
-              </StTotalTokenValue>
-              <StTotalDollarValue>
-                ≈ {formatUnits(totalAmount * domesticRate)} USD
-              </StTotalDollarValue>
-            </StRenderHeader>
-            <UserPnLChart
-              chartData={findPnlDataByBotName(SELECT_OPTION.bot3.label)}
-            />
-          </>
-        );
-        break;
-      default:
-        return (
-          <>
-            <StRenderHeader>
-              <StTotalTokenValue>
-                {formatUnits(totalAmount)} {SELECT_OPTION.bot3.unit}
-              </StTotalTokenValue>
-              <StTotalDollarValue>
-                ≈ {formatUnits(totalAmount * domesticRate)} USD
-              </StTotalDollarValue>
-            </StRenderHeader>
-            <UserPnLChart
-              chartData={findPnlDataByBotName(SELECT_OPTION.bot3.label)}
-            />
-          </>
-        );
-        break;
-    }
-  };
-
   return (
     <StContainer>
       <StTitle>
@@ -119,7 +73,15 @@ const TotalAmount = ({
           )}
         </StSelectToken>
       </StTitle>
-      {render()}
+      <>
+        <StRenderHeader>
+          <StTotalTokenValue>{formatUnits(totalAmount)} BTC</StTotalTokenValue>
+          <StTotalDollarValue>
+            ≈ {formatUnits(totalAmount * domesticRate)} USD
+          </StTotalDollarValue>
+        </StRenderHeader>
+        <UserPnLChart chartData={findPnlDataByBotName(selected)} />
+      </>
     </StContainer>
   );
 };

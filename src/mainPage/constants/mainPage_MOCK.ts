@@ -9,7 +9,7 @@ export const MOCK_DASHBOARD: IDashboard = {
   total_pnl: 1.8,
   bots: [
     {
-      bot_name: 'Neutron Cyclic Bot',
+      bot_name: 'BotName',
       bot_id: 'bot3',
       total_investment: 5000,
       current_value: 5500,
@@ -23,6 +23,28 @@ export const MOCK_DASHBOARD: IDashboard = {
         {
           createdAt: '2024-06-27T00:00:00.000Z',
           pnlRate: 40,
+        },
+        {
+          createdAt: '2024-06-28T00:00:00.000Z',
+          pnlRate: 30,
+        },
+      ],
+    },
+    {
+      bot_name: 'BotName2',
+      bot_id: 'bot4',
+      total_investment: 5000,
+      current_value: 5500,
+      daily_pnl: 100,
+      total_profit: 500,
+      pnlData: [
+        {
+          createdAt: '2024-06-26T00:00:00.000Z',
+          pnlRate: 50,
+        },
+        {
+          createdAt: '2024-06-27T00:00:00.000Z',
+          pnlRate: 80,
         },
         {
           createdAt: '2024-06-28T00:00:00.000Z',

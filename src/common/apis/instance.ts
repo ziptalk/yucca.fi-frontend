@@ -14,6 +14,7 @@ instance.interceptors.response.use(
     return response;
   },
   async (error) => {
+    console.log(error);
     const originalRequest = error.config;
 
     if (
@@ -21,7 +22,7 @@ instance.interceptors.response.use(
       error.response.status === 500 &&
       !originalRequest._retry
     ) {
-      window.location.href = '/error';
+      // window.location.href = '/error';
     }
 
     return Promise.reject(error);
