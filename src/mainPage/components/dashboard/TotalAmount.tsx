@@ -13,7 +13,7 @@ interface ITotalAmountProps {
 
 const SELECT_OPTION = {
   bot3: {
-    unit: 'NTRN',
+    unit: 'BTC',
     label: 'Neutron Cyclic Bot',
   },
 };
@@ -26,6 +26,7 @@ const TotalAmount = ({
 }: ITotalAmountProps) => {
   const [openSelectOption, setOpenSelectOption] = useState(false);
   const [selected, setSelected] = useState(bots[0].bot_name);
+  console.log(bots);
 
   const dropdownRef = useRef<HTMLButtonElement>(null);
 
