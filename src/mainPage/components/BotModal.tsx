@@ -67,7 +67,6 @@ const BotModal = ({
       address: user_id,
       chainId: 3636,
     });
-    console.log(tmp);
 
     setBalance(convertTokenBalance(tmp.value, tmp.decimals));
   };

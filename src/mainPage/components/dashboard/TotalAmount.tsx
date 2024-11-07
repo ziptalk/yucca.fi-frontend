@@ -107,7 +107,10 @@ const TotalAmount = ({
               {bots.map((bot) => {
                 const { bot_name } = bot;
                 return (
-                  <StSelectItem onClick={() => setSelected(bot_name)}>
+                  <StSelectItem
+                    key={bot_name}
+                    onClick={() => setSelected(bot_name)}
+                  >
                     {bot_name}
                   </StSelectItem>
                 );
