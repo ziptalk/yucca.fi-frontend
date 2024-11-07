@@ -65,8 +65,9 @@ const BotModal = ({
     if (!user_id) return;
     const tmp = await getBalance(walletConfig, {
       address: user_id,
-      token: TOKEN_INFO.tokenAddress,
+      chainId: 3636,
     });
+    console.log(tmp);
 
     setBalance(convertTokenBalance(tmp.value, tmp.decimals));
   };

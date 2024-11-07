@@ -175,7 +175,7 @@ const StSelectOption = styled.div`
   display: flex;
   align-items: start;
   flex-direction: column;
-  background-color: #363636;
+  background-color: ${({ theme }) => theme.colors.background_pink};
 `;
 
 const StSelectItem = styled.span`
@@ -185,11 +185,11 @@ const StSelectItem = styled.span`
   display: flex;
   align-items: center;
   border-radius: 10px;
-  background-color: #363636;
+  background-color: ${({ theme }) => theme.colors.background_pink};
   z-index: 1;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.background_pink};
+    background-color: ${({ theme }) => theme.colors.light_pink};
   }
 `;
 

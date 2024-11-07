@@ -20,9 +20,9 @@ import { TOKEN_INFO } from '../../common/constants/TOKEN';
 import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 // import instance from '../../common/apis/instance';
 import { SadLogo } from '../../common/assets/0_index';
-import BotLogo from '../../common/components/BotLogo';
 import TotalAmount from '../components/dashboard/TotalAmount';
 import PriceCollection from '../components/dashboard/PriceCollection';
+import { LogoCyclicArbBot } from '../assets/0_index';
 // import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 
 // const base_url = import.meta.env.VITE_BASE_URL;
@@ -85,7 +85,7 @@ const ShowDashboardData = ({
                       gap: '0.6rem',
                     }}
                   >
-                    <BotLogo width='24' height='24' />
+                    <LogoCyclicArbBot width='24' height='24' />
                     {item.bot_name}
                   </div>
                 </StTableCell>
