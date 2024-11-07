@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import { IcDropUp, IcDropdown } from '../assets/0_index';
+import { IcDropUp, IcDropdown } from '../../assets/0_index';
 import { useState } from 'react';
-import { IDetail } from '../types/pnlChartType';
-import { formatPercentValue } from '../../common/utils/formatPercentValue';
+import { IDetail } from '../../types/pnlChartType';
+import { formatPercentValue } from '../../../common/utils/formatPercentValue';
 
 const DropDown = ({ detailData }: { detailData: IDetail }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -30,6 +30,26 @@ const OnBoarding = () => {
   const section3Ref = useRef<HTMLDivElement>(null);
   const section4Ref = useRef<HTMLDivElement>(null);
 
+  const mainContainerRef = useRef<HTMLDivElement>(null);
+  const [isHeaderBgActive, setIsHeaderBgActive] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mainContainerRef.current) {
+        const mainContainerTop =
+          mainContainerRef.current.getBoundingClientRect().top;
+        setIsHeaderBgActive(mainContainerTop < 90);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const scrollToSection = (
     ref: React.RefObject<HTMLDivElement>,
     isTop: boolean = false
@@ -63,11 +83,12 @@ const OnBoarding = () => {
         section2Ref={section2Ref}
         section3Ref={section3Ref}
         section4Ref={section4Ref}
+        isHeaderBgActive={isHeaderBgActive}
       />
       <StOnboardingBackground>
         <OnBoarding1 isMobile={isMobile} />
       </StOnboardingBackground>
-      <St.MainContainer>
+      <St.MainContainer ref={mainContainerRef}>
         <div ref={section2Ref} style={{ width: '100vw' }}>
           <OnBoarding2 isMobile={isMobile} />
         </div>

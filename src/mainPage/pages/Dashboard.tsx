@@ -3,63 +3,58 @@ import SelectView from '../components/SelectView';
 import { VIEW } from '../components/SelectView';
 import styled from '@emotion/styled';
 import { DASHBORADTABLEHEADER } from '../constants/DASHBOARD';
-// import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 import {
   STCOMActiveBtn,
   STCOMGreyBtn,
 } from '../../common/styles/commonStyleComs';
-import { IDashboard } from '../types/dashboardType';
+import { IBOTS, IBotPnl, IDashboard } from '../types/dashboardType';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import ConnectWallet from '../../wallet/components/ConnectWallet';
 import axios from 'axios';
-import { formatPriceValue } from '../../common/utils/formatPriceValue';
 import useTablet from '../../common/hooks/useTablet';
-import TableTablet from '../components/TableTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
 import { useUserAccount } from '../../wallet/hooks/useUserAccount';
 import { TOKEN_INFO } from '../../common/constants/TOKEN';
-import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
 import instance from '../../common/apis/instance';
-import { LogoCyclicArbBot } from '../assets/0_index';
 import { SadLogo } from '../../common/assets/0_index';
-// import { MOCK_DASHBOARD } from '../constants/mainPage_MOCK';
+import TotalAmount from '../components/dashboard/TotalAmount';
+import PriceCollection from '../components/dashboard/PriceCollection';
+import { LogoCyclicArbBot } from '../assets/0_index';
+import TableTablet from '../components/dashboard/TableTablet';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
-const ShowDashboardData = ({ data }: { data: IDashboard }) => {
+const ShowDashboardData = ({
+  data,
+  qveTokenBalance,
+  balance,
+  pnlData,
+}: {
+  data: IDashboard;
+  qveTokenBalance: number | undefined;
+  balance: string;
+  pnlData: IBotPnl[] | undefined;
+}) => {
   const TOKEN = TOKEN_INFO.token;
   const { openBotModal, openRemoveModal } = useOutletContext<{
     openBotModal: (id: string) => void;
-    openRemoveModal: (id: string) => void;
+    openRemoveModal: (id: string, totalInvest: number) => void;
   }>();
   const isTablet = useTablet();
   return (
-    <StDashboardContainer>
+    <StShowDashboard>
       <StTotalContainer>
-        <div>
-          <label>Total Balance</label>
-          <StTotalTokenValue>
-            {formatPriceValue(data.total_balance)} {TOKEN_INFO.token}
-          </StTotalTokenValue>
-          <StTotalDollarValue>
-            {/* ≈ ${Math.abs(Number(formatPriceValue(data.total_profit_usdt)))} */}
-            ≈ ${formatPriceValue(data.total_profit_usdt)}
-          </StTotalDollarValue>
-        </div>
-        <div>
-          <label>Total Profit</label>
-          <StTotalTokenValue>
-            <StColor isPositive={data.total_profit >= 0}>
-              {formatUnits(data.total_profit)} {TOKEN_INFO.token}
-            </StColor>
-          </StTotalTokenValue>
-          <StTotalDollarValue>
-            <StColor isPositive={data.total_profit >= 0}>
-              {/* ≈ ${Math.abs(Number(formatPriceValue(data.total_profit_usdt)))} */}
-              ≈ ${formatPriceValue(data.total_profit_usdt)}
-            </StColor>
-          </StTotalDollarValue>
-        </div>
+        <TotalAmount
+          totalAmount={data.total_amount}
+          pnlData={pnlData}
+          domesticRate={data.domesticRate}
+          bots={data.bots}
+        />
+        <PriceCollection
+          data={data}
+          qveTokenBalance={qveTokenBalance}
+          balance={balance}
+        />
       </StTotalContainer>
       {isTablet ? (
         <TableTablet
@@ -92,19 +87,19 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
                   </div>
                 </StTableCell>
                 <StTableCell>
-                  {formatPriceValue(item.total_investment)} {TOKEN}
+                  {formatUnits(item.total_investment)} {TOKEN}
                 </StTableCell>
                 <StTableCell>
-                  {formatPriceValue(item.current_value)} {TOKEN}
+                  {formatUnits(item.current_value)} {TOKEN}
                 </StTableCell>
-                <StTableCell>
+                {/* <StTableCell>
                   <StColor isPositive={item.daily_pnl >= 0}>
                     {formatPriceValue(item.daily_pnl)} %
                   </StColor>
-                </StTableCell>
+                </StTableCell> */}
                 <StTableCell>
                   <StColor isPositive={item.total_profit >= 0}>
-                    {formatPriceValue(item.total_profit)} {TOKEN}
+                    {formatUnits(item.total_profit)} {TOKEN}
                   </StColor>
                 </StTableCell>
                 <StTableCell>
@@ -117,7 +112,11 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
                     <StAddBtn onClick={() => openBotModal(item.bot_id)}>
                       Add
                     </StAddBtn>
-                    <StRemoveBtn onClick={() => openRemoveModal(item.bot_id)}>
+                    <StRemoveBtn
+                      onClick={() =>
+                        openRemoveModal(item.bot_id, item.total_investment)
+                      }
+                    >
                       Remove
                     </StRemoveBtn>
                   </div>
@@ -127,7 +126,7 @@ const ShowDashboardData = ({ data }: { data: IDashboard }) => {
           </tbody>
         </StTable>
       )}
-    </StDashboardContainer>
+    </StShowDashboard>
   );
 };
 
@@ -174,8 +173,7 @@ const ISnotSelectBot = () => {
 
 const Dashboard = () => {
   const address = useUserAccount();
-  const [data, setData] = useState<IDashboard>(MOCK_DASHBOARD);
-  // const data = MOCK_DASHBOARD;
+  const [data, setData] = useState<IDashboard>();
   const { refreshTrigger } = useOutletContext<{
     refreshTrigger: boolean;
   }>();
@@ -189,15 +187,20 @@ const Dashboard = () => {
       const { data } = await instance.get(
         `${base_url}/yucca/dashboard?user_id=${address}`
       );
-      // console.log(`🫥dashboard :`, data);
+      console.log(`🫥dashboard :`, data);
       setData(data);
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
-        err.response.status === 404 && setData(MOCK_DASHBOARD);
+        err.response.status === 404;
         return;
       }
     }
   };
+
+  const userPnlDataPerBotList = data?.bots.map((bot: IBOTS) => ({
+    bot_name: bot.bot_name,
+    pnlData: bot.pnlData,
+  }));
 
   return (
     <StContainer>
@@ -205,13 +208,18 @@ const Dashboard = () => {
       {address ? (
         data ? (
           data?.bots?.length ? (
-            <ShowDashboardData data={data} />
+            <ShowDashboardData
+              data={data}
+              pnlData={userPnlDataPerBotList}
+              qveTokenBalance={0}
+              balance='0'
+            />
           ) : (
             <ISnotSelectBot />
           )
         ) : (
-          <>loading..</>
-          // <ISnotSelectBot />
+          // <>loading..</>
+          <ISnotSelectBot />
         )
       ) : (
         <ISnotConnectWallet />
@@ -229,48 +237,26 @@ const StContainer = styled.div`
   gap: 3.2rem;
 `;
 
-const StDashboardContainer = styled.div`
+const StShowDashboard = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 3.4rem;
-  padding: 2rem 0;
+  gap: 2rem;
 `;
 
 const StTotalContainer = styled.div`
   width: 100%;
+  height: 30rem;
   display: flex;
-  color: ${({ theme }) => theme.colors.black};
-  padding: 0 2rem;
-
-  & > div {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    & label {
-      ${({ theme }) => theme.fonts.body_1};
-    }
-  }
+  color: ${({ theme }) => theme.colors.white};
+  gap: 1.6rem;
 
   @media (${({ theme }) => theme.breakpoints.mobile}) {
+    height: 60rem;
     flex-direction: column;
-    gap: 3rem;
-
-    & > div {
-      width: 100%;
-      gap: 0.2rem;
-    }
   }
 `;
 
-const StTotalTokenValue = styled.p`
-  ${({ theme }) => theme.fonts.pre_36};
-  color: ${({ theme }) => theme.colors.dark_spring_green};
-`;
-
-const StTotalDollarValue = styled.p`
-  ${({ theme }) => theme.fonts.caption};
-`;
 const StTable = styled.table`
   margin-top: 0.2rem;
   border-collapse: collapse;

@@ -20,6 +20,8 @@ import swapUniswap from './swap_uniswap.webp';
 import swapRaydium from './swap_raydium.webp';
 import swapJito from './swap_jito.webp';
 
+import IcTriangleDown from './triangleDownIcon.svg?react';
+import IcTriangleUp from './triangleUpIcon.svg?react';
 export {
   announceIMG,
   IcDashboard,
@@ -40,4 +42,6 @@ export {
   swapUniswap,
   swapRaydium,
   swapJito,
+  IcTriangleDown,
+  IcTriangleUp,
 };

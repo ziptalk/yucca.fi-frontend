@@ -1,8 +1,8 @@
 import ApexCharts from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { IChartData } from '../types/pnlChartType';
-import useMobile from '../../common/hooks/useMobile';
-import { formatPriceValue } from '../../common/utils/formatPriceValue';
+import { IChartData } from '../../types/pnlChartType';
+import { formatPriceValue } from '../../../common/utils/formatPriceValue';
+import useMobile from '../../../common/hooks/useMobile';
 
 const getYRange = (data: IChartData[]) => {
   const yValues = data.map((item) => item.pnlRate);
@@ -11,19 +11,17 @@ const getYRange = (data: IChartData[]) => {
   return { minY, maxY };
 };
 
-const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
+const UserPnLChart = ({
+  chartData,
+}: {
+  chartData: IChartData[] | undefined;
+}) => {
   const isMobile = useMobile();
-  // const data = [
-  //   { createdAt: '2024-08-16T10:05:16.000Z', pnlRate: 10 },
-  //   { createdAt: '2024-08-17T10:05:16.000Z', pnlRate: 15 },
-  //   { createdAt: '2024-08-18T10:05:16.000Z', pnlRate: 30 },
-  //   { createdAt: '2024-08-19T10:05:16.000Z', pnlRate: 40 },
-  //   { createdAt: '2024-08-20T10:05:16.000Z', pnlRate: 20 },
-  // ];
+  if (!chartData) return;
   const { minY, maxY } = getYRange(chartData);
   const series = [
     {
-      name: '이번 연도',
+      name: 'User PnL Chart',
       data: chartData?.map((item) => [
         new Date(item.createdAt).getTime(),
         item.pnlRate,
@@ -51,11 +49,12 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
     fill: {
       type: 'gradient', // 그라데이션으로 채우기
       gradient: {
+        shade: 'light', // 그라데이션의 밝기
         type: 'vertical', // 수직 그라데이션
-        shadeIntensity: 0.3,
-        gradientToColors: ['#6D9F71', '#273929', '#000'], // 그라데이션의 끝 색상
-        inverseColors: true,
-        opacityFrom: 0.5, // 시작 색상의 투명도
+        shadeIntensity: 0.5,
+        gradientToColors: ['#6D9F71'], // 그라데이션의 끝 색상
+        inverseColors: false,
+        opacityFrom: 0.3, // 시작 색상의 투명도
         opacityTo: 0, // 끝 색상의 투명도
         stops: [0, 100], // 그라데이션의 위치
       },
@@ -115,23 +114,29 @@ const AreaChart = ({ chartData }: { chartData: IChartData[] }) => {
     },
   };
 
-  return isMobile ? (
-    <ApexCharts
-      options={options}
-      series={series}
-      type='area'
-      height={240}
-      width={450}
-    />
+  return chartData ? (
+    <>
+      {isMobile ? (
+        <ApexCharts
+          options={options}
+          series={series}
+          type='area'
+          height='80%'
+          width='100%'
+        />
+      ) : (
+        <ApexCharts
+          options={options}
+          series={series}
+          type='area'
+          height='80%'
+          width='100%'
+        />
+      )}
+    </>
   ) : (
-    <ApexCharts
-      options={options}
-      series={series}
-      type='area'
-      height={240}
-      width={500}
-    />
+    <>loading</>
   );
 };
 
-export default AreaChart;
+export default UserPnLChart;

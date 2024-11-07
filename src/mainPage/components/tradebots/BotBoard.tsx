@@ -2,23 +2,23 @@ import styled from '@emotion/styled';
 import {
   STCOMActiveBtn,
   STCOMBoxWrapper,
-} from '../../common/styles/commonStyleComs';
+} from '../../../common/styles/commonStyleComs';
 import {
   IcPersons,
   LogoCyclicArbBot,
   LogoGradationBot,
-} from '../assets/0_index';
-import { ITRADEBOTS } from '../types/dashboardType';
-import { formatPriceValue } from '../../common/utils/formatPriceValue';
-import { formatNumberValue } from '../../common/utils/formatNumberValue';
-import { formatPercentValue } from '../../common/utils/formatPercentValue';
-import PreviewChart from './PreviewChart';
+} from '../../assets/0_index';
+import { ITRADEBOTS } from '../../types/dashboardType';
+import { formatPriceValue } from '../../../common/utils/formatPriceValue';
+import { formatNumberValue } from '../../../common/utils/formatNumberValue';
+import { formatPercentValue } from '../../../common/utils/formatPercentValue';
 import { useEffect, useState } from 'react';
-import { IChartData } from '../types/pnlChartType';
-import { useUserAccount } from '../../wallet/hooks/useUserAccount';
-import instance from '../../common/apis/instance';
-import { Botanix } from '../../onboarding/assets/0_index';
-import { MOCK_PNLCHART } from '../constants/mainPage_MOCK';
+import { IChartData } from '../../types/pnlChartType';
+import { useUserAccount } from '../../../wallet/hooks/useUserAccount';
+import instance from '../../../common/apis/instance';
+import { Botanix } from '../../../onboarding/assets/0_index';
+import { MOCK_PNLCHART } from '../../constants/mainPage_MOCK';
+import PreviewChart from './PreviewChart';
 
 interface IBotBoardProps {
   data: ITRADEBOTS;

@@ -1,28 +1,29 @@
 import styled from '@emotion/styled';
-import { IcModalX, IcNotice } from '../assets/0_index';
+import { IcModalX, IcNotice } from '../../assets/0_index';
 import AreaChart from './AreaChart';
 import {
   STCOMBackground,
   STCOMActiveBtn,
-} from '../../common/styles/commonStyleComs';
+} from '../../../common/styles/commonStyleComs';
 import DropDown from './DropDown';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
-import { IPnlChart } from '../types/pnlChartType';
-import { DEPOSIT_PLACEHOLDER } from '../constants/DEPOSIT_PLACEHOLDER';
-import { formatNumberWithCommas } from '../../common/utils/formatNumberWithCommas';
-import { formatPercentValue } from '../../common/utils/formatPercentValue';
-import { useOutsideClick } from '../../common/hooks/useOutsideClick';
-import { slideUp } from '../../common/utils/animation';
-import { useUserAccount } from '../../wallet/hooks/useUserAccount';
-import { depositTransfer } from '../../common/contracts/contractFunctions';
-import { TOKEN_INFO } from '../../common/constants/TOKEN';
-import { walletConfig } from '../../wallet/walletConfig';
+import { IPnlChart } from '../../types/pnlChartType';
+import { DEPOSIT_PLACEHOLDER } from '../../constants/DEPOSIT_PLACEHOLDER';
+import { formatNumberWithCommas } from '../../../common/utils/formatNumberWithCommas';
+import { formatPercentValue } from '../../../common/utils/formatPercentValue';
+import { useOutsideClick } from '../../../common/hooks/useOutsideClick';
+import { slideUp } from '../../../common/utils/animation';
+import { useUserAccount } from '../../../wallet/hooks/useUserAccount';
+import { depositTransfer } from '../../../common/contracts/contractFunctions';
+import { TOKEN_INFO } from '../../../common/constants/TOKEN';
+import { walletConfig } from '../../../wallet/walletConfig';
 import { getBalance } from 'wagmi/actions';
-import { convertTokenBalance } from '../../common/utils/convertTokenBalance';
+import { convertTokenBalance } from '../../../common/utils/convertTokenBalance';
 import BotModalReceive from './BotModalReceive';
-import { parseNumber } from '../../common/utils/parseNumber';
-import { MOCK_PNLCHART } from '../constants/mainPage_MOCK';
+import { parseNumber } from '../../../common/utils/parseNumber';
+import { MOCK_PNLCHART } from '../../constants/mainPage_MOCK';
+import { PuffLoader } from 'react-spinners';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 100;
@@ -65,7 +66,7 @@ const BotModal = ({
     if (!user_id) return;
     const tmp = await getBalance(walletConfig, {
       address: user_id,
-      token: TOKEN_INFO.tokenAddress,
+      chainId: 3636,
     });
 
     setBalance(convertTokenBalance(tmp.value, tmp.decimals));
@@ -123,74 +124,78 @@ const BotModal = ({
     }
   };
 
-  return data ? (
+  return (
     <StBotModalBackGround>
-      <StScroll>
-        <StWrapper ref={wrapperRef}>
-          <StSpaceBetween>
-            <StModalTitle>{data.bot_name}</StModalTitle>
-            <IcModalX onClick={onClose} style={{ cursor: 'pointer' }} />
-          </StSpaceBetween>
-          <StModalExplain>
-            Cyclic arb bot automatically captures recurring price discrepancies
-            between multiple exchanges, operating 24/7.
-          </StModalExplain>
-          <StColumn>
+      {data && balance ? (
+        <StScroll>
+          <StWrapper ref={wrapperRef}>
             <StSpaceBetween>
-              <StModalLabel>Investment</StModalLabel>
-              <StAvailable>
-                <span>Available:</span> {balance}
-                {TOKEN_INFO.token}
-              </StAvailable>
+              <StModalTitle>{data.bot_name}</StModalTitle>
+              <IcModalX onClick={onClose} style={{ cursor: 'pointer' }} />
             </StSpaceBetween>
-            <StinputContainer isFocused={isFocused || depositValue.length > 0}>
-              <input
-                placeholder={placeholder}
-                value={depositValue}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-                onChange={handleDepositValue}
-              />
-              <button onClick={() => balance && setDepositValue(balance)}>
-                Max
-              </button>
-            </StinputContainer>
-            {(isFocused || depositValue) && (
-              <BotModalReceive value={parseNumber(depositValue)} />
-            )}
-          </StColumn>
+            <StModalExplain>
+              Cyclic arb bot automatically captures recurring price
+              discrepancies between multiple exchanges, operating 24/7.
+            </StModalExplain>
+            <StColumn>
+              <StSpaceBetween>
+                <StModalLabel>Investment</StModalLabel>
+                <StAvailable>
+                  <span>Available:</span> {balance}
+                  {TOKEN_INFO.token}
+                </StAvailable>
+              </StSpaceBetween>
+              <StinputContainer
+                isFocused={isFocused || depositValue.length > 0}
+              >
+                <input
+                  placeholder={placeholder}
+                  value={depositValue}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  onChange={handleDepositValue}
+                />
+                <button onClick={() => balance && setDepositValue(balance)}>
+                  Max
+                </button>
+              </StinputContainer>
+              {(isFocused || depositValue) && (
+                <BotModalReceive value={parseNumber(depositValue)} />
+              )}
+            </StColumn>
 
-          <StGraphContaienr>
-            <p>Daily PnL(%): {formatPercentValue(data.daily_PnL)}%</p>
-            <AreaChart chartData={data.data} />
-          </StGraphContaienr>
-          <DropDown detailData={data.detailInformation} />
-          <StDepositBtn
-            disabled={
-              placeholder !== DEPOSIT_PLACEHOLDER.default ||
-              !depositValue ||
-              Number(depositValue.replace(/,/g, '')) < MINVAL
-            }
-            onClick={() => deposit(botId)}
-          >
-            {isLoading}
-          </StDepositBtn>
-          <StModalNotice>
-            <IcNotice />
-            <span>
-              You are using a shared parameter. As market conditions differ,
-              these parameters cannot guarantee the same results.
-            </span>
-          </StModalNotice>
-          <StNoticeP>
-            If you remove the bot, a 20% fee on the revenue it generated will be
-            charged.
-          </StNoticeP>
-        </StWrapper>
-      </StScroll>
+            <StGraphContaienr>
+              <p>Daily PnL(%): {formatPercentValue(data.daily_PnL)}%</p>
+              <AreaChart chartData={data.data} />
+            </StGraphContaienr>
+            <DropDown detailData={data.detailInformation} />
+            <StDepositBtn
+              disabled={
+                placeholder !== DEPOSIT_PLACEHOLDER.default ||
+                !depositValue ||
+                Number(depositValue.replace(/,/g, '')) < MINVAL
+              }
+              onClick={() => deposit(botId)}
+            >
+              {isLoading}
+            </StDepositBtn>
+            <StModalNotice>
+              <IcNotice />
+              <span>
+                You are using a shared parameter. As market conditions differ,
+                these parameters cannot guarantee the same results.
+              </span>
+            </StModalNotice>
+            <StNoticeP>
+              If you remove the bot, a 20% fee on the revenue it generated will
+              be charged.
+            </StNoticeP>
+          </StWrapper>
+        </StScroll>
+      ) : (
+        <PuffLoader color='#337357' />
+      )}
     </StBotModalBackGround>
-  ) : (
-    <>loading...</>
   );
 };
 
