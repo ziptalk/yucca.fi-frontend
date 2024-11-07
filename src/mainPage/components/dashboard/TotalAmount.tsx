@@ -26,7 +26,6 @@ const TotalAmount = ({
 }: ITotalAmountProps) => {
   const [openSelectOption, setOpenSelectOption] = useState(false);
   const [selected, setSelected] = useState(bots[0].bot_name);
-  console.log(bots);
 
   const dropdownRef = useRef<HTMLButtonElement>(null);
 
