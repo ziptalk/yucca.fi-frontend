@@ -23,6 +23,7 @@ import { convertTokenBalance } from '../../../common/utils/convertTokenBalance';
 import BotModalReceive from './BotModalReceive';
 import { parseNumber } from '../../../common/utils/parseNumber';
 import { MOCK_PNLCHART } from '../../constants/mainPage_MOCK';
+import { PuffLoader } from 'react-spinners';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 const MINVAL = 100;
@@ -123,74 +124,78 @@ const BotModal = ({
     }
   };
 
-  return data ? (
+  return (
     <StBotModalBackGround>
-      <StScroll>
-        <StWrapper ref={wrapperRef}>
-          <StSpaceBetween>
-            <StModalTitle>{data.bot_name}</StModalTitle>
-            <IcModalX onClick={onClose} style={{ cursor: 'pointer' }} />
-          </StSpaceBetween>
-          <StModalExplain>
-            Cyclic arb bot automatically captures recurring price discrepancies
-            between multiple exchanges, operating 24/7.
-          </StModalExplain>
-          <StColumn>
+      {data && balance ? (
+        <StScroll>
+          <StWrapper ref={wrapperRef}>
             <StSpaceBetween>
-              <StModalLabel>Investment</StModalLabel>
-              <StAvailable>
-                <span>Available:</span> {balance}
-                {TOKEN_INFO.token}
-              </StAvailable>
+              <StModalTitle>{data.bot_name}</StModalTitle>
+              <IcModalX onClick={onClose} style={{ cursor: 'pointer' }} />
             </StSpaceBetween>
-            <StinputContainer isFocused={isFocused || depositValue.length > 0}>
-              <input
-                placeholder={placeholder}
-                value={depositValue}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-                onChange={handleDepositValue}
-              />
-              <button onClick={() => balance && setDepositValue(balance)}>
-                Max
-              </button>
-            </StinputContainer>
-            {(isFocused || depositValue) && (
-              <BotModalReceive value={parseNumber(depositValue)} />
-            )}
-          </StColumn>
+            <StModalExplain>
+              Cyclic arb bot automatically captures recurring price
+              discrepancies between multiple exchanges, operating 24/7.
+            </StModalExplain>
+            <StColumn>
+              <StSpaceBetween>
+                <StModalLabel>Investment</StModalLabel>
+                <StAvailable>
+                  <span>Available:</span> {balance}
+                  {TOKEN_INFO.token}
+                </StAvailable>
+              </StSpaceBetween>
+              <StinputContainer
+                isFocused={isFocused || depositValue.length > 0}
+              >
+                <input
+                  placeholder={placeholder}
+                  value={depositValue}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  onChange={handleDepositValue}
+                />
+                <button onClick={() => balance && setDepositValue(balance)}>
+                  Max
+                </button>
+              </StinputContainer>
+              {(isFocused || depositValue) && (
+                <BotModalReceive value={parseNumber(depositValue)} />
+              )}
+            </StColumn>
 
-          <StGraphContaienr>
-            <p>Daily PnL(%): {formatPercentValue(data.daily_PnL)}%</p>
-            <AreaChart chartData={data.data} />
-          </StGraphContaienr>
-          <DropDown detailData={data.detailInformation} />
-          <StDepositBtn
-            disabled={
-              placeholder !== DEPOSIT_PLACEHOLDER.default ||
-              !depositValue ||
-              Number(depositValue.replace(/,/g, '')) < MINVAL
-            }
-            onClick={() => deposit(botId)}
-          >
-            {isLoading}
-          </StDepositBtn>
-          <StModalNotice>
-            <IcNotice />
-            <span>
-              You are using a shared parameter. As market conditions differ,
-              these parameters cannot guarantee the same results.
-            </span>
-          </StModalNotice>
-          <StNoticeP>
-            If you remove the bot, a 20% fee on the revenue it generated will be
-            charged.
-          </StNoticeP>
-        </StWrapper>
-      </StScroll>
+            <StGraphContaienr>
+              <p>Daily PnL(%): {formatPercentValue(data.daily_PnL)}%</p>
+              <AreaChart chartData={data.data} />
+            </StGraphContaienr>
+            <DropDown detailData={data.detailInformation} />
+            <StDepositBtn
+              disabled={
+                placeholder !== DEPOSIT_PLACEHOLDER.default ||
+                !depositValue ||
+                Number(depositValue.replace(/,/g, '')) < MINVAL
+              }
+              onClick={() => deposit(botId)}
+            >
+              {isLoading}
+            </StDepositBtn>
+            <StModalNotice>
+              <IcNotice />
+              <span>
+                You are using a shared parameter. As market conditions differ,
+                these parameters cannot guarantee the same results.
+              </span>
+            </StModalNotice>
+            <StNoticeP>
+              If you remove the bot, a 20% fee on the revenue it generated will
+              be charged.
+            </StNoticeP>
+          </StWrapper>
+        </StScroll>
+      ) : (
+        <PuffLoader color='#337357' />
+      )}
     </StBotModalBackGround>
-  ) : (
-    <>loading...</>
   );
 };
 
