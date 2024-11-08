@@ -25,24 +25,24 @@ export default LinkBtns;
 
 const StIcTwitter = styled(IcTwitter)`
   &:hover {
-    & > path {
-      fill: ${({ theme }) => theme.colors.dark_pink};
+    & path:nth-child(1) {
+      fill-opacity: 1;
     }
   }
 `;
 
 const StIcTelegram = styled(IcTelegram)`
   &:hover {
-    & g:nth-child(2) path {
-      fill: ${({ theme }) => theme.colors.dark_pink};
+    & path:nth-child(1) {
+      fill-opacity: 1;
     }
   }
 `;
 
 const StIcGithub = styled(IcGithub)`
   &:hover {
-    & g:nth-child(2) path {
-      fill: ${({ theme }) => theme.colors.dark_pink};
+    & path:nth-child(1) {
+      fill-opacity: 1;
     }
   }
 `;
