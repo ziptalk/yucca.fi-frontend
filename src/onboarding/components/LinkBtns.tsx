@@ -1,6 +1,7 @@
 import { IcGithub, IcTelegram, IcTwitter } from '../assets/0_index';
 import { LINKS } from '../../common/constants/LINKS';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 const LinkBtns = () => {
   return (
@@ -23,26 +24,22 @@ const LinkBtns = () => {
 
 export default LinkBtns;
 
-const StIcTwitter = styled(IcTwitter)`
+const hoverStyle = css`
   &:hover {
-    & path:nth-child(1) {
+    & path:nth-of-type(1) {
       fill-opacity: 1;
     }
   }
+`;
+
+const StIcTwitter = styled(IcTwitter)`
+  ${hoverStyle}
 `;
 
 const StIcTelegram = styled(IcTelegram)`
-  &:hover {
-    & path:nth-child(1) {
-      fill-opacity: 1;
-    }
-  }
+  ${hoverStyle}
 `;
 
 const StIcGithub = styled(IcGithub)`
-  &:hover {
-    & path:nth-child(1) {
-      fill-opacity: 1;
-    }
-  }
+  ${hoverStyle}
 `;
