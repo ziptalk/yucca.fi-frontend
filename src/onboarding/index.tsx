@@ -106,7 +106,7 @@ const OnBoarding = () => {
 
 const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
   const base_url = import.meta.env.VITE_BASE_URL;
-  const [totalValueLocked, setTotalValueLocked] = useState('130.00');
+  const [totalValueLocked, setTotalValueLocked] = useState('');
 
   useEffect(() => {
     getData();
