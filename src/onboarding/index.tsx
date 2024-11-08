@@ -1,13 +1,7 @@
 import Header from '../common/components/Header';
 import * as St from './Onboarding.style.tsx';
 
-import {
-  Botanix,
-  onboarding3,
-  onboarding3_mobile,
-  yuccaLogoOnce,
-  yuccafiBackground,
-} from './assets/0_index';
+import { Botanix, yuccaLogoOnce, yuccafiBackground } from './assets/0_index';
 import TradeNowBtn from './components/TradeNowBtn.tsx';
 import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
@@ -19,7 +13,8 @@ import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
 
 import styled from '@emotion/styled';
 import LinkBtns from './components/LinkBtns.tsx';
-import OnBoarding2 from './components/frames/onboarding2.tsx';
+import OnBoarding2 from './components/frames/Onboarding2.tsx';
+import OnBoarding3 from './components/frames/Onboarding3.tsx';
 
 export interface IOnboardingProps {
   isMobile: boolean;
@@ -175,38 +170,6 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
         )}
       </St.Section1.Bottom>
     </St.Section1.Container>
-  );
-};
-
-const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
-  return (
-    <St.Section3.Container>
-      <St.Section3.InTro>
-        {isMobile ? (
-          <St.PreTitle>Vaults Trading bots</St.PreTitle>
-        ) : (
-          <St.PreTitle>
-            Yucca.fi offers various ‘vaults’, which are operated by the trading
-            bots
-          </St.PreTitle>
-        )}
-        <St.Title>Assets Into The Vault</St.Title>
-        <St.Section3.SubTitle>
-          ( Arbitrage is one of the strategies we use )
-        </St.Section3.SubTitle>
-      </St.Section3.InTro>
-      {isMobile ? (
-        <img
-          style={{ width: '38.2rem', margin: '6.4rem 0 13rem' }}
-          src={onboarding3_mobile}
-        />
-      ) : (
-        <img
-          style={{ width: '120rem', margin: '6.4rem 0 13rem' }}
-          src={onboarding3}
-        />
-      )}
-    </St.Section3.Container>
   );
 };
 
