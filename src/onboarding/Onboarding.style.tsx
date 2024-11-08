@@ -189,10 +189,10 @@ export const Section2 = {
     margin: 6.4rem 0 12.8rem;
     display: flex;
     justify-content: center;
-    gap: 8rem;
+    gap: 5rem;
 
     @media (${({ theme }) => theme.breakpoints.tablet}) {
-      gap: 8rem;
+      gap: 5rem;
     }
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       flex-direction: column;

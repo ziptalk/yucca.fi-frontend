@@ -8,7 +8,6 @@ import {
   yuccaLogoOnce,
   yuccafiBackground,
 } from './assets/0_index';
-import { ABOUTQVE } from './constants/constants.ts';
 import TradeNowBtn from './components/TradeNowBtn.tsx';
 import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
@@ -20,8 +19,9 @@ import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
 
 import styled from '@emotion/styled';
 import LinkBtns from './components/LinkBtns.tsx';
+import OnBoarding2 from './components/frames/onboarding2.tsx';
 
-interface IOnboardingProps {
+export interface IOnboardingProps {
   isMobile: boolean;
 }
 
@@ -175,74 +175,6 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
         )}
       </St.Section1.Bottom>
     </St.Section1.Container>
-  );
-};
-
-const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
-  return (
-    <St.Section2.Container>
-      <p>About yucca.fi</p>
-      <St.Title>Optimizing Yields in the Layer 2 on Bitcoin Ecosystem</St.Title>
-      <St.Section2.Contents>
-        {isMobile ? (
-          <>
-            {ABOUTQVE.map((item) => {
-              return (
-                <St.Mobile.SectionItemBox key={item.keyWord}>
-                  <item.icon style={{ width: '2.4rem', height: '2.4rem' }} />
-                  <St.Mobile.AboutItem>{item.title}</St.Mobile.AboutItem>
-                  <St.Mobile.Explain>{item.explain}</St.Mobile.Explain>
-                </St.Mobile.SectionItemBox>
-              );
-            })}
-          </>
-        ) : (
-          <>
-            {ABOUTQVE.map((item, idx) => {
-              let rotateValue = 22.5;
-              let translateYValue = 8;
-              switch (idx) {
-                case 0:
-                  rotateValue = -rotateValue;
-                  translateYValue;
-                  break;
-                case 1:
-                  rotateValue = 0;
-                  translateYValue = 0;
-                  break;
-                case 2:
-                  rotateValue;
-                  translateYValue;
-                  break;
-                default:
-                  rotateValue = 0;
-              }
-              return (
-                <St.Section2.Wrapper
-                  key={item.keyWord}
-                  style={{
-                    transform: `rotate(${rotateValue}deg) translateY(${translateYValue}rem)`,
-                  }}
-                >
-                  <St.Section2.AboutItem>
-                    <St.Section2.IconContainer>
-                      <item.icon />
-                      <span>{item.keyWord}</span>
-                    </St.Section2.IconContainer>
-                    <St.Section2.AbouItemLayout>
-                      <St.Section2.ItemTitle>
-                        {item.title}
-                      </St.Section2.ItemTitle>
-                      <St.Section2.Explain>{item.explain}</St.Section2.Explain>
-                    </St.Section2.AbouItemLayout>
-                  </St.Section2.AboutItem>
-                </St.Section2.Wrapper>
-              );
-            })}
-          </>
-        )}
-      </St.Section2.Contents>
-    </St.Section2.Container>
   );
 };
 
