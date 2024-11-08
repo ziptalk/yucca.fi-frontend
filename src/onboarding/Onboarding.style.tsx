@@ -68,6 +68,7 @@ export const Section1 = {
   QVEIntroduce: styled.div`
     display: flex;
     flex-direction: column;
+    gap: 0.8rem;
     & > h1 {
       ${({ theme }) => theme.fonts.kumbh_snas_22};
       color: ${({ theme }) => theme.colors.deep_dark_green};
