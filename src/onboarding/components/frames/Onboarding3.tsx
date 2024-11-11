@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import * as St from '../../Onboarding.style';
 import { IOnboardingProps } from '../..';
-import { onboarding3_mobile } from '../../assets/0_index';
+import { onboarding3_mobile } from '../../assets/Onboarding3/0_index';
 import styled from '@emotion/styled';
 import {
   onboarding3Left,
