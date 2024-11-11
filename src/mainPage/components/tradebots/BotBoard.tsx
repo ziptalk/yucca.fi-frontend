@@ -120,6 +120,9 @@ const StGlassWrapper = styled(STCOMBoxWrapper)`
   min-width: 30rem;
   width: calc(50% - 1rem);
   max-width: 59rem;
+  &:not(:last-child):hover {
+    outline: 2px solid ${({ theme }) => theme.colors.dark_spring_green};
+  }
   /* min-height: 45.4rem; */
   @media (${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
