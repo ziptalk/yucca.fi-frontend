@@ -32,6 +32,9 @@ export const STCOMActiveBtn = styled.button`
   border-radius: 100px;
   ${({ theme }) => theme.fonts.kumbh_snas_18_medi};
   color: ${({ theme }) => theme.colors.white};
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.dark_pink};
+  }
 `;
 
 export const STCOMGreyBtn = styled.button`

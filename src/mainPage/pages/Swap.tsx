@@ -57,7 +57,7 @@ const StItem = styled(STCOMBoxWrapper)`
   padding: 10rem;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.spring_green};
+    outline: 2px solid ${({ theme }) => theme.colors.spring_green};
   }
 `;
 
