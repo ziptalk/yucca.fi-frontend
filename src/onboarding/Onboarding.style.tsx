@@ -68,6 +68,7 @@ export const Section1 = {
   QVEIntroduce: styled.div`
     display: flex;
     flex-direction: column;
+    gap: 0.8rem;
     & > h1 {
       ${({ theme }) => theme.fonts.kumbh_snas_22};
       color: ${({ theme }) => theme.colors.deep_dark_green};
@@ -188,10 +189,10 @@ export const Section2 = {
     margin: 6.4rem 0 12.8rem;
     display: flex;
     justify-content: center;
-    gap: 8rem;
+    gap: 5rem;
 
     @media (${({ theme }) => theme.breakpoints.tablet}) {
-      gap: 8rem;
+      gap: 5rem;
     }
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       flex-direction: column;
@@ -309,7 +310,7 @@ export const Section4 = {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
+    gap: 1rem;
     margin: 6.4rem 0 14rem;
     @media (${({ theme }) => theme.breakpoints.tablet}) {
       width: 85%;
@@ -324,7 +325,7 @@ export const Section4 = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2.3rem;
+    gap: 1rem;
     ${({ theme }) => theme.fonts.kumbh_snas_20};
     color: ${({ theme }) => theme.colors.dark_gray};
     background-color: ${({ theme }) => theme.colors.white_opacity};

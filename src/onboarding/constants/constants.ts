@@ -9,7 +9,7 @@ import {
   imgWithdrawAssets,
 } from '../assets/0_index';
 
-interface IAboutQve {
+export interface IAboutQve {
   icon: FunctionComponent<SVGProps<SVGSVGElement>>;
   keyWord: string;
   title: string;
