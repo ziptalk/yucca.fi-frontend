@@ -5,7 +5,6 @@ import { Botanix, yuccaLogoOnce, yuccafiBackground } from './assets/0_index';
 import TradeNowBtn from './components/TradeNowBtn.tsx';
 import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
-import { ONBOARDING4 } from './constants/constants.ts';
 import useMobile from '../common/hooks/useMobile.tsx';
 // import { getContractTokenBalance } from '../common/contracts/contractFunctions.ts';
 import axios from 'axios';
@@ -15,6 +14,7 @@ import styled from '@emotion/styled';
 import LinkBtns from './components/LinkBtns.tsx';
 import OnBoarding2 from './components/frames/Onboarding2.tsx';
 import OnBoarding3 from './components/frames/Onboarding3.tsx';
+import OnBoarding4 from './components/frames/Onboarding4.tsx';
 
 export interface IOnboardingProps {
   isMobile: boolean;
@@ -170,47 +170,6 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
         )}
       </St.Section1.Bottom>
     </St.Section1.Container>
-  );
-};
-
-const OnBoarding4 = ({ isMobile }: IOnboardingProps) => {
-  return (
-    <St.Section4.Container>
-      {/* <St.Section4.BackgroundImg
-        src={onBoardingBackImg3}
-        alt='background-img'
-      /> */}
-      <St.PreTitle>Asset Management Process</St.PreTitle>
-      <St.Title>Automated Trading Strategy</St.Title>
-      <St.Section4.ImgContainer>
-        {isMobile ? (
-          <>
-            {ONBOARDING4.map((item) => (
-              <St.Mobile.Section4ItemBox key={item.label}>
-                <img
-                  src={item.icon}
-                  alt={item.label}
-                  style={{ width: '5rem', height: '5rem' }}
-                />
-                <St.Mobile.Body1>{item.label}</St.Mobile.Body1>
-                <St.Mobile.Explain>{item.explain}</St.Mobile.Explain>
-              </St.Mobile.Section4ItemBox>
-            ))}
-          </>
-        ) : (
-          <>
-            {ONBOARDING4.map((item) => (
-              <St.Section4.ItemWrapper key={item.label}>
-                <img src={item.icon} alt={item.label} />
-                {item.label}
-              </St.Section4.ItemWrapper>
-            ))}
-          </>
-        )}
-      </St.Section4.ImgContainer>
-
-      <TradeNowBtn />
-    </St.Section4.Container>
   );
 };
 

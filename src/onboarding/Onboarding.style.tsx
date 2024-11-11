@@ -310,7 +310,7 @@ export const Section4 = {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
+    gap: 1rem;
     margin: 6.4rem 0 14rem;
     @media (${({ theme }) => theme.breakpoints.tablet}) {
       width: 85%;
@@ -325,7 +325,7 @@ export const Section4 = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2.3rem;
+    gap: 1rem;
     ${({ theme }) => theme.fonts.kumbh_snas_20};
     color: ${({ theme }) => theme.colors.dark_gray};
     background-color: ${({ theme }) => theme.colors.white_opacity};
