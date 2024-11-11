@@ -78,9 +78,8 @@ const OnBoarding = () => {
         section2Ref={section2Ref}
         section3Ref={section3Ref}
         section4Ref={section4Ref}
-        isHeaderBgActive={isHeaderBgActive}
       />
-      <StOnboardingBackground>
+      <StOnboardingBackground isHeaderBgActive={isHeaderBgActive}>
         <OnBoarding1 isMobile={isMobile} />
       </StOnboardingBackground>
       <St.MainContainer ref={mainContainerRef}>
@@ -175,8 +174,10 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
 
 export default OnBoarding;
 
-const StOnboardingBackground = styled.div`
-  background-image: url(${yuccafiBackground});
+const StOnboardingBackground = styled.div<{ isHeaderBgActive: boolean }>`
+  background-image: ${({ isHeaderBgActive }) =>
+    isHeaderBgActive ? `` : `url(${yuccafiBackground})`};
+
   background-size: 100% 100vh;
   background-repeat: no-repeat;
   display: flex;

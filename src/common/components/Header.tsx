@@ -18,7 +18,6 @@ interface HeaderProps {
   section4Ref?: React.RefObject<HTMLDivElement>;
   onClose?: () => void;
   handleWalletModal?: () => void;
-  isHeaderBgActive?: boolean;
 }
 
 const Header = ({
@@ -26,14 +25,13 @@ const Header = ({
   section2Ref,
   section3Ref,
   section4Ref,
-  isHeaderBgActive,
 }: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isMobile = useMobile();
 
   return (
-    <StContainer isHeaderBgActive={isHeaderBgActive || false}>
+    <StContainer>
       <StWrapper>
         <StLogo onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
         {isMobile ? (
@@ -116,7 +114,7 @@ export const HeaderNav = ({
 
 export default Header;
 
-const StContainer = styled.header<{ isHeaderBgActive: boolean }>`
+const StContainer = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -124,10 +122,7 @@ const StContainer = styled.header<{ isHeaderBgActive: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ isHeaderBgActive, theme }) =>
-    isHeaderBgActive ? theme.colors.background : 'transparent'};
-  backdrop-filter: ${({ isHeaderBgActive }) =>
-    isHeaderBgActive ? '' : 'blur(15px)'};
+  backdrop-filter: blur(15px);
   z-index: 10;
   padding: 0;
   margin: 0;
