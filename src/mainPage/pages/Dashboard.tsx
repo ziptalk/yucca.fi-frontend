@@ -21,8 +21,11 @@ import { getDashboard } from '../../common/apis/apis';
 import { useQuery } from '@tanstack/react-query';
 import { BarLoader } from 'react-spinners';
 import { useTokenInfo } from '../../wallet/hooks/useTokenInfo';
-import { WKLAYtokenAddress } from '../../common/contracts/tokenAddress';
-import { useQveTokenBalance } from '../../wallet/hooks/useQveTokenBalance';
+import {
+  QVETOKENAddress,
+  WKLAYtokenAddress,
+} from '../../common/contracts/tokenAddress';
+import { useUserTokenBalance } from '../../wallet/hooks/useQveTokenBalance';
 
 const ShowDashboardData = ({
   data,
@@ -173,7 +176,8 @@ const ISnotSelectBot = () => {
 
 const Dashboard = () => {
   const address = useUserAccount();
-  const qveTokenBalance = useQveTokenBalance(address, WKLAYtokenAddress);
+  const qveTokenBalance = useUserTokenBalance(address, QVETOKENAddress);
+  const collateralBalance = useUserTokenBalance(address, WKLAYtokenAddress);
 
   const { data, isLoading } = useQuery({
     queryKey: ['dashboard', address],
@@ -196,7 +200,7 @@ const Dashboard = () => {
               data={data}
               pnlData={userPnlDataPerBotList}
               qveTokenBalance={Number(qveTokenBalance)}
-              balance='0'
+              balance={collateralBalance}
             />
           ) : (
             <ISnotSelectBot />

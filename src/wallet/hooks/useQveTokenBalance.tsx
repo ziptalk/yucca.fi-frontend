@@ -8,11 +8,11 @@ import { weiToEther } from '../../common/utils/weiToEther';
 
 let tokenVaultInstance: ethers.Contract;
 
-export const useQveTokenBalance = (
+export const useUserTokenBalance = (
   address: Address | undefined,
   tokenAddress: Address | undefined
 ) => {
-  const [balance, setBalance] = useState<string | null>(null);
+  const [balance, setBalance] = useState<string>('');
 
   useEffect(() => {
     getQveTokenBalance(address, tokenAddress);
@@ -34,12 +34,13 @@ export const useQveTokenBalance = (
   ) => {
     if (!userAddress || !tokenAddress) return;
     await initialize();
-    const tx = await tokenVaultInstance?.getCollateralBalance(
+    const tx = await tokenVaultInstance?.getUserTokenBalance(
       userAddress,
       tokenAddress
     );
 
     setBalance(tx ? weiToEther(tx, 18) : '0');
+    console.log(tx);
   };
   // getQveTokenBalance(address, WKLAYtokenAddress);
 
