@@ -40,6 +40,7 @@ const OnBoarding4 = ({ isMobile }: IOnboardingProps) => {
           <>
             {ONBOARDING4.map((item, index) => (
               <StItemWrapper
+                key={item.label}
                 css={[
                   isVisible &&
                     css`

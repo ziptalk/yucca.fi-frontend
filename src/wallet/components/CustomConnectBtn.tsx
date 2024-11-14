@@ -1,7 +1,7 @@
 //지갑연결 커스텀 버튼
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import * as St from '../styles/CustomConnectBtn.style';
-import { IcWallet } from '../assets/0_index';
+import { IcWallet, yuccaWalletLogo } from '../assets/0_index';
 export const CustomConnectBtn = ({
   handleWalletModal,
 }: {
@@ -93,7 +93,11 @@ export const CustomConnectBtn = ({
                         </div>
                       ) : (
                         //체인 아이콘 없을 시 들어갈 대체 아이콘
-                        <></>
+                        <img
+                          src={yuccaWalletLogo}
+                          alt='yucca'
+                          style={{ width: 28, height: 28 }}
+                        />
                       )}
                     </St.IconBtn>
                     <p>Disconnect</p>

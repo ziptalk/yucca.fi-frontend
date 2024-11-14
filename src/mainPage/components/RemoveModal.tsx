@@ -7,7 +7,7 @@ import { IcModalX } from '../assets/0_index';
 import axios from 'axios';
 import { useRef, useState } from 'react';
 import { useOutsideClick } from '../../common/hooks/useOutsideClick';
-import { useUserAccount } from '../../wallet/hooks/useUserAccount';
+import { useUserAccount } from '../../wallet/hooks/useUserWalletInfo';
 
 const RemoveModal = ({
   isOpen,

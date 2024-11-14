@@ -4,7 +4,7 @@ import { IcModalX, IcNotice } from '../assets/0_index';
 import ConnectWallet from '../../wallet/components/ConnectWallet';
 import { useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from '../../common/hooks/useOutsideClick';
-import { useUserAccount } from '../../wallet/hooks/useUserAccount';
+import { useUserAccount } from '../../wallet/hooks/useUserWalletInfo';
 
 const UnConnectModal = ({
   isOpen,
