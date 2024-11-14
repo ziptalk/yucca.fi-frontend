@@ -13,8 +13,10 @@ import ConnectWallet from '../../wallet/components/ConnectWallet';
 import axios from 'axios';
 import useTablet from '../../common/hooks/useTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
-import { useUserAccount } from '../../wallet/hooks/useUserAccount';
-import { TOKEN_INFO } from '../../common/constants/TOKEN';
+import {
+  useUserAccount,
+  useUserSymbol,
+} from '../../wallet/hooks/useUserWalletInfo';
 import instance from '../../common/apis/instance';
 import { SadLogo } from '../../common/assets/0_index';
 import TotalAmount from '../components/dashboard/TotalAmount';
@@ -35,7 +37,7 @@ const ShowDashboardData = ({
   balance: string;
   pnlData: IBotPnl[] | undefined;
 }) => {
-  const TOKEN = TOKEN_INFO.token;
+  const symbol = useUserSymbol();
   const { openBotModal, openRemoveModal } = useOutletContext<{
     openBotModal: (id: string) => void;
     openRemoveModal: (id: string, totalInvest: number) => void;
@@ -87,10 +89,10 @@ const ShowDashboardData = ({
                   </div>
                 </StTableCell>
                 <StTableCell>
-                  {formatUnits(item.total_investment)} {TOKEN}
+                  {formatUnits(item.total_investment)} {symbol}
                 </StTableCell>
                 <StTableCell>
-                  {formatUnits(item.current_value)} {TOKEN}
+                  {formatUnits(item.current_value)} {symbol}
                 </StTableCell>
                 {/* <StTableCell>
                   <StColor isPositive={item.daily_pnl >= 0}>
@@ -99,7 +101,7 @@ const ShowDashboardData = ({
                 </StTableCell> */}
                 <StTableCell>
                   <StColor isPositive={item.total_profit >= 0}>
-                    {formatUnits(item.total_profit)} {TOKEN}
+                    {formatUnits(item.total_profit)} {symbol}
                   </StColor>
                 </StTableCell>
                 <StTableCell>
@@ -187,7 +189,7 @@ const Dashboard = () => {
       const { data } = await instance.get(
         `${base_url}/yucca/dashboard?user_id=${address}`
       );
-      console.log(`🫥dashboard :`, data);
+      // console.log(`🫥dashboard :`, data);
       setData(data);
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {

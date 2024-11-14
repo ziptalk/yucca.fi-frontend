@@ -14,9 +14,11 @@ import { formatNumberWithCommas } from '../../../common/utils/formatNumberWithCo
 import { formatPercentValue } from '../../../common/utils/formatPercentValue';
 import { useOutsideClick } from '../../../common/hooks/useOutsideClick';
 import { slideUp } from '../../../common/utils/animation';
-import { useUserAccount } from '../../../wallet/hooks/useUserAccount';
+import {
+  useUserAccount,
+  useUserSymbol,
+} from '../../../wallet/hooks/useUserWalletInfo';
 import { depositTransfer } from '../../../common/contracts/contractFunctions';
-import { TOKEN_INFO } from '../../../common/constants/TOKEN';
 import { walletConfig } from '../../../wallet/walletConfig';
 import { getBalance } from 'wagmi/actions';
 import { convertTokenBalance } from '../../../common/utils/convertTokenBalance';
@@ -41,20 +43,22 @@ const BotModal = ({
   onDataRefreshRequest: () => void;
 }) => {
   const [depositValue, setDepositValue] = useState<string>('');
-  const [placeholder, setPlaceholder] = useState(DEPOSIT_PLACEHOLDER.default);
+  const PLACEHOLDER = DEPOSIT_PLACEHOLDER();
+  const [placeholder, setPlaceholder] = useState(PLACEHOLDER.default);
   const [data, setData] = useState<IPnlChart>(MOCK_PNLCHART);
   const user_id = useUserAccount();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState('Deposit');
   const [balance, setBalance] = useState<string>();
   const [isFocused, setIsFocused] = useState(false);
+  const symbol = useUserSymbol();
   useOutsideClick(wrapperRef, onClose);
 
   useEffect(() => {
     // if (!user_id) return;
     getData();
     if (!user_id) {
-      setPlaceholder(DEPOSIT_PLACEHOLDER.notConnectWallet);
+      setPlaceholder(PLACEHOLDER.notConnectWallet);
       return;
     }
 
@@ -142,7 +146,7 @@ const BotModal = ({
                 <StModalLabel>Investment</StModalLabel>
                 <StAvailable>
                   <span>Available:</span> {balance}
-                  {TOKEN_INFO.token}
+                  {symbol}
                 </StAvailable>
               </StSpaceBetween>
               <StinputContainer
@@ -171,7 +175,7 @@ const BotModal = ({
             <DropDown detailData={data.detailInformation} />
             <StDepositBtn
               disabled={
-                placeholder !== DEPOSIT_PLACEHOLDER.default ||
+                placeholder !== PLACEHOLDER.default ||
                 !depositValue ||
                 Number(depositValue.replace(/,/g, '')) < MINVAL
               }

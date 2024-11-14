@@ -20,7 +20,7 @@ const BotModalReceive = ({ value }: IReceiveProps) => {
           <StBalance>${formatPriceValue(value * 20.3)}</StBalance>
         </StLeftContent>
         <StRightContent>
-          <div>qveBTC</div>
+          <div>qveToken</div>
           <StBalance>Balance 0.00</StBalance>
         </StRightContent>
       </StContent>
