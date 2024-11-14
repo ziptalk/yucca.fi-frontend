@@ -1,7 +1,7 @@
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { http } from 'viem';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
-import { botanixTestnet } from './chains';
+import { KaiaTestnet, botanixTestnet } from './chains';
 import { createConfig } from 'wagmi';
 
 const connectors = connectorsForWallets(
@@ -20,9 +20,10 @@ const connectors = connectorsForWallets(
 export const walletConfig = createConfig({
   connectors,
   multiInjectedProviderDiscovery: false,
-  chains: [botanixTestnet],
+  chains: [botanixTestnet, KaiaTestnet],
   transports: {
     [botanixTestnet.id]: http(botanixTestnet.rpcUrls.default.http[0]),
+    [KaiaTestnet.id]: http(KaiaTestnet.rpcUrls.default.http[0]),
   },
   // ssr: false,
 });

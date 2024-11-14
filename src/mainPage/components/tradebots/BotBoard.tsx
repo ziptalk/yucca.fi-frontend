@@ -14,7 +14,7 @@ import { formatNumberValue } from '../../../common/utils/formatNumberValue';
 import { formatPercentValue } from '../../../common/utils/formatPercentValue';
 import { useEffect, useState } from 'react';
 import { IChartData } from '../../types/pnlChartType';
-import { useUserAccount } from '../../../wallet/hooks/useUserAccount';
+import { useUserAccount } from '../../../wallet/hooks/useUserWalletInfo';
 import instance from '../../../common/apis/instance';
 import { Botanix } from '../../../onboarding/assets/0_index';
 import { MOCK_PNLCHART } from '../../constants/mainPage_MOCK';

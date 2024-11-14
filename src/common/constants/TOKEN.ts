@@ -18,4 +18,10 @@ const BTCTOKEN: ITOKEN = {
   tokenAddress: '0x9ab05f65b4b344f1764f688c0fdf3bb7d7937a05',
 };
 
+// const KAIATOKEN: ITOKEN = {
+//   token: 'KAIA',
+//   decimals: 18,
+//   tokenAddress: '',
+// };
+
 export const TOKEN_INFO = BTCTOKEN;
