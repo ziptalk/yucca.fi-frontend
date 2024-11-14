@@ -6,7 +6,7 @@ export const botanixTestnet = defineChain({
   nativeCurrency: {
     name: '',
     symbol: 'BTC',
-    decimals: 18,
+    decimals: 6,
   },
   rpcUrls: {
     default: {

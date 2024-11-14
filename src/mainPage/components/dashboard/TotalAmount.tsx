@@ -4,6 +4,7 @@ import { IBOTS, IBotPnl } from '../../types/dashboardType';
 import { formatUnits } from '../../../common/utils/formatUnits';
 import UserPnLChart from './UserPnLChart';
 import { IcTriangleDown, IcTriangleUp } from '../../assets/0_index';
+import { useUserSymbol } from '../../../wallet/hooks/useUserWalletInfo';
 interface ITotalAmountProps {
   totalAmount: number;
   domesticRate: number;
@@ -19,6 +20,7 @@ const TotalAmount = ({
 }: ITotalAmountProps) => {
   const [openSelectOption, setOpenSelectOption] = useState(false);
   const [selected, setSelected] = useState(bots[0].bot_name);
+  const symbol = useUserSymbol();
 
   const dropdownRef = useRef<HTMLButtonElement>(null);
 
@@ -75,7 +77,9 @@ const TotalAmount = ({
       </StTitle>
       <>
         <StRenderHeader>
-          <StTotalTokenValue>{formatUnits(totalAmount)} BTC</StTotalTokenValue>
+          <StTotalTokenValue>
+            {formatUnits(totalAmount)} {symbol}
+          </StTotalTokenValue>
           <StTotalDollarValue>
             ≈ {formatUnits(totalAmount * domesticRate)} USD
           </StTotalDollarValue>

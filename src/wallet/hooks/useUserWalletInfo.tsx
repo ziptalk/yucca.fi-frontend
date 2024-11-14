@@ -6,3 +6,9 @@ export const useUserAccount = () => {
 
   return address;
 };
+
+export const useUserSymbol = () => {
+  const { chain } = useAccount();
+
+  return chain?.nativeCurrency.symbol;
+};
