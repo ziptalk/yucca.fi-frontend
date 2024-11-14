@@ -21,3 +21,25 @@ export const botanixTestnet = defineChain({
   },
   testnet: true,
 });
+
+export const KaiaTestnet = defineChain({
+  id: 1001,
+  name: 'Kaia Testnet Kairos',
+  nativeCurrency: {
+    name: '',
+    symbol: 'KAIA',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://public-en-kairos.node.kaia.io'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'Kaia Testnet Explorer',
+      url: 'https://kaia-kairos.blockpi.network/v1/rpc/public',
+    },
+  },
+  testnet: true,
+});
