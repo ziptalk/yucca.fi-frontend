@@ -35,6 +35,9 @@ export const STCOMActiveBtn = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.colors.dark_pink};
   }
+  &:disabled {
+    background-color: #ccc;
+  }
 `;
 
 export const STCOMGreyBtn = styled.button`

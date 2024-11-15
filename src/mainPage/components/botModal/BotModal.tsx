@@ -15,8 +15,8 @@ import { formatPercentValue } from '../../../common/utils/formatPercentValue';
 import { useOutsideClick } from '../../../common/hooks/useOutsideClick';
 import { slideUp } from '../../../common/utils/animation';
 import {
+  useChainInfo,
   useUserAccount,
-  useUserSymbol,
 } from '../../../wallet/hooks/useUserWalletInfo';
 import { depositTransfer } from '../../../common/contracts/contractFunctions';
 import { walletConfig } from '../../../wallet/walletConfig';
@@ -28,7 +28,7 @@ import { MOCK_PNLCHART } from '../../constants/mainPage_MOCK';
 import { PuffLoader } from 'react-spinners';
 
 const base_url = import.meta.env.VITE_BASE_URL;
-const MINVAL = 100;
+const MINVAL = 10;
 const BotModal = ({
   isOpen,
   onClose,
@@ -51,7 +51,8 @@ const BotModal = ({
   const [isLoading, setIsLoading] = useState('Deposit');
   const [balance, setBalance] = useState<string>();
   const [isFocused, setIsFocused] = useState(false);
-  const symbol = useUserSymbol();
+  const { symbol, decimal, chainId } = useChainInfo();
+
   useOutsideClick(wrapperRef, onClose);
 
   useEffect(() => {
@@ -67,10 +68,10 @@ const BotModal = ({
   if (!isOpen) return null;
 
   const getUserBalance = async () => {
-    if (!user_id) return;
+    if (!user_id || !chainId) return;
     const tmp = await getBalance(walletConfig, {
       address: user_id,
-      chainId: 3636,
+      chainId: chainId,
     });
 
     setBalance(convertTokenBalance(tmp.value, tmp.decimals));
@@ -97,7 +98,12 @@ const BotModal = ({
   };
 
   const handleDepositValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!balance) return;
     const rawValue = e.target.value;
+    if (parseNumber(rawValue) > parseNumber(balance)) {
+      setDepositValue(balance);
+      return;
+    }
     const formatValue = formatNumberWithCommas(rawValue);
     setDepositValue(formatValue);
   };
@@ -110,7 +116,7 @@ const BotModal = ({
     try {
       if (!user_id) return;
       setIsLoading('Open Wallet...');
-      await depositTransfer(_amount);
+      await depositTransfer(_amount, decimal);
       setIsLoading('Depositing...');
       const postData = {
         user_id: user_id, // 지갑 주소
@@ -337,7 +343,7 @@ const StGraphContaienr = styled.div`
 const StDepositBtn = styled(STCOMActiveBtn)<{ disabled: boolean }>`
   width: 100%;
   min-height: 4.6rem;
-  ${(props) => props.disabled && ' background-color: #ccc'};
+  ${(props) => props.disabled && 'pointer-events: none'};
 `;
 
 const StModalNotice = styled.div`

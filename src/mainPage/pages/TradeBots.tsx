@@ -5,40 +5,27 @@ import BotBoard from '../components/tradebots/BotBoard';
 import { IcSearch, IcSort } from '../assets/0_index';
 import { DUMMY_BOT } from '../constants/mainPage_MOCK';
 import { useOutletContext } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { TRADE_BOTS_ORDER, TRADE_BOTS_SORT } from '../constants/TRADE_BOTS_API';
-import { ITRADEBOTS } from '../types/dashboardType';
+import { useState } from 'react';
 import useMobile from '../../common/hooks/useMobile';
-import instance from '../../common/apis/instance';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { getSearchBot, getTradeBot } from '../../common/apis/apis';
 
 const TradeBots = () => {
   // const data = MOCK_TRADEBOTS;
-  const { openBotModal, openUnConnectModal, showToast, refreshTrigger } =
-    useOutletContext<{
-      openBotModal: (id: string) => void;
-      openUnConnectModal: () => void;
-      showToast: (message: string) => void;
-      refreshTrigger: boolean;
-    }>();
-  const base_url = import.meta.env.VITE_BASE_URL;
-  const [data, setData] = useState<ITRADEBOTS[]>();
-  // const data = MOCK_TRADEBOTS;
+  const { openBotModal, openUnConnectModal, showToast } = useOutletContext<{
+    openBotModal: (id: string) => void;
+    openUnConnectModal: () => void;
+    showToast: (message: string) => void;
+    refreshTrigger: boolean;
+  }>();
   const [searchValue, setSearchValue] = useState('');
-  useEffect(() => {
-    getData('Profit');
-  }, [refreshTrigger]);
+  const queryClient = useQueryClient();
 
-  const getData = async (_sortKey: string) => {
-    try {
-      const sortKey = TRADE_BOTS_SORT[_sortKey];
-      const { data } = await instance.get(
-        `${base_url}/yucca/trade-bots?sort=${sortKey}&order=${TRADE_BOTS_ORDER[1]}`
-      );
-      setData(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const { data } = useQuery({
+    queryKey: ['tradeBots', { searchValue }],
+    queryFn: () =>
+      searchValue ? getSearchBot(searchValue) : getTradeBot('Profit'),
+  });
 
   // 검색 중
   const handleSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,18 +36,7 @@ const TradeBots = () => {
     key_e: React.KeyboardEvent<HTMLInputElement>
   ) => {
     if (key_e.key === 'Enter') {
-      if (searchValue === '') {
-        getData('Profit');
-        return;
-      }
-      try {
-        const { data } = await instance.get(
-          `${base_url}/yucca/trade-bots?search=${searchValue}`
-        );
-        setData(data);
-      } catch (err) {
-        console.log(err);
-      }
+      queryClient.invalidateQueries({ queryKey: ['tradeBot'] });
     }
   };
 
@@ -80,9 +56,24 @@ const TradeBots = () => {
           />
         </StSearchInput>
         <StSortContainer>
-          <SortBtn title='TVL' getData={getData} />
-          <SortBtn title='Profit' getData={getData} />
-          <SortBtn title='Runtime' getData={getData} />
+          <SortBtn
+            title='TVL'
+            getData={() =>
+              queryClient.invalidateQueries({ queryKey: ['tradeBot'] })
+            }
+          />
+          <SortBtn
+            title='Profit'
+            getData={() =>
+              queryClient.invalidateQueries({ queryKey: ['tradeBot'] })
+            }
+          />
+          <SortBtn
+            title='Runtime'
+            getData={() =>
+              queryClient.invalidateQueries({ queryKey: ['tradeBot'] })
+            }
+          />
         </StSortContainer>
       </StTopContainer>
       {data ? (

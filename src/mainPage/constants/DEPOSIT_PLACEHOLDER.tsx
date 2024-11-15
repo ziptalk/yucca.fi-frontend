@@ -1,7 +1,7 @@
-import { useUserSymbol } from '../../wallet/hooks/useUserWalletInfo';
+import { useChainInfo } from '../../wallet/hooks/useUserWalletInfo';
 
 export const DEPOSIT_PLACEHOLDER = () => {
-  const symbol = useUserSymbol();
+  const { symbol } = useChainInfo();
 
   return {
     default: `Minimum amount ≥ 0.001 ${symbol}`,

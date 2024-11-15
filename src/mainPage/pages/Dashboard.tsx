@@ -14,8 +14,8 @@ import axios from 'axios';
 import useTablet from '../../common/hooks/useTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
 import {
+  useChainInfo,
   useUserAccount,
-  useUserSymbol,
 } from '../../wallet/hooks/useUserWalletInfo';
 import instance from '../../common/apis/instance';
 import { SadLogo } from '../../common/assets/0_index';
@@ -37,7 +37,7 @@ const ShowDashboardData = ({
   balance: string;
   pnlData: IBotPnl[] | undefined;
 }) => {
-  const symbol = useUserSymbol();
+  const { symbol } = useChainInfo();
   const { openBotModal, openRemoveModal } = useOutletContext<{
     openBotModal: (id: string) => void;
     openRemoveModal: (id: string, totalInvest: number) => void;
