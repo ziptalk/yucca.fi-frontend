@@ -6,8 +6,6 @@ import TradeNowBtn from './components/TradeNowBtn.tsx';
 import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
 import useMobile from '../common/hooks/useMobile.tsx';
-// import { getContractTokenBalance } from '../common/contracts/contractFunctions.ts';
-import axios from 'axios';
 import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
 
 import styled from '@emotion/styled';
@@ -15,6 +13,8 @@ import LinkBtns from './components/LinkBtns.tsx';
 import OnBoarding2 from './components/frames/Onboarding2.tsx';
 import OnBoarding3 from './components/frames/Onboarding3.tsx';
 import OnBoarding4 from './components/frames/Onboarding4.tsx';
+import { useQuery } from '@tanstack/react-query';
+import { getOnboarding } from '../common/apis/apis.ts';
 
 export interface IOnboardingProps {
   isMobile: boolean;
@@ -99,22 +99,11 @@ const OnBoarding = () => {
 };
 
 const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
-  const base_url = import.meta.env.VITE_BASE_URL;
-  const [totalValueLocked, setTotalValueLocked] = useState('');
+  const { data } = useQuery({
+    queryKey: ['onboarding'],
+    queryFn: getOnboarding,
+  });
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = async () => {
-    try {
-      const { data } = await axios.get(`${base_url}/yucca/onboarding`);
-      // const total_value_locked = await getContractTokenBalance();
-      setTotalValueLocked(formatPriceValue(data.total_value_locked));
-    } catch (err) {
-      console.log(err);
-    }
-  };
   return (
     <St.Section1.Container>
       {isMobile ? (
@@ -127,7 +116,9 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
           <St.Mobile.GlassWrapper>
             <St.Mobile.ValueContainer>
               <St.Mobile.ValueLabel>Total Value Locked</St.Mobile.ValueLabel>
-              <St.Mobile.Value>$ {totalValueLocked}</St.Mobile.Value>
+              <St.Mobile.Value>
+                $ {formatPriceValue(data?.total_value_locked)}
+              </St.Mobile.Value>
             </St.Mobile.ValueContainer>
           </St.Mobile.GlassWrapper>
           <St.Mobile.Ecosystem>
@@ -163,7 +154,7 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
             <LinkBtns />
             <St.Section1.TotalValue>
               <p>Total Value Locked</p>
-              <p>$ {totalValueLocked}</p>
+              <p>$ {formatPriceValue(data?.total_value_locked)}</p>
             </St.Section1.TotalValue>
           </>
         )}

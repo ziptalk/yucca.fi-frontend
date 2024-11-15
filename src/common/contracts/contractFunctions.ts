@@ -1,23 +1,28 @@
 import { ethers, parseUnits } from 'ethers';
 import { erc20Abi } from 'viem';
-import { setupSigner } from './signer';
-import { BOTWalletAddress, USDTTokenAddress } from './tokenAddress';
+import { abi as tokenVaultAbi } from '../abis/TokenVault.json';
+import { signer } from './signer';
+import {
+  BOTWalletAddress,
+  USDTTokenAddress,
+  tokenVaultAddress,
+} from './tokenAddress';
 
-let erc20ContractInstance: ethers.Contract;
+const erc20ContractInstance = new ethers.Contract(
+  USDTTokenAddress,
+  erc20Abi,
+  signer
+);
 
-const initialize = async () => {
-  const signer = await setupSigner();
-
-  erc20ContractInstance = new ethers.Contract(
-    USDTTokenAddress,
-    erc20Abi,
-    signer
-  );
-};
+const tokenVaultInstance = new ethers.Contract(
+  tokenVaultAddress,
+  tokenVaultAbi,
+  signer
+);
 
 const approveToken = async (depositAmount: bigint) => {
   const tx = await erc20ContractInstance.approve(
-    BOTWalletAddress,
+    tokenVaultAddress,
     depositAmount
   );
   await tx.wait();
@@ -25,17 +30,17 @@ const approveToken = async (depositAmount: bigint) => {
 };
 
 const deposit = async (depositAmount: bigint) => {
-  const tx = await erc20ContractInstance.transfer(
-    BOTWalletAddress,
-    depositAmount
-  );
+  const tx = await tokenVaultInstance.deposit(BOTWalletAddress, depositAmount);
   await tx.wait();
   console.log('Success deposit');
 };
 
-export const depositTransfer = async (amount: number) => {
-  await initialize();
-  const depositAmount = parseUnits(`${amount}`, 6);
+export const depositTransfer = async (
+  amount: number,
+  decimal: number | undefined
+) => {
+  if (!decimal) return;
+  const depositAmount = parseUnits(`${amount}`, decimal);
   await approveToken(depositAmount);
   await deposit(depositAmount);
 };
