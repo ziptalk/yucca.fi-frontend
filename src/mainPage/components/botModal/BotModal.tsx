@@ -26,9 +26,12 @@ import BotModalReceive from './BotModalReceive';
 import { parseNumber } from '../../../common/utils/parseNumber';
 import { MOCK_PNLCHART } from '../../constants/mainPage_MOCK';
 import { PuffLoader } from 'react-spinners';
+import { WKLAYtokenAddress } from '../../../common/contracts/tokenAddress';
+import addTokenToWallet from '../../../wallet/utils/addTokentoWallet';
+import { qveToken } from '../../../wallet/tokens';
 
 const base_url = import.meta.env.VITE_BASE_URL;
-const MINVAL = 10;
+const MINVAL = 0;
 const BotModal = ({
   isOpen,
   onClose,
@@ -72,6 +75,7 @@ const BotModal = ({
     const tmp = await getBalance(walletConfig, {
       address: user_id,
       chainId: chainId,
+      token: WKLAYtokenAddress,
     });
 
     setBalance(convertTokenBalance(tmp.value, tmp.decimals));
@@ -126,6 +130,7 @@ const BotModal = ({
       await axios.post(`${base_url}/yucca/deposit`, postData);
       onClose();
       setIsLoading('Deposit');
+      await addTokenToWallet({ userAddress: user_id, tokenInfo: qveToken });
       showToast('Your deposit has been successfully completed!');
       onDataRefreshRequest();
     } catch (err) {

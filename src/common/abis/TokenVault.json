@@ -2,7 +2,13 @@
   "contractName": "TokenVault",
   "abi": [
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_qveToken",
+          "type": "address"
+        }
+      ],
       "stateMutability": "nonpayable",
       "type": "constructor"
     },
@@ -75,6 +81,24 @@
       "inputs": [
         {
           "internalType": "address",
+          "name": "_qveToken",
+          "type": "address"
+        }
+      ],
+      "name": "changeQveTokenAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "bot",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
           "name": "tokenAddress",
           "type": "address"
         },
@@ -93,11 +117,40 @@
       "inputs": [
         {
           "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
           "name": "tokenAddress",
           "type": "address"
         }
       ],
-      "name": "getContractTokenBalance",
+      "name": "getCollateralBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getUserTokenBalance",
       "outputs": [
         {
           "internalType": "uint256",
@@ -123,6 +176,47 @@
     },
     {
       "inputs": [],
+      "name": "qveToken",
+      "outputs": [
+        {
+          "internalType": "contract IQveToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "bot",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "qveAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "remove",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "renounceOwnership",
       "outputs": [],
       "stateMutability": "nonpayable",
@@ -137,24 +231,6 @@
         }
       ],
       "name": "transferOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "tokenAddress",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "withdraw",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

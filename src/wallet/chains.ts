@@ -4,7 +4,7 @@ export const botanixTestnet = defineChain({
   id: 3636,
   name: 'Botanix Testnet',
   nativeCurrency: {
-    name: '',
+    name: 'BOTANIX',
     symbol: 'BTC',
     decimals: 6,
   },
@@ -26,7 +26,7 @@ export const KaiaTestnet = defineChain({
   id: 1001,
   name: 'Kaia Testnet Kairos',
   nativeCurrency: {
-    name: '',
+    name: 'KAIRO',
     symbol: 'KAIA',
     decimals: 18,
   },
@@ -39,6 +39,28 @@ export const KaiaTestnet = defineChain({
     default: {
       name: 'Kaia Testnet Explorer',
       url: 'https://kaia-kairos.blockpi.network/v1/rpc/public',
+    },
+  },
+  testnet: true,
+});
+
+export const KaiaMainnet = defineChain({
+  id: 8217,
+  name: 'Kaia Mainnet',
+  nativeCurrency: {
+    name: 'KLAY',
+    symbol: 'KLAY',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://public-en.node.kaia.io'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'Kaia Testnet Explorer',
+      url: 'https://kaiascope.com',
     },
   },
   testnet: true,
