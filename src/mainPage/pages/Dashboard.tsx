@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import SelectView from '../components/SelectView';
 import { VIEW } from '../components/SelectView';
 import styled from '@emotion/styled';
@@ -10,21 +9,20 @@ import {
 import { IBOTS, IBotPnl, IDashboard } from '../types/dashboardType';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import ConnectWallet from '../../wallet/components/ConnectWallet';
-import axios from 'axios';
 import useTablet from '../../common/hooks/useTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
 import {
   useChainInfo,
   useUserAccount,
 } from '../../wallet/hooks/useUserWalletInfo';
-import instance from '../../common/apis/instance';
 import { SadLogo } from '../../common/assets/0_index';
 import TotalAmount from '../components/dashboard/TotalAmount';
 import PriceCollection from '../components/dashboard/PriceCollection';
 import { LogoCyclicArbBot } from '../assets/0_index';
 import TableTablet from '../components/dashboard/TableTablet';
-
-const base_url = import.meta.env.VITE_BASE_URL;
+import { getDashboard } from '../../common/apis/apis';
+import { useQuery } from '@tanstack/react-query';
+import { BarLoader } from 'react-spinners';
 
 const ShowDashboardData = ({
   data,
@@ -175,29 +173,12 @@ const ISnotSelectBot = () => {
 
 const Dashboard = () => {
   const address = useUserAccount();
-  const [data, setData] = useState<IDashboard>();
-  const { refreshTrigger } = useOutletContext<{
-    refreshTrigger: boolean;
-  }>();
 
-  useEffect(() => {
-    getData();
-  }, [refreshTrigger, address]);
-
-  const getData = async () => {
-    try {
-      const { data } = await instance.get(
-        `${base_url}/yucca/dashboard?user_id=${address}`
-      );
-      // console.log(`🫥dashboard :`, data);
-      setData(data);
-    } catch (err) {
-      if (axios.isAxiosError(err) && err.response) {
-        err.response.status === 404;
-        return;
-      }
-    }
-  };
+  const { data, isLoading } = useQuery({
+    queryKey: ['dashboard', address],
+    queryFn: () => getDashboard(address), // getDashboard 호출
+    retry: false,
+  });
 
   const userPnlDataPerBotList = data?.bots.map((bot: IBOTS) => ({
     bot_name: bot.bot_name,
@@ -208,7 +189,7 @@ const Dashboard = () => {
     <StContainer>
       <SelectView view={VIEW.DASHBOARD} />
       {address ? (
-        data ? (
+        !isLoading && data ? (
           data?.bots?.length ? (
             <ShowDashboardData
               data={data}
@@ -220,8 +201,7 @@ const Dashboard = () => {
             <ISnotSelectBot />
           )
         ) : (
-          // <>loading..</>
-          <ISnotSelectBot />
+          <BarLoader color='#337357' />
         )
       ) : (
         <ISnotConnectWallet />

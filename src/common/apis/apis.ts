@@ -18,7 +18,7 @@ export const getOnboarding = async () => {
   }
 };
 
-export const getDashboard = async (address: string | null) => {
+export const getDashboard = async (address: string | undefined) => {
   if (!address) return;
   const { data }: { data: IDashboard } = await instance.get(
     `${base_url}/yucca/dashboard?user_id=${address}`

@@ -1,15 +1,15 @@
 import { ethers, parseUnits } from 'ethers';
-import { erc20Abi } from 'viem';
 import { abi as tokenVaultAbi } from '../abis/TokenVault.json';
 import { signer } from './signer';
 import {
   BOTWalletAddress,
-  USDTTokenAddress,
   tokenVaultAddress,
+  WKLAYtokenAddress,
 } from './tokenAddress';
+import { erc20Abi } from 'viem';
 
 const erc20ContractInstance = new ethers.Contract(
-  USDTTokenAddress,
+  WKLAYtokenAddress,
   erc20Abi,
   signer
 );
@@ -30,9 +30,12 @@ const approveToken = async (depositAmount: bigint) => {
 };
 
 const deposit = async (depositAmount: bigint) => {
-  const tx = await tokenVaultInstance.deposit(BOTWalletAddress, depositAmount);
+  const tx = await tokenVaultInstance.deposit(
+    BOTWalletAddress,
+    WKLAYtokenAddress,
+    depositAmount
+  );
   await tx.wait();
-  console.log('Success deposit');
 };
 
 export const depositTransfer = async (
