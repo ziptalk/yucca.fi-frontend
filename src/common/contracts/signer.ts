@@ -7,9 +7,6 @@ export const setupSigner = async () => {
   return signer;
 };
 
-const signerProvider = new BrowserProvider(window.ethereum);
-export const signer = await signerProvider.getSigner();
-
 export const provider = new ethers.JsonRpcProvider(
   arbitrum.rpcUrls.default.http[0]
 );

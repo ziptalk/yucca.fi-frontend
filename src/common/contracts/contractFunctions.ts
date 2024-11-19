@@ -1,6 +1,6 @@
 import { ethers, parseUnits } from 'ethers';
 import { abi as tokenVaultAbi } from '../abis/TokenVault.json';
-import { signer } from './signer';
+import { setupSigner } from './signer';
 import {
   BOTWalletAddress,
   tokenVaultAddress,
@@ -8,17 +8,24 @@ import {
 } from './tokenAddress';
 import { erc20Abi } from 'viem';
 
-const erc20ContractInstance = new ethers.Contract(
-  WKLAYtokenAddress,
-  erc20Abi,
-  signer
-);
+let erc20ContractInstance: ethers.Contract;
+let tokenVaultInstance: ethers.Contract;
 
-const tokenVaultInstance = new ethers.Contract(
-  tokenVaultAddress,
-  tokenVaultAbi,
-  signer
-);
+const initialize = async () => {
+  const signer = await setupSigner();
+
+  erc20ContractInstance = new ethers.Contract(
+    WKLAYtokenAddress,
+    erc20Abi,
+    signer
+  );
+
+  tokenVaultInstance = new ethers.Contract(
+    tokenVaultAddress,
+    tokenVaultAbi,
+    signer
+  );
+};
 
 const approveToken = async (depositAmount: bigint) => {
   const tx = await erc20ContractInstance.approve(
@@ -43,6 +50,7 @@ export const depositTransfer = async (
   decimal: number | undefined
 ) => {
   if (!decimal) return;
+  await initialize();
   const depositAmount = parseUnits(`${amount}`, decimal);
   await approveToken(depositAmount);
   await deposit(depositAmount);
