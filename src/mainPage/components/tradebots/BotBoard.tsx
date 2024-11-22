@@ -16,9 +16,10 @@ import { useEffect, useState } from 'react';
 import { IChartData } from '../../types/pnlChartType';
 import { useUserAccount } from '../../../wallet/hooks/useUserWalletInfo';
 import instance from '../../../common/apis/instance';
-import { Botanix } from '../../../onboarding/assets/0_index';
+// import { Botanix } from '../../../onboarding/assets/0_index';
 import { MOCK_PNLCHART } from '../../constants/mainPage_MOCK';
 import PreviewChart from './PreviewChart';
+import { kaiaLoao } from '../../assets/Bots/0_index';
 
 interface IBotBoardProps {
   data: ITRADEBOTS;
@@ -95,7 +96,8 @@ const BotBoard = ({
             <StBottomContainer>
               <StOperated>
                 <label>operated in</label>
-                <Botanix />
+                {/* <Botanix /> */}
+                <img src={kaiaLoao} alt='kaia' />
               </StOperated>
               <StDeposit
                 onClick={() =>

@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { IDashboard } from '../../types/dashboardType';
 import { formatPercentValue } from '../../../common/utils/formatPercentValue';
 import { formatUnits } from '../../../common/utils/formatUnits';
+import { useTokenInfo } from '../../../wallet/hooks/useTokenInfo';
+import { WKLAYtokenAddress } from '../../../common/contracts/tokenAddress';
 
 const PriceCollection = ({
   data,
@@ -12,6 +14,7 @@ const PriceCollection = ({
   qveTokenBalance: number | undefined;
   balance: string;
 }) => {
+  const { symbol } = useTokenInfo(WKLAYtokenAddress);
   return (
     <StContainer>
       <StTopLeft>
@@ -27,7 +30,7 @@ const PriceCollection = ({
         <StPrice>{formatUnits(data.total_balance * 0.8)}</StPrice>
       </StTopRight>
       <StBottomLeft>
-        <StTitle>BTC in my wallet</StTitle>
+        <StTitle> {symbol} in my wallet</StTitle>
         <StPrice>{formatUnits(balance)}</StPrice>
       </StBottomLeft>
       <StBottomRight>

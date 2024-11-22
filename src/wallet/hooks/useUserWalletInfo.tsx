@@ -9,7 +9,8 @@ export const useUserAccount = () => {
 
 export const useChainInfo = () => {
   const { chain, chainId } = useAccount();
-  type ChainIdType = 3636 | 1001 | undefined;
+  // type ChainIdType = 8217 | 3636 | 1001 | undefined;
+  type ChainIdType = 8217 | undefined;
 
   return {
     symbol: chain?.nativeCurrency.symbol || '',
