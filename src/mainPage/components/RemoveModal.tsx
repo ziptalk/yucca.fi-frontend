@@ -7,7 +7,13 @@ import { IcModalX } from '../assets/0_index';
 import axios from 'axios';
 import { useRef, useState } from 'react';
 import { useOutsideClick } from '../../common/hooks/useOutsideClick';
-import { useUserAccount } from '../../wallet/hooks/useUserWalletInfo';
+import {
+  useChainInfo,
+  useUserAccount,
+} from '../../wallet/hooks/useUserWalletInfo';
+import instance from '../../common/apis/instance';
+import { removeTokens } from '../../common/contracts/remove';
+import { useQueryClient } from '@tanstack/react-query';
 
 const RemoveModal = ({
   isOpen,
@@ -26,6 +32,8 @@ const RemoveModal = ({
   useOutsideClick(wrapperRef, onClose);
   const [isLoading, setIsLoading] = useState(false);
   const user_id = useUserAccount();
+  const { decimal } = useChainInfo();
+  const queryClient = useQueryClient();
   if (!isOpen) return;
 
   const remove = async () => {
@@ -38,10 +46,15 @@ const RemoveModal = ({
     };
     try {
       setIsLoading(true);
-      await axios.post(`${base_url}/yucca/remove`, postBody);
+      const { data } = await instance.post(
+        `${base_url}/api/remove/calculate`,
+        postBody
+      );
+      await removeTokens(data.totalStakedAmount * 0.8, decimal);
+      await axios.post(`${base_url}/api/remove/final`, postBody);
       onClose();
       setIsLoading(false);
-      window.location.reload();
+      queryClient.invalidateQueries({ queryKey: ['dashboard'] });
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
         setIsLoading(false);

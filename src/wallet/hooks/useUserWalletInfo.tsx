@@ -7,8 +7,14 @@ export const useUserAccount = () => {
   return address;
 };
 
-export const useUserSymbol = () => {
-  const { chain } = useAccount();
+export const useChainInfo = () => {
+  const { chain, chainId } = useAccount();
+  // type ChainIdType = 8217 | 3636 | 1001 | undefined;
+  type ChainIdType = 8217 | undefined;
 
-  return chain?.nativeCurrency.symbol;
+  return {
+    symbol: chain?.nativeCurrency.symbol || '',
+    decimal: chain?.nativeCurrency.decimals,
+    chainId: chainId as ChainIdType,
+  };
 };

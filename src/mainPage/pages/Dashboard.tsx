@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import SelectView from '../components/SelectView';
 import { VIEW } from '../components/SelectView';
 import styled from '@emotion/styled';
@@ -10,21 +9,23 @@ import {
 import { IBOTS, IBotPnl, IDashboard } from '../types/dashboardType';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import ConnectWallet from '../../wallet/components/ConnectWallet';
-import axios from 'axios';
 import useTablet from '../../common/hooks/useTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
-import {
-  useUserAccount,
-  useUserSymbol,
-} from '../../wallet/hooks/useUserWalletInfo';
-import instance from '../../common/apis/instance';
+import { useUserAccount } from '../../wallet/hooks/useUserWalletInfo';
 import { SadLogo } from '../../common/assets/0_index';
 import TotalAmount from '../components/dashboard/TotalAmount';
 import PriceCollection from '../components/dashboard/PriceCollection';
 import { LogoCyclicArbBot } from '../assets/0_index';
 import TableTablet from '../components/dashboard/TableTablet';
-
-const base_url = import.meta.env.VITE_BASE_URL;
+import { getDashboard } from '../../common/apis/apis';
+import { useQuery } from '@tanstack/react-query';
+import { BarLoader } from 'react-spinners';
+import { useTokenInfo } from '../../wallet/hooks/useTokenInfo';
+import {
+  QVETOKENAddress,
+  WKLAYtokenAddress,
+} from '../../common/contracts/tokenAddress';
+import { useUserTokenBalance } from '../../wallet/hooks/useQveTokenBalance';
 
 const ShowDashboardData = ({
   data,
@@ -37,7 +38,7 @@ const ShowDashboardData = ({
   balance: string;
   pnlData: IBotPnl[] | undefined;
 }) => {
-  const symbol = useUserSymbol();
+  const { symbol } = useTokenInfo(WKLAYtokenAddress);
   const { openBotModal, openRemoveModal } = useOutletContext<{
     openBotModal: (id: string) => void;
     openRemoveModal: (id: string, totalInvest: number) => void;
@@ -175,29 +176,14 @@ const ISnotSelectBot = () => {
 
 const Dashboard = () => {
   const address = useUserAccount();
-  const [data, setData] = useState<IDashboard>();
-  const { refreshTrigger } = useOutletContext<{
-    refreshTrigger: boolean;
-  }>();
+  const qveTokenBalance = useUserTokenBalance(address, QVETOKENAddress);
+  const collateralBalance = useUserTokenBalance(address, WKLAYtokenAddress);
 
-  useEffect(() => {
-    getData();
-  }, [refreshTrigger, address]);
-
-  const getData = async () => {
-    try {
-      const { data } = await instance.get(
-        `${base_url}/yucca/dashboard?user_id=${address}`
-      );
-      // console.log(`🫥dashboard :`, data);
-      setData(data);
-    } catch (err) {
-      if (axios.isAxiosError(err) && err.response) {
-        err.response.status === 404;
-        return;
-      }
-    }
-  };
+  const { data, isLoading } = useQuery({
+    queryKey: ['dashboard', address],
+    queryFn: () => getDashboard(address), // getDashboard 호출
+    retry: false,
+  });
 
   const userPnlDataPerBotList = data?.bots.map((bot: IBOTS) => ({
     bot_name: bot.bot_name,
@@ -208,20 +194,19 @@ const Dashboard = () => {
     <StContainer>
       <SelectView view={VIEW.DASHBOARD} />
       {address ? (
-        data ? (
+        !isLoading && data ? (
           data?.bots?.length ? (
             <ShowDashboardData
               data={data}
               pnlData={userPnlDataPerBotList}
-              qveTokenBalance={0}
-              balance='0'
+              qveTokenBalance={Number(qveTokenBalance)}
+              balance={collateralBalance}
             />
           ) : (
             <ISnotSelectBot />
           )
         ) : (
-          // <>loading..</>
-          <ISnotSelectBot />
+          <BarLoader color='#337357' />
         )
       ) : (
         <ISnotConnectWallet />

@@ -11,7 +11,6 @@ import IcNotice from './noticeIcon.svg?react';
 import IcDropdown from './dropdownIcon.svg?react';
 import IcDropUp from './dropupIcon.svg?react';
 import LogoGradationBot from './gradationBotLogo.svg?react';
-import LogoNeutron from './neutronLogo.svg?react';
 import IcSwap from './swapIcon.svg?react';
 
 import noticeIMGMobile from './noticeIMG_mobile.webp';
@@ -36,7 +35,6 @@ export {
   IcNotice,
   IcDropdown,
   IcDropUp,
-  LogoNeutron,
   IcSwap,
   noticeIMGMobile,
   swapUniswap,
