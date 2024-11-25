@@ -18,7 +18,7 @@ import {
   useChainInfo,
   useUserAccount,
 } from '../../../wallet/hooks/useUserWalletInfo';
-import { depositTransfer } from '../../../common/contracts/contractFunctions';
+import { depositTransfer } from '../../../common/contracts/depositTransfer';
 import { walletConfig } from '../../../wallet/walletConfig';
 import { getBalance } from 'wagmi/actions';
 import { convertTokenBalance } from '../../../common/utils/convertTokenBalance';
@@ -29,9 +29,10 @@ import { PuffLoader } from 'react-spinners';
 import { WKLAYtokenAddress } from '../../../common/contracts/tokenAddress';
 import addTokenToWallet from '../../../wallet/utils/addTokentoWallet';
 import { qveToken } from '../../../wallet/tokens';
+import { useTokenInfo } from '../../../wallet/hooks/useTokenInfo';
 
 const base_url = import.meta.env.VITE_BASE_URL;
-const MINVAL = 0;
+const MINVAL = 10;
 const BotModal = ({
   isOpen,
   onClose,
@@ -54,7 +55,8 @@ const BotModal = ({
   const [isLoading, setIsLoading] = useState('Deposit');
   const [balance, setBalance] = useState<string>();
   const [isFocused, setIsFocused] = useState(false);
-  const { symbol, decimal, chainId } = useChainInfo();
+  const { decimal, chainId } = useChainInfo();
+  const { symbol } = useTokenInfo(WKLAYtokenAddress);
 
   useOutsideClick(wrapperRef, onClose);
 

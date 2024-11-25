@@ -11,10 +11,7 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import ConnectWallet from '../../wallet/components/ConnectWallet';
 import useTablet from '../../common/hooks/useTablet';
 import { formatUnits } from '../../common/utils/formatUnits';
-import {
-  useChainInfo,
-  useUserAccount,
-} from '../../wallet/hooks/useUserWalletInfo';
+import { useUserAccount } from '../../wallet/hooks/useUserWalletInfo';
 import { SadLogo } from '../../common/assets/0_index';
 import TotalAmount from '../components/dashboard/TotalAmount';
 import PriceCollection from '../components/dashboard/PriceCollection';
@@ -23,6 +20,12 @@ import TableTablet from '../components/dashboard/TableTablet';
 import { getDashboard } from '../../common/apis/apis';
 import { useQuery } from '@tanstack/react-query';
 import { BarLoader } from 'react-spinners';
+import { useTokenInfo } from '../../wallet/hooks/useTokenInfo';
+import {
+  QVETOKENAddress,
+  WKLAYtokenAddress,
+} from '../../common/contracts/tokenAddress';
+import { useUserTokenBalance } from '../../wallet/hooks/useQveTokenBalance';
 
 const ShowDashboardData = ({
   data,
@@ -35,7 +38,7 @@ const ShowDashboardData = ({
   balance: string;
   pnlData: IBotPnl[] | undefined;
 }) => {
-  const { symbol } = useChainInfo();
+  const { symbol } = useTokenInfo(WKLAYtokenAddress);
   const { openBotModal, openRemoveModal } = useOutletContext<{
     openBotModal: (id: string) => void;
     openRemoveModal: (id: string, totalInvest: number) => void;
@@ -173,6 +176,8 @@ const ISnotSelectBot = () => {
 
 const Dashboard = () => {
   const address = useUserAccount();
+  const qveTokenBalance = useUserTokenBalance(address, QVETOKENAddress);
+  const collateralBalance = useUserTokenBalance(address, WKLAYtokenAddress);
 
   const { data, isLoading } = useQuery({
     queryKey: ['dashboard', address],
@@ -194,8 +199,8 @@ const Dashboard = () => {
             <ShowDashboardData
               data={data}
               pnlData={userPnlDataPerBotList}
-              qveTokenBalance={0}
-              balance='0'
+              qveTokenBalance={Number(qveTokenBalance)}
+              balance={collateralBalance}
             />
           ) : (
             <ISnotSelectBot />

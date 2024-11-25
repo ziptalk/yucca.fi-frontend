@@ -1,4 +1,4 @@
-export const formatUnits = (num: number | string) => {
+export const formatUnits = (num: number | string | undefined) => {
   if (!num) return '0.00';
   if (typeof num === 'string') num = Number(num);
 
