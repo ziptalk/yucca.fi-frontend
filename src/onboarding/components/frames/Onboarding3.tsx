@@ -17,17 +17,21 @@ import {
   onboarding3Right,
 } from '../../assets/Onboarding3/0_index';
 import { css, keyframes } from '@emotion/react';
-import useScroll from '../../../common/hooks/useScroll';
+import { useRef } from 'react';
+import useIntersectionObserver from '../../../common/hooks/useIntersectionObserver';
 
 const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
-  const scrollY = useScroll();
+  const scrollRef1 = useRef(null);
+  const scrollRef2 = useRef(null);
+  const scrollRef3 = useRef(null);
+  const scrollRef4 = useRef(null);
+  const scrollRef5 = useRef(null);
 
-  const SCROLLPOINT1 = 1100;
-  const SCROLLPOINT2 = 1200;
-  const SCROLLPOINT3 = 1500;
-  const SCROLLPOINT4 = 1600;
-  const SCROLLPOINT5 = 1700;
-
+  const SCROLLPOINT1 = useIntersectionObserver(scrollRef1, { threshold: 0.1 });
+  const SCROLLPOINT2 = useIntersectionObserver(scrollRef2, { threshold: 0.3 });
+  const SCROLLPOINT3 = useIntersectionObserver(scrollRef3, { threshold: 0.4 });
+  const SCROLLPOINT4 = useIntersectionObserver(scrollRef4, { threshold: 0.5 });
+  const SCROLLPOINT5 = useIntersectionObserver(scrollRef5, { threshold: 0.8 });
   return (
     <St.Section3.Container>
       <St.Section3.InTro>
@@ -52,39 +56,41 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
       ) : (
         <StWrapper>
           <img
+            ref={scrollRef1}
             src={onboarding3Left}
             css={[
-              scrollY > SCROLLPOINT1 ? slideUpAnimation : slideDownAnimation,
+              SCROLLPOINT1 && slideUpAnimation,
               {
                 opacity: 0,
               },
             ]}
           />
           <StMiddle.wrapper
+            ref={scrollRef2}
             css={[
-              scrollY > SCROLLPOINT2 ? slideUpAnimation : slideDownAnimation,
+              SCROLLPOINT2 && slideUpAnimation,
               {
                 opacity: 0,
               },
             ]}
           >
             <StMiddle.column>
-              <IcCurvedArrowDownLeft
+              <div
+                ref={scrollRef3}
                 css={[
-                  scrollY > SCROLLPOINT3
-                    ? slideUpAnimation
-                    : slideDownAnimation,
+                  SCROLLPOINT3 && slideUpAnimation,
                   {
                     opacity: 0,
                   },
                 ]}
-              />
+              >
+                <IcCurvedArrowDownLeft />
+              </div>
               <StMiddle.box>Arb bot in Botanix</StMiddle.box>
               <IcCurvedArrowUpLeft
+                ref={scrollRef3}
                 css={[
-                  scrollY > SCROLLPOINT3
-                    ? slideUpAnimation
-                    : slideDownAnimation,
+                  SCROLLPOINT3 && slideUpAnimation,
                   {
                     opacity: 0,
                   },
@@ -98,10 +104,9 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
                 <p>Market A</p>
               </div>
               <StMiddle.column
+                ref={scrollRef4}
                 css={[
-                  scrollY > SCROLLPOINT4
-                    ? slideUpAnimation
-                    : slideDownAnimation,
+                  SCROLLPOINT4 && slideUpAnimation,
                   {
                     opacity: 0,
                   },
@@ -119,10 +124,9 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
             </StMiddle.column>
             <StMiddle.column>
               <IcCurvedArrowDownRight
+                ref={scrollRef3}
                 css={[
-                  scrollY > SCROLLPOINT3
-                    ? slideUpAnimation
-                    : slideDownAnimation,
+                  SCROLLPOINT3 && slideUpAnimation,
                   {
                     opacity: 0,
                   },
@@ -130,10 +134,9 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
               />
               <StMiddle.box>Arb bot in Dex/Cex</StMiddle.box>
               <IcCurvedArrowUpRight
+                ref={scrollRef3}
                 css={[
-                  scrollY > SCROLLPOINT3
-                    ? slideUpAnimation
-                    : slideDownAnimation,
+                  SCROLLPOINT3 && slideUpAnimation,
                   {
                     opacity: 0,
                   },
@@ -142,9 +145,10 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
             </StMiddle.column>
           </StMiddle.wrapper>
           <img
+            ref={scrollRef5}
             src={onboarding3Right}
             css={[
-              scrollY > SCROLLPOINT5 ? slideUpAnimation : slideDownAnimation,
+              SCROLLPOINT5 && slideUpAnimation,
               {
                 opacity: 0,
               },
@@ -184,24 +188,24 @@ const slideUp = keyframes`
   }
 `;
 
-const slideDown = keyframes`
-  0% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-`;
+// const slideDown = keyframes`
+//   0% {
+//     transform: translateY(0px);
+//     opacity: 1;
+//   }
+//   100% {
+//     transform: translateY(100px);
+//     opacity: 0;
+//   }
+// `;
 
 const slideUpAnimation = css`
   animation: ${slideUp} 1.5s ease-out forwards;
 `;
 
-const slideDownAnimation = css`
-  animation: ${slideDown} 1.5s ease-out forwards;
-`;
+// const slideDownAnimation = css`
+//   animation: ${slideDown} 1.5s ease-out forwards;
+// `;
 
 const StMiddle = {
   wrapper: styled.div`
