@@ -16,17 +16,14 @@ import {
   onboarding3Left,
   onboarding3Right,
 } from '../../assets/Onboarding3/0_index';
-import { useRef } from 'react';
 import { css, keyframes } from '@emotion/react';
 import useScroll from '../../../common/hooks/useScroll';
 
 const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
   const scrollY = useScroll();
-  const imgRef1 = useRef(null);
-  const imgRef3 = useRef(null);
 
-  const SCROLLPOINT1 = 1200;
-  const SCROLLPOINT2 = 1400;
+  const SCROLLPOINT1 = 1100;
+  const SCROLLPOINT2 = 1200;
   const SCROLLPOINT3 = 1500;
   const SCROLLPOINT4 = 1600;
   const SCROLLPOINT5 = 1700;
@@ -55,7 +52,6 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
       ) : (
         <StWrapper>
           <img
-            ref={imgRef1}
             src={onboarding3Left}
             css={[
               scrollY > SCROLLPOINT1 ? slideUpAnimation : slideDownAnimation,
@@ -146,7 +142,6 @@ const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
             </StMiddle.column>
           </StMiddle.wrapper>
           <img
-            ref={imgRef3}
             src={onboarding3Right}
             css={[
               scrollY > SCROLLPOINT5 ? slideUpAnimation : slideDownAnimation,
