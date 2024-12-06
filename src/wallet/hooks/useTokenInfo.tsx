@@ -1,6 +1,6 @@
 // 유저의 지갑주소를 반
 
-import { getToken } from 'wagmi/actions';
+import { getToken } from '@wagmi/core';
 import { walletConfig } from '../walletConfig';
 import { Address } from 'viem';
 import { useEffect, useState } from 'react';
