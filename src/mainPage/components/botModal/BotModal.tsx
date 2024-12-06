@@ -20,7 +20,7 @@ import {
 } from '../../../wallet/hooks/useUserWalletInfo';
 import { depositTransfer } from '../../../common/contracts/depositTransfer';
 import { walletConfig } from '../../../wallet/walletConfig';
-import { getBalance } from 'wagmi/actions';
+import { GetBalanceReturnType, getBalance } from 'wagmi/actions';
 import { convertTokenBalance } from '../../../common/utils/convertTokenBalance';
 import BotModalReceive from './BotModalReceive';
 import { parseNumber } from '../../../common/utils/parseNumber';
@@ -74,13 +74,14 @@ const BotModal = ({
 
   const getUserBalance = async () => {
     if (!user_id || !chainId) return;
-    const tmp = await getBalance(walletConfig, {
+    const tmp: GetBalanceReturnType = await getBalance(walletConfig, {
       address: user_id,
       chainId: chainId,
       token: WKLAYtokenAddress,
     });
+    const { value, decimals } = tmp;
 
-    setBalance(convertTokenBalance(tmp.value, tmp.decimals));
+    setBalance(convertTokenBalance(value, decimals));
   };
 
   // const fetchBalance = async () => {
