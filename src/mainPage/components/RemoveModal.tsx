@@ -47,17 +47,21 @@ const RemoveModal = ({
     try {
       setIsLoading(true);
       const { data } = await instance.post(
-        `${base_url}/api/remove/calculate`,
+        `${base_url}/yucca/remove/calculate`,
         postBody
       );
-      await removeTokens(data.totalStakedAmount * 0.8, decimal);
-      await axios.post(`${base_url}/api/remove/final`, postBody);
+      await removeTokens(
+        data.totalStakedAmount * 0.8,
+        data.totalUnstakeAmount,
+        decimal
+      );
+      await axios.post(`${base_url}/yucca/remove/final`, postBody);
       onClose();
       setIsLoading(false);
       queryClient.invalidateQueries({ queryKey: ['dashboard'] });
     } catch (err) {
+      setIsLoading(false);
       if (axios.isAxiosError(err) && err.response) {
-        setIsLoading(false);
         err.response.status === 499 &&
           alert('You can remove this bot after a month of deposing!');
         return;

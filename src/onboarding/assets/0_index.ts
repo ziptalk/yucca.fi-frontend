@@ -10,11 +10,6 @@ import IcSafety from './section2_safety.svg?react';
 
 import onboardingBackPng from './test.png';
 
-import imgDepositFunds from './section4_depositFunds.webp';
-import imgGenerateProfits from './section4_generateProfits.webp';
-import imgLiquifyPosition from './section4_liquifyPosition.webp';
-import imgWithdrawAssets from './section4_withdrawAssets.webp';
-
 import yuccafiBackground from './yuccafiBackground.webp';
 import Botanix from './botanix.svg?react';
 import yuccaLogoMotion from './yuccaLogoMotion.gif';
@@ -29,10 +24,6 @@ export {
   IcProfits,
   IcRisk,
   IcSafety,
-  imgDepositFunds,
-  imgGenerateProfits,
-  imgLiquifyPosition,
-  imgWithdrawAssets,
   onboardingBackPng,
   yuccafiBackground,
   Botanix,

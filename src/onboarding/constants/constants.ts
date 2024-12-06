@@ -1,13 +1,11 @@
 import { FunctionComponent, SVGProps } from 'react';
+import { IcProfits, IcRisk, IcSafety } from '../assets/0_index';
 import {
-  IcProfits,
-  IcRisk,
-  IcSafety,
   imgDepositFunds,
   imgGenerateProfits,
   imgLiquifyPosition,
   imgWithdrawAssets,
-} from '../assets/0_index';
+} from '../assets/Onboarding4/0_index';
 
 export interface IAboutQve {
   icon: FunctionComponent<SVGProps<SVGSVGElement>>;
