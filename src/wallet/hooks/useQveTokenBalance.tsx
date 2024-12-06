@@ -15,6 +15,7 @@ export const useUserTokenBalance = (
   const [balance, setBalance] = useState<string>('');
 
   useEffect(() => {
+    if (!address || !tokenAddress) return;
     getQveTokenBalance(address, tokenAddress);
   }, [balance]);
 
@@ -29,19 +30,17 @@ export const useUserTokenBalance = (
   };
 
   const getQveTokenBalance = async (
-    userAddress: Address | undefined,
-    tokenAddress: Address | undefined
+    userAddress: Address,
+    tokenAddress: Address
   ) => {
-    if (!userAddress || !tokenAddress) return;
     await initialize();
-    const tx = await tokenVaultInstance?.getUserTokenBalance(
+    const tx = await tokenVaultInstance.getUserTokenBalance(
       userAddress,
       tokenAddress
     );
 
     setBalance(tx ? weiToEther(tx, 18) : '0');
   };
-  // getQveTokenBalance(address, WKLAYtokenAddress);
 
   return balance;
 };
