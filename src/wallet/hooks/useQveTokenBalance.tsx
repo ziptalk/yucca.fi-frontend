@@ -40,7 +40,6 @@ export const useUserTokenBalance = (
     );
 
     setBalance(tx ? weiToEther(tx, 18) : '0');
-    console.log(tx);
   };
   // getQveTokenBalance(address, WKLAYtokenAddress);
 
