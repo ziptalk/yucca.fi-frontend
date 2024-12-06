@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { type GetTokenReturnType } from 'wagmi/actions';
 
 export const useTokenInfo = (tokenAddress: Address) => {
-  const [info, setInfo] = useState<GetTokenReturnType>();
+  const [info, setInfo] = useState<GetTokenReturnType | null>(null);
   useEffect(() => {
     getTokenInfo(tokenAddress);
   }, []);
@@ -20,6 +20,6 @@ export const useTokenInfo = (tokenAddress: Address) => {
     setInfo(tmp);
   };
   return {
-    symbol: info?.symbol || '',
+    symbol: info?.symbol,
   };
 };
