@@ -5,7 +5,6 @@ import {
   BOTWalletAddress,
   QVETOKENAddress,
   tokenVaultAddress,
-  WKLAYtokenAddress,
 } from './tokenAddress';
 import { erc20Abi } from 'viem';
 
@@ -31,29 +30,31 @@ const initialize = async () => {
 const approveToken = async (removeAmount: bigint) => {
   const tx = await erc20ContractInstance.approve(
     tokenVaultAddress,
-    removeAmount,
     removeAmount
   );
   await tx.wait();
   console.log(`Approved ${removeAmount} tokens for the TokenVault contract.`);
 };
 
-const remove = async (removeAmount: bigint) => {
-  const tx = await tokenVaultInstance.deposit(
+const remove = async (removeAmount: bigint, refund: bigint) => {
+  const tx = await tokenVaultInstance.remove(
     BOTWalletAddress,
-    WKLAYtokenAddress,
-    removeAmount
+    removeAmount,
+    QVETOKENAddress,
+    refund
   );
   await tx.wait();
 };
 
 export const removeTokens = async (
-  amount: number,
+  returnAmount: number,
+  refundAmount: number,
   decimal: number | undefined
 ) => {
   if (!decimal) return;
   await initialize();
-  const removeAmount = parseUnits(`${amount}`, decimal);
+  const removeAmount = parseUnits(`${returnAmount}`, decimal);
+  const refund = parseUnits(`${refundAmount}`, decimal);
   await approveToken(removeAmount);
-  await remove(removeAmount);
+  await remove(removeAmount, refund);
 };
