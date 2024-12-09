@@ -20,10 +20,10 @@ const connectors = connectorsForWallets(
 export const walletConfig = createConfig({
   connectors,
   multiInjectedProviderDiscovery: false,
-  chains: [botanixTestnet, KaiaTestnet, KaiaMainnet],
+  chains: [KaiaMainnet],
   transports: {
-    [botanixTestnet.id]: http(botanixTestnet.rpcUrls.default.http[0]),
-    [KaiaTestnet.id]: http(KaiaTestnet.rpcUrls.default.http[0]),
+    //[botanixTestnet.id]: http(botanixTestnet.rpcUrls.default.http[0]),
+    //[KaiaTestnet.id]: http(KaiaTestnet.rpcUrls.default.http[0]),
     [KaiaMainnet.id]: http(KaiaMainnet.rpcUrls.default.http[0]),
   },
   // ssr: false,
