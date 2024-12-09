@@ -20,6 +20,7 @@ export const useUserTokenBalance = (
   }, [balance]);
 
   const initialize = async () => {
+    console.log(tokenVaultAbi);
     const signer = await setupSigner();
 
     tokenVaultInstance = new ethers.Contract(
