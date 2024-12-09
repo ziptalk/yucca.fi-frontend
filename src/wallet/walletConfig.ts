@@ -1,7 +1,7 @@
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { http } from 'viem';
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
-import { KaiaTestnet, botanixTestnet, KaiaMainnet } from './chains';
+import { KaiaMainnet } from './chains';
 import { createConfig } from 'wagmi';
 
 const connectors = connectorsForWallets(
