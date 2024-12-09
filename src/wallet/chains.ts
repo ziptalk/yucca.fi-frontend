@@ -54,7 +54,7 @@ export const KaiaMainnet = defineChain({
   },
   rpcUrls: {
     default: {
-      http: ['https://1rpc.io/klay'],
+      http: ['https://public-en.node.kaia.io'],
     },
   },
   blockExplorers: {

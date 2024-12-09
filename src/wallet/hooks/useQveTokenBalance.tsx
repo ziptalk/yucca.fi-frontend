@@ -1,6 +1,6 @@
 import { Address } from 'viem';
 import { useEffect, useState } from 'react';
-import { setupSigner } from '../../common/contracts/signer';
+import { provider } from '../../common/contracts/signer';
 import { ethers } from 'ethers';
 import { tokenVaultAddress } from '../../common/contracts/tokenAddress';
 import { abi as tokenVaultAbi } from '../../common/abis/TokenVault.json';
@@ -20,12 +20,10 @@ export const useUserTokenBalance = (
   }, [balance]);
 
   const initialize = async () => {
-    const signer = await setupSigner();
-
     tokenVaultInstance = new ethers.Contract(
       tokenVaultAddress,
       tokenVaultAbi,
-      signer
+      provider
     );
   };
 

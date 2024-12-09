@@ -1,5 +1,5 @@
-import { BrowserProvider, ethers } from 'ethers';
-import { arbitrum } from 'viem/chains';
+import { BrowserProvider } from 'ethers';
+// import { arbitrum } from 'viem/chains';
 
 export const setupSigner = async () => {
   const signerProvider = new BrowserProvider(window.ethereum);
@@ -7,6 +7,8 @@ export const setupSigner = async () => {
   return signer;
 };
 
-export const provider = new ethers.JsonRpcProvider(
-  arbitrum.rpcUrls.default.http[0]
-);
+// export const provider = new ethers.JsonRpcProvider(
+//   arbitrum.rpcUrls.default.http[0]
+// );
+
+export const provider = new BrowserProvider(window.ethereum);
