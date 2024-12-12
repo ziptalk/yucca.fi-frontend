@@ -19,14 +19,15 @@ const RemoveModal = ({
   isOpen,
   onClose,
   botId,
-}: // totalInvest,
-// showToast,
-{
+  showFailToast,
+  showSuccessToast,
+}: {
   isOpen: boolean;
   onClose: () => void;
   botId?: string | null;
   totalInvest: number | null;
-  showToast: (message: string) => void;
+  showFailToast: (message: string) => void;
+  showSuccessToast: (message: string) => void;
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   useOutsideClick(wrapperRef, onClose);
@@ -57,6 +58,7 @@ const RemoveModal = ({
       );
       await axios.post(`${base_url}/yucca/remove/final`, postBody);
       onClose();
+      showSuccessToast('The remove was successfully performed');
       setIsLoading(false);
       queryClient.invalidateQueries({ queryKey: ['dashboard'] });
     } catch (err) {
@@ -66,6 +68,7 @@ const RemoveModal = ({
           alert('You can remove this bot after a month of deposing!');
         return;
       }
+      showFailToast('The remove failed');
     }
   };
 

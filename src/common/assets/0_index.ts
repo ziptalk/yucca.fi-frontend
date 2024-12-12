@@ -14,6 +14,7 @@ import IcStrokeLogo from './protonStrokeLogo.svg?react';
 import SadLogo from './sadLogo.svg?react';
 
 import IcSuccess from './icSuccess.svg?react';
+import IcFail from './icFail.svg?react';
 
 export {
   Logo,
@@ -27,4 +28,5 @@ export {
   IcMenu,
   SadLogo,
   IcHeaderLogo,
+  IcFail,
 };

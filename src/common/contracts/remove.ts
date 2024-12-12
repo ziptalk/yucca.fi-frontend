@@ -4,6 +4,7 @@ import { setupSigner } from './signer';
 import {
   BOTWalletAddress,
   QVETOKENAddress,
+  WKLAYtokenAddress,
   tokenVaultAddress,
 } from './tokenAddress';
 import { erc20Abi } from 'viem';
@@ -33,14 +34,13 @@ const approveToken = async (removeAmount: bigint) => {
     removeAmount
   );
   await tx.wait();
-  console.log(`Approved ${removeAmount} tokens for the TokenVault contract.`);
 };
 
 const remove = async (removeAmount: bigint, refund: bigint) => {
   const tx = await tokenVaultInstance.remove(
     BOTWalletAddress,
     removeAmount,
-    QVETOKENAddress,
+    WKLAYtokenAddress,
     refund
   );
   await tx.wait();

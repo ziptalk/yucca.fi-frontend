@@ -13,10 +13,12 @@ import useToast from '../common/hooks/useToast';
 import { useState } from 'react';
 import useMobile from '../common/hooks/useMobile';
 import styled from '@emotion/styled';
+import FailToast from '../common/components/FailToast';
 
 const MainPage = () => {
   const { toast: depositToast, showToast: showDepositToast } = useToast();
   const { toast: removeToast, showToast: showRemoveToast } = useToast();
+  const { toast: failToast, showToast: showFailToast } = useToast();
   const [dataRefreshTrigger, setDataRefreshTrigger] = useState<boolean>(false);
 
   const handleDataRefreshRequest = () => {
@@ -76,7 +78,8 @@ const MainPage = () => {
           onClose={closeRemoveModal}
           botId={removeBotId}
           totalInvest={totalInvest}
-          showToast={showRemoveToast}
+          showFailToast={showFailToast}
+          showSuccessToast={showRemoveToast}
         />
       )}
 
@@ -88,6 +91,7 @@ const MainPage = () => {
       )}
       {depositToast && <DepositToast message={depositToast.message} />}
       {removeToast && <DepositToast message={removeToast.message} />}
+      {failToast && <FailToast message={failToast.message} />}
     </StContainer>
   );
 };
